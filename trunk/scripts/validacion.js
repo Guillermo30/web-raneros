@@ -5,6 +5,7 @@ function comprobar(){
 	var nombre = document.formularioRegistro.nombre.value;
 	var apellidos = document.formularioRegistro.apellidos.value;
 	var correo = document.formularioRegistro.correo.value
+	
 	if(nick.length == 0){
 		alert('El campo nick es obligatorio. Recuerde rellenarlo');
 		document.formularioRegistro.nick.focus();
@@ -25,7 +26,19 @@ function comprobar(){
 		document.formularioRegistro.correo.focus();
 		return 0;
 	}
+	if(validarEmail(correo)==0){
+		document.formularioRegistro.correo.focus();
+		return 0;
+	}
 	//el formulario se envia
     alert("Muchas gracias por enviar el formulario");
     //document.formularioRegistro.submit();
+}
+
+function validarEmail(correo) {
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( !expr.test(correo) ){
+        alert("Error: La dirección de correo " + correo + " es incorrecta.");
+        return 0;
+       }
 }
