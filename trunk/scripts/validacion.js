@@ -41,4 +41,5 @@ function validarEmail(correo) {
         alert("Error: La dirección de correo " + correo + " es incorrecta.");
         return 0;
        }
+       
 }
