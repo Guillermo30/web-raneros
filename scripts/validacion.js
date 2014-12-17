@@ -32,7 +32,7 @@ function comprobar(){
 	}
 	//el formulario se envia
     alert("Muchas gracias por enviar el formulario");
-    //document.formularioRegistro.submit();
+    document.formularioRegistro.submit();
 }
 
 function validarEmail(correo) {
