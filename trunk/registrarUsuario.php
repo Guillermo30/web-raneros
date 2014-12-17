@@ -58,14 +58,21 @@
 					</ul>
 		</div>
 		<div id="contenedorCuerpo">
-			<div class="evento">
-				<form action="conexion.php" class="formularios" method="post" >
-					<div><a>Nick</a></br><input type="text" name="nick" id="nick"></input></div>
-					<div><a>Contrase√±a</a></br><input type="password" name="password" id="password"/></div>
-					<div><input type="submit" value="Enviar"></input></div>
-					<div><button type="button" onclick="location.href='registrar.html'">Registrate</button></div>
-				</form>
-			</div>
+			<?php
+				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
+				$mysqli = new mysqli("localhost", "root", "", "raneros");
+				if ($mysqli->connect_errno) {
+					echo "FallÛ la conexiÛn con MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+				}
+				$consulta = "INSERT INTO `usuario`(`nombre`, `apellidos`, `nick`, `password`, `esRoot`) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['nick']."','".$newPassword."', False)";
+				if($mysqli->query($consulta))
+					echo "<h2>Los Raneros nos enorgullece darte la vienvenido</h2>";
+				else
+				{
+					echo "<p>Por motimos de mantenimiento no hemos podido atender tu solicitud. Intentelo m·s tarde y disculpe las molestias.</p>";
+					echo $consulta;
+				} 
+			?>
 		</div>
 		<div id="pie">
 			<div id="enlaces">
