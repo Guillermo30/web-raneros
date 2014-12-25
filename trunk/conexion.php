@@ -64,18 +64,20 @@
 						</li>
 					</ul>
 		</div>
-		<div id="contenedorCuerpo">	
+		<div id="contenedorCuerpo">
 			<?php
-			// Conectando, seleccionando la base de datos
-			$mysqli = new mysqli("localhost", "root", "", "raneros");
-			if ($mysqli->connect_errno) {
-				echo "Falló la conexión con MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-			}	
+
+             include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
+
+             $sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
+             $sentencia="SELECT * FROM usuario WHERE nick = '".$_POST['nick']."'";
+
 			// Comprobar credenciales
-			if($consulta=$mysqli->query("SELECT * FROM usuario WHERE nick = '".$_POST['nick']."'"))
+              if($consulta=$sql->selectSQL($sentencia))
 			{
 				$clave = $consulta->fetch_assoc();
-				if(password_verify($_POST['password'], $clave['password']))
+
+				if(password_verify(trim($_POST['password']), $clave["password"]))  //función que valida contraseña con un código hash de la contraseña
 				{
 					echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
 					session_start();
@@ -87,9 +89,7 @@
 				}
 				else
 				{
-					echo $clave;
 					echo "<br/>";
-					echo $_POST['password'];
 					echo "Fallo contrasenia";
 				}
 			}
@@ -97,6 +97,7 @@
 			{
 				echo "Fallo nombre";
 			}
+            
 			?>
 		</div>
 		<div id="pie">

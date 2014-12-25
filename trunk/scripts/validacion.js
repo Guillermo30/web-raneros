@@ -43,6 +43,6 @@ function validarEmail(correo) {
        }
        
 }
-function registrar(){
-	return <a href="registrar.html"></a>
-}
+//function registrar(){
+//	return <a href="registrar.html"></a>
+//}
