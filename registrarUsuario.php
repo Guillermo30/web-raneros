@@ -59,19 +59,24 @@
 		</div>
 		<div id="contenedorCuerpo">
 			<?php
-				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
-				$mysqli = new mysqli("localhost", "root", "", "raneros");
-				if ($mysqli->connect_errno) {
-					echo "Falló la conexión con MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-				}
-				$consulta = "INSERT INTO `usuario`(`nombre`, `apellidos`, `nick`, `password`, `esRoot`) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['nick']."','".$newPassword."', False)";
-				if($mysqli->query($consulta))
-					echo "<h2>Los Raneros nos enorgullece darte la vienvenido</h2>";
+                include('conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
+				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT); //función para crear codigo hash de contraseña
+
+                $sql=new conexionSQL(); //intanciamos objeto de la clase sentenciaSQL creada
+				$sentencia = "INSERT INTO usuario(nombre, apellidos, nick, password, esRoot,email) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['nick']."','".$newPassword."', False,'".$_POST['correo']."')";
+
+				if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
+					echo "<h2>Los Raneros nos enorgullece darle la Bienvenida</h2>";
+                    echo "</br><p>Hola ".$_POST['nick']."</p>";
+                    session_start();
+                }
 				else
 				{
-					echo "<p>Por motimos de mantenimiento no hemos podido atender tu solicitud. Intentelo más tarde y disculpe las molestias.</p>";
-					echo $consulta;
-				} 
+				    echo $sql->mysqli->error;
+					echo "<p>Por motivos de mantenimiento no hemos podido atender tu solicitud. Intentelo más tarde y disculpe las molestias.</p>";
+					//echo $consulta;
+
+				}
 			?>
 		</div>
 		<div id="pie">
