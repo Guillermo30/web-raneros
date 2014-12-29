@@ -40,29 +40,11 @@
 			</div>
 		</div>
 		<div id="menuID" class="menu">
-					<ul>
-						<li>
-							<a href="index.html">Inicio</a>
-						</li>
-						<li>
-							<a href="galeria.html">Galeria</a>
-						</li>
-						<li>
-							<a href="eventos.html">Eventos</a>
-						</li>
-						<li>
-							<a href="carta.html">Carta</a>
-						</li>
-						<li>
-							<a href="productos.html">Productos</a>
-						</li>
-						<li>
-							<a href="conocenos.html">Conocenos</a>
-						</li>
-						<li>
-							<a href="ingresar.html">Ingresar</a>
-						</li>
-					</ul>
+			<?php 
+				include ('php/menu.php');
+				$menu = new menu();
+				$menu->mostrar();
+			?>
 		</div>
 		<div id="contenedorCuerpo">	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
 		<div id="wowslider-container0">
