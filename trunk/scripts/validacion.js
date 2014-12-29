@@ -5,34 +5,42 @@ function comprobar(){
 	var nombre = document.formularioRegistro.nombre.value;
 	var apellidos = document.formularioRegistro.apellidos.value;
 	var correo = document.formularioRegistro.correo.value
-	
-	if(nick.length == 0){
+	var todo_correcto = true;	
+
+	if(document.getElementById('nick').value.length.length == 0){
 		alert('El campo nick es obligatorio. Recuerde rellenarlo');
 		document.formularioRegistro.nick.focus();
-		return 0;
+		todo_correcto = false;
 	}
 	if(contrasenia.length < 6){
 		alert('La contraseña es poco segura. Debe tener un minimo de 6 caracteres');
 		document.formularioRegistro.contrasenia.focus();
-		return 0;
+		todo_correcto = false;
 	}
 	if(contrasenia != contrasenia2){
 		alert('Las contraseñas deben coincidir');
 		document.formularioRegistro.contrasenia2.focus();
-		return 0;
+		todo_correcto = false;
 	}
 	if(correo.length == 0){
 		alert('El campo correo electronico es obligatorio. Recuerde rellenarlo');
 		document.formularioRegistro.correo.focus();
-		return 0;
+		todo_correcto = false;
 	}
-	if(validarEmail(correo)==0){
-		document.formularioRegistro.correo.focus();
-		return 0;
-	}
+	//if(validarEmail(correo)==0){
+	//	document.formularioRegistro.correo.focus();
+	//	todo_correcto = false;
+	//}
+	
 	//el formulario se envia
-    alert("Muchas gracias por enviar el formulario");
-    document.formularioRegistro.submit();
+	if(!todo_correcto)
+	{
+		alert("Muchas gracias por enviar el formulario");
+	}
+    
+
+    //document.formularioRegistro.submit();
+    return todo_correcto;
 }
 
 function validarEmail(correo) {
