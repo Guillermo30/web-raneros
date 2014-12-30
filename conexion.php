@@ -49,37 +49,35 @@
 		<div id="contenedorCuerpo">
 			<?php
 
-             include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
-
-             $sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
-             $sentencia="SELECT * FROM usuario WHERE nick = '".$_POST['nick']."'";
-
-			// Comprobar credenciales
-              if($consulta=$sql->selectSQL($sentencia))
-			{
-				$clave = $consulta->fetch_assoc();
-
-				if(password_verify(trim($_POST['password']), $clave["password"]))  //función que valida contraseña con un código hash de la contraseña
+	            include('php/constantesConexion.php'); //Incluimos el fichero donde está la clase conexionSQL
+	
+	            $sql=new mysqli($host, $usuario,$passwd,$bd); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
+	            $sentencia="SELECT * FROM usuario WHERE nick = '".$_POST['nick']."'";
+				// Comprobar credenciales
+             	if($consulta=$sql->query($sentencia))
 				{
-					echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
-					session_start();
-					if($clave['esRoot'])
-						$_SESSION['esRoot'] = true;
-					else 
-						$_SESSION['esRoot'] = false;
-					$_SESSION['id'] = $clave['idusuarios'];
+					//$clave = $consulta->fetch_assoc();
+					$clave = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+					if(password_verify(trim($_POST['password']), $clave["password"]))  //función que valida contraseña con un código hash de la contraseña
+					{
+						echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
+						session_start();
+						if($clave['esRoot'])
+							$_SESSION['esRoot'] = true;
+						else 
+							$_SESSION['esRoot'] = false;
+						$_SESSION['id'] = $clave['idusuarios'];
+					}
+					else
+					{
+						echo "<br/>";
+						echo "Fallo contrasenia";
+					}
 				}
 				else
 				{
-					echo "<br/>";
-					echo "Fallo contrasenia";
+					echo "Fallo nombre";
 				}
-			}
-			else
-			{
-				echo "Fallo nombre";
-			}
-            
 			?>
 		</div>
 		<div id="pie">
