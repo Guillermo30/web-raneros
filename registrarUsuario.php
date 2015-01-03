@@ -34,30 +34,39 @@
 		</div>
 		<div id="menuID" class="menu">
 			<?php 
-				include ('php/menu.php');
+				include('php/menu.php');
 				$menu = new menu();
 				$menu->mostrar();
+				
 			?>
 		</div>
 		<div id="contenedorCuerpo">
 			<?php
-                include('conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
+				//include('php/constantesConexion.php');
+                //include('php/conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
 				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT); //función para crear codigo hash de contraseña
+				$nick=strtoupper($_POST['nick']);
+                $sql=new conexionSQL(); //instanciamos objeto de la clase sentenciaSQL creada
+                
+                //Creamos este if para comprobar si ya existe en BD el nick del nuevo usuario
+                if(!$sql->comprobarExisteNick($nick)){
 
-                $sql=new conexionSQL(); //intanciamos objeto de la clase sentenciaSQL creada
-				$sentencia = "INSERT INTO usuario(nombre, apellidos, nick, password, esRoot,email) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['nick']."','".$newPassword."', False,'".$_POST['correo']."')";
-
-				if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
-					echo "<h2>Los Raneros nos enorgullece darle la Bienvenida</h2>";
-                    echo "</br><p>Hola ".$_POST['nick']."</p>";
-                    session_start();
-                }
-				else
-				{
-				    echo $sql->mysqli->error;
-					echo "<p>Por motivos de mantenimiento no hemos podido atender tu solicitud. Intentelo más tarde y disculpe las molestias.</p>";
-					//echo $consulta;
-
+					$sentencia = "INSERT INTO usuario(nombre, apellidos, nick, password, esRoot,email) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
+	
+					if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
+						echo "<h3>Los Raneros nos enorgullece darle la Bienvenida</h3>";
+	                    echo "</br><p>Hola ".$_POST['nick']."</p>";
+	                    session_start();
+	                }
+					else
+					{
+					    echo $sql->mysqli->error;
+						echo "<p>Por motivos de mantenimiento no hemos podido atender tu solicitud. Intentelo más tarde y disculpe las molestias.</p>";
+						//echo $consulta;
+	
+					}
+				}else{
+					echo "El nick elegido ya existe, vuelva a intentarlo eligiendo otro nick";		
 				}
 			?>
 		</div>

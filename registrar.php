@@ -35,9 +35,10 @@
 		</div>
 		<div id="menuID" class="menu">
 			<?php 
-				include ('php/menu.php');
+				include('php/menu.php');
 				$menu = new menu();
 				$menu->mostrar();
+				
 			?>
 		</div>
 		<div id="contenedorCuerpo">

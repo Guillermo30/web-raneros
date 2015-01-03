@@ -46,18 +46,21 @@
 					include('php/constantesConexion.php');
 					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 					
-					//$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
+					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
 					//Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
 					//que no he podio resolver nose por que
-					$sql = new mysqli($host, $usuario,$passwd,$bd);
+					//$sql = new mysqli($host, $usuario,$passwd,$bd);
 					$sentencia="SELECT * FROM tipotapa";
-					$consulta=$sql->query($sentencia);
+					$consulta=$sql->selectSQL($sentencia);
+					//$consulta=$sql->query($sentencia);
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
 						echo "<h3>".$row['nombre']."</h3>";
 						echo "<hr />";
-						$sql2=new mysqli($host, $usuario,$passwd,$bd);
+						//$sql2=new mysqli($host, $usuario,$passwd,$bd);
+						$sql2=new conexionSQL();
 						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
-						$consulta2 = $sql2->query($sentencia2);
+						//$consulta2 = $sql2->query($sentencia2);
+						$consulta2=$sql2->selectSQL($sentencia2);
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
 							//echo "<a>".$row2['nombre']."</a>";
 							echo "<a href='php/tapa.php?id=".$row2['idTapa']."' pmcñocl='javascript:popup(this.href); return false;'>";

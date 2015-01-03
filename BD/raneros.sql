@@ -186,10 +186,11 @@ INSERT INTO `tipotapa` (`idTipoTapa`, `nombre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `idusuarios` int(11) NOT NULL,
+  `idusuarios` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(45) DEFAULT NULL,
   `nick` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
   `esRoot` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idusuarios`)
@@ -199,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idusuarios`, `nombre`, `apellidos`, `nick`, `password`, `esRoot`) VALUES
-(0, 'prueba', 'prueba', 'prueba', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0);
+INSERT INTO `usuario` (`nombre`, `apellidos`, `nick`, `password`, `esRoot`,`email`) VALUES
+('prueba', 'prueba', 'prueba', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0,'admin@raneros.es');
 
 --
 -- Restricciones para tablas volcadas

@@ -4,7 +4,7 @@ function comprobar(){
 	var contrasenia2 = document.formularioRegistro.contrasenia2.value;
 	var nombre = document.formularioRegistro.nombre.value;
 	var apellidos = document.formularioRegistro.apellidos.value;
-	var correo = document.formularioRegistro.correo.value
+	var correo = document.formularioRegistro.correo.value;
 	var todo_correcto = true;	
 
 	if(document.getElementById('nick').value.length.length == 0){
@@ -35,12 +35,17 @@ function comprobar(){
 	//el formulario se envia
 	if(!todo_correcto)
 	{
-		alert("Muchas gracias por enviar el formulario");
+		alert("El formulario no se ha enviado, revise errores e intentelo de nuevo");
+		
+		return 0;
+	}else{
+		alert("Formulario Enviado Correctamente")
+		 document.formularioRegistro.submit();
 	}
     
 
-    //document.formularioRegistro.submit();
-    return todo_correcto;
+   
+    //return todo_correcto;
 }
 
 function validarEmail(correo) {
@@ -51,6 +56,8 @@ function validarEmail(correo) {
        }
        
 }
+
+
 //function registrar(){
 //	return <a href="registrar.html"></a>
 //}
