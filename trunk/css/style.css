@@ -135,7 +135,7 @@ body{
 .formularios div{
     margin-bottom: 15px;
 }
-.formularios input[type='text'], .formularios textarea, .formularios input[type='password']{
+.formularios input[type='text'], .formularios textarea, .formularios input[type='password'], .formularios select{
     padding: 7px 6px;
     width: 294px;
     border: 1px solid #CED5D7;
@@ -143,7 +143,7 @@ body{
     box-shadow:0 0 0 3px #EEF5F7;
     margin: 5px 0;
 }
-.formularios input[type='text']:focus, .formularios textarea:focus, .formularios input[type='password']{
+.formularios input[type='text']:focus, .formularios textarea:focus, .formularios input[type='password'], .formularios select{
     outline: none;
     box-shadow:0 0 0 3px #dde9ec;
 }

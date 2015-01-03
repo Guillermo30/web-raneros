@@ -6,7 +6,7 @@ class conexionSQL{
    	//Constructor: Realiza la conexion con la BD y además crea el objeto mysqli 
    	//que lo asigno a la propiedad pública de esta clase por si fuese necesario usarlo
 	function __construct(){
-	    include_once('constantesConexion.php'); //incluimos fichero donde están incluidas las variables de conexión.
+	    include('constantesConexion.php'); //incluimos fichero donde están incluidas las variables de conexión.
 		$this->mysqli=new mysqli($host, $usuario,$passwd,$bd);
 
 		if ($this->mysqli->connect_errno) {
@@ -37,6 +37,18 @@ class conexionSQL{
 		}
 	return 1;
 	}
+	
+	//Función para comprobar si existe ya dicho nick en BD
+	public function comprobarExisteNick($nick){
+		$sentencia="SELECT * From usuario WHERE nick='".$nick."'";
+		$resultado=$this->selectSQL($sentencia);
+		$fila = $resultado->fetch_assoc();
+		if($fila){
+			return 1;
+		}
+		return 0;
+	}
+	
 }
 
 ?>
