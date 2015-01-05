@@ -242,6 +242,13 @@ a{
 	width:650px;
 }
 
+#login a{
+	background-color:#b5b6ae;
+	text-align:right;
+	display:inline-block;
+	color: #d4d4d4;
+	
+}
 
 /*CSS para el Menu*/
 .menu{
@@ -251,6 +258,7 @@ a{
 	/*margin-left:auto;
 	margin-right: auto;*/
 	}
+
  
 .menu li{
 	display: inline-block;
