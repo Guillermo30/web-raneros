@@ -46,27 +46,42 @@
 				$menu->mostrar();
 			?>
 		</div>
-		<div id="contenedorCuerpo">
+		<!-- <div id="contenedorCuerpo"> -->
 			<?php
-
-	            include('php/constantesConexion.php'); //Incluimos el fichero donde está la clase conexionSQL
-	
-	            $sql=new mysqli($host, $usuario,$passwd,$bd); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
+				session_start();
+				include('php/constantesConexion.php'); //Incluimos el fichero donde está la clase conexionSQL
+				if(isset($_SESSION["esRoot"])){
+					echo "<div class=".'"login"'."align=".'"right"'."><a class=".'"login"'.">".$_SESSION['nick']."</a></div>";
+					//echo "<div id=".'"idMenu"'."class=".'"login"'."align=".'"right"'."><a class=".'"login"'.">".$_POST["nick"]."</a></div>";
+					//echo "<div class=".'"menu"'.">".$_POST["nick"]."</div>";
+				}
+	            else{
+	            //$sql=new mysqli($host, $usuario,$passwd,$bd); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
+	            $sql=new conexionSQL();
 	            $sentencia="SELECT * FROM usuario WHERE nick = '".$_POST['nick']."'";
 				// Comprobar credenciales
-             	if($consulta=$sql->query($sentencia))
+             	if($consulta=$sql->selectSQL($sentencia))
 				{
 					//$clave = $consulta->fetch_assoc();
 					$clave = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
 					if(password_verify(trim($_POST['password']), $clave["password"]))  //función que valida contraseña con un código hash de la contraseña
 					{
-						echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
-						session_start();
-						if($clave['esRoot'])
+						//echo "<div id=".'"idMenu"'."class=".'"menu"'."<li>".$_POST["nick"]."</li></div>";
+						//echo "<a class=".'"redesSociales"'.">".$_POST["nick"]."</a>";
+						//echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
+						//session_start();
+						
+						if($clave['esRoot']){
 							$_SESSION['esRoot'] = true;
-						else 
+							$_SESSION['nick']=$clave["nick"];
+							}
+						else {
+							
 							$_SESSION['esRoot'] = false;
-						$_SESSION['id'] = $clave['idusuarios'];
+							$_SESSION['id'] = $clave['idusuarios'];
+							$_SESSION['nick']=$clave["nick"];
+						}
+						header("location:conexion.php");
 					}
 					else
 					{
@@ -78,8 +93,9 @@
 				{
 					echo "Fallo nombre";
 				}
+				}
 			?>
-		</div>
+		<!-- </div> -->
 		<div id="pie">
 			<div id="enlaces">
 				<h3>Sitios Relacionados</h3>

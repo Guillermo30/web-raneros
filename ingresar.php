@@ -13,6 +13,9 @@
 
 	<!-- End WOWSlider.com HEAD section -->
 </head>
+<script type="text/javascript" src="scripts/funciones.js">
+	
+</script>
 <body>
 	<div id="contenido">
 		<div id="cabecera">
@@ -37,6 +40,12 @@
 				include ('php/menu.php');
 				$menu = new menu();
 				$menu->mostrar();
+				
+				if(isset($_SESSION)){
+					echo "Usuario ". $_SESSION['nick']." conectado";
+				}else{
+					echo "NO CONECTADO";
+				}
 			?>
 		</div>
 		<div id="contenedorCuerpo">

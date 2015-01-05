@@ -4,17 +4,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
 	<title>Los Raneros</title>
+<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
 
-	<script type="text/javascript" src="scripts/validacion.js"></script>
+	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+
+	<script type="text/javascript" src="engine0/jquery.js"></script>
+
+	<!-- End WOWSlider.com HEAD section -->
+	
 </head>
 		
+<script type="text/javascript" src="D:\FRAN\GRADO INFORMATICA\TECNOLOGIAS WEB\PROYECTO_WEB\SVN WEB RANEROS\trunk\scripts\tapas.js"></script>
 
 <body>
 	<div id="contenido">
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php 
+					session_start();
 					include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
+					
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
 					$imagen = mysqli_fetch_array($sql->selectSQL("SELECT foto FROM foto WHERE tapa_idtapa='".$_GET['id']."'"), MYSQLI_NUM);
@@ -31,13 +40,18 @@
 					{
 						if($_SESSION['esRoot'])
 						{
-							echo "<form action='modificarTapa.php' name='modificarTapa' method='post'>";
-							echo "<a>Nombre Tapa</a></br><input type='text' name='nombre' id='nombre' value='".$row['nombre']." />";
-							echo "<a>Nombre Tapa</a></br><input type='file' name='foto' id='foto' value='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' />";
-							echo "<a>Descripcion</a></br><input type='text' name='descripcion' id='descripcion' value='".$row['descripcion']." />";
-							echo "<button type='button' value='submit'>Modificar Tapa</button>";
-							echo "<button type='button' onclick='eliminarTapa(".$row['id'].")'>Elminar Tapa</button>";
+							//echo "<div class='evento'>";
+							echo "<form action='modificarTapa.php' class='formularios' name='formularioModificarTapa' method='post'>";
+							echo "<a>Nombre Tapa</a></br><input type='text' name='nombre' id='nombre' value='".$row['nombre']."'/>";
+							echo "</br><a>Seleccionar Tapa</a></br><input type='file' name='foto' id='foto' value='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' />";
+							echo "</br><a>Descripcion</a></br><input type='text' name='descripcion' id='descripcion' value='".$row['descripcion']."' />";
+							echo "</br></br><button type='submit' value='Enviar'>Modificar Tapa</button>";
+							echo "</br></br><div><button type='button' value='Enviar' onclick='eliminarTapa(".$row['idTapa'].")'>Elminar Tapa</button></div>";
+							//echo "</br></br><input type='submit' value='Modificar Tapa' />";
+							//echo "</br></br><input type='button' value='Eliminar Tapa' onclick='eliminarTapa(".$row['idTapa'].")' />";
 							echo "</form>";
+							
+							//echo "</div>";
 						} else {
 							echo "<h2>".$row['nombre']."</h2><br>";
 							echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
@@ -52,5 +66,6 @@
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
