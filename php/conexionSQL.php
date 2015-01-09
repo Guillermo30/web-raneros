@@ -67,7 +67,7 @@ class conexionSQL{
 		return $resultado[0];
 	}
 	public function insertFoto($nombre, $tipoTapa){
-		$sentencia=""
+		$sentencia="";
 	}
 }
 
