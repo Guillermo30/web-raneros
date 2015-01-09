@@ -67,7 +67,9 @@ class conexionSQL{
 		return $resultado[0];
 	}
 	public function insertFoto($nombre, $tipoTapa){
-		$sentencia="";
+		$idTapa->ultimaId('foto');
+		$idTapa++;
+		$sentencia="INSERT INTO foto(idFoto, foto, album_idAlbum, tapa_idtapa) VALUES ('".$idTapa."', '".$nombre."','1','".$tipoTapa."')";
 	}
 }
 
