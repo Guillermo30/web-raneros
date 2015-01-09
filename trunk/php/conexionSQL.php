@@ -48,7 +48,27 @@ class conexionSQL{
 		}
 		return 0;
 	}
-	
+	public function ultimaId($tabla){
+		$sentencia="SELECT last_insert_id() FROM ".$tabla;
+		$resultado=$this->mysqli->query($sentencia);
+		$fila = $resultado->fetch_array();
+		return $fila[0];
+	}
+	public function tipoTapaDeTapa($idtapa){
+		$sentencia="SELECT tipoTapa_idTipoTapa FROM tapa WHERE idTapa='".$idtapa."'";
+		$idTipoTapa = $this->mysqli->query($sentencia)->fetch_array();
+		$sentencia="SELECT nombre FROM tipotapa WHERE idTipoTapa='".$idTipoTapa[0]."'";
+		$resultado = $this->mysqli->query($sentencia)->fetch_array();
+		return $resultado[0];
+	}
+	public function fotoDeTapa($idtapa){
+		$sentencia="SELECT foto FROM foto WHERE tapa_idtapa='".$idtapa."'";
+		$resultado = $this->mysqli->query($sentencia)->fetch_array();
+		return $resultado[0];
+	}
+	public function insertFoto($nombre, $tipoTapa){
+		$sentencia=""
+	}
 }
 
 ?>

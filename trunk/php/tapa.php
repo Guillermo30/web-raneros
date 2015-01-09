@@ -33,16 +33,18 @@
 					$consulta=$sql->selectSQL($sentencia);
 					$row=mysqli_fetch_array($consulta, MYSQLI_ASSOC);
 					//usuario
-					echo "<h2>".$row['nombre']."</h2><br>";
-					echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
-					echo "<p>".$row['descripcion']."</p>";
-					if(isset($_SESSION['esRoot']))
+// 					echo "<h2>".$row['nombre']."</h2><br>";
+// 					echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
+// 					echo "<p>".$row['descripcion']."</p>";
+// 					if(isset($_SESSION['esRoot']))
 					{
-						if($_SESSION['esRoot'])
+						if($_SESSION['esRoot']==1)
 						{
 							//echo "<div class='evento'>";
 							echo "<form action='modificarTapa.php' class='formularios' name='formularioModificarTapa' method='post'>";
+							echo "<input type='hiden' name='idTapa' id='idTapa' value='".$row['idTapa']."'/>";
 							echo "<a>Nombre Tapa</a></br><input type='text' name='nombre' id='nombre' value='".$row['nombre']."'/>";
+							echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
 							echo "</br><a>Seleccionar Tapa</a></br><input type='file' name='foto' id='foto' value='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' />";
 							echo "</br><a>Descripcion</a></br><input type='text' name='descripcion' id='descripcion' value='".$row['descripcion']."' />";
 							echo "</br></br><button type='submit' value='Enviar'>Modificar Tapa</button>";
@@ -57,11 +59,7 @@
 							echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
 							echo "<p>".$row['descripcion']."</p>";
 						}
-					} else {
-						echo "<h2>".$row['nombre']."</h2><br>";
-						echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
-						echo "<p>".$row['descripcion']."</p>";
-					}
+					} 
 				?>
 			</div>
 		</div>

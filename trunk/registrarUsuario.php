@@ -45,14 +45,15 @@
 				//include('php/constantesConexion.php');
                 //include('php/conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
 				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT); //función para crear codigo hash de contraseña
-				$nick=strtoupper($_POST['nick']);
+				$nick=$_POST['nick'];
                 $sql=new conexionSQL(); //instanciamos objeto de la clase sentenciaSQL creada
                 
                 //Creamos este if para comprobar si ya existe en BD el nick del nuevo usuario
                 if(!$sql->comprobarExisteNick($nick)){
-
-					$sentencia = "INSERT INTO usuario(nombre, apellidos, nick, password, esRoot,email) VALUES ('".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
-	
+					$id = $sql->ultimaId('usuario');
+					$id++;
+					$sentencia = "INSERT INTO usuario(idusuarios, nombre, apellidos, nick, password, esRoot,email) VALUES ('".$id."', '".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
+					
 					if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
 						echo "<h3>Los Raneros nos enorgullece darle la Bienvenida</h3>";
 	                    echo "</br><p>Hola ".$_POST['nick']."</p>";
