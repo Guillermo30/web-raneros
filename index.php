@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Los Raneros</title>
-	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+	<!--  HEAD section --> <!-- add to the <head> of your page -->
 
 	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
 
@@ -12,7 +12,7 @@
 	
 	<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
 
-	<!-- End WOWSlider.com HEAD section -->
+	<!-- HEAD section -->
 	
 	<script type="text/javascript" src="scripts/jquery-2.1.1.js"></script>
 	<script type="text/javascript" src="scripts/scrollJQuery.js"></script>
@@ -25,7 +25,7 @@
 		<div id="cabecera">
 			<img src="css/img/BannerVerde.jpg" id="fondoCabecera">
 			<div id="titleHeader">
-				<img src="css/img/icono-rana.png" id="logo" width="90px" height="90px">
+				<img src="css/img/rana-coloreada.gif" id="logo" width="140px" height="90px">
 				<h1>Los Raneros</h1>
 				<h3>Cafe Bar</h3>
 			</div>
@@ -46,7 +46,7 @@
 				$menu->mostrar();
 			?>
 		</div>
-		<div id="contenedorCuerpo">	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+		<div id="contenedorCuerpo">	<!-- BODY section --> <!-- add to the <body> of your page -->
 		<div id="wowslider-container0">
 
 		<div class="ws_images"><ul>
@@ -88,7 +88,7 @@
 
 		<script type="text/javascript" src="engine0/script.js"></script>
 
-		<!-- End WOWSlider.com BODY section -->
+		<!-- BODY section -->
 			
 		</div>
 		<div id="pie">
@@ -100,10 +100,11 @@
 			<div id="contacta">
 				<h3>Contacta con nosotros</h3>
 				<hr/>
-				<a>Telf: XXX XXX XXX</a>
+				<a>Telf: 622-112-446 </a>
 				<br></br>
-				<a>Direccion: XXXXXXXXXXX</a>
+				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
 			</div>
+					
 		</div>
 	</div>
 </body>
