@@ -18,10 +18,22 @@
 					include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
-					//INCOMPLETO 05/01/2014 CONTINUO MÁS TARDE POR AQUÍ
-					//****************************************************
-					$sentencia="UPDATE tapa SET(nombre=".$_POST["nombre"].")";
+					//comprobar si se a subido fichero
+					if ($_FILES['archivo']['error'] != UPLOAD_ERR_NO_FILE) {
+						//Buscamos el tipo de tapa al que pertenece
+						$tipoTapa=$sql->tipoTapaDeTapa($_POST['idTapa']);
+						//Borramos la foto anterior
+						$fotoAntigua = $sql->fotoDeTapa($_POST['idTapa']);
+						unlink('../css/img/tapas/'.$tipoTapa.'/'.$fotoAntigua);
+						//Subir la foto y creamos un nuevo registro de foto
+						move_uploaded_file($_FILES['foto']['tmp_name'],'../css/img/tapas/'.$tipoTapa.'/'.$FILES['foto']['name']);
+						$sql->insertFoto($nombre, $tipoTapa);
+					}
+					//Modificar la tapa
+					$sentencia="UPDATE tapa SET(nombre=".$_POST['nombre'].", descripcion=".$_POST['descripcion'].")";
 					
+					
+					header('Location: localhost/carta.php');
 				?>
 			</div>
 		</div>
