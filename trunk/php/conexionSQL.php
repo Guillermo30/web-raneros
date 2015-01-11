@@ -33,6 +33,7 @@ class conexionSQL{
 	public function updateSQL($sentencia){
 		if(!$this->mysqli->query($sentencia)){
 			echo "Error en sentencia de modificacion de datos";
+			echo $this->mysqli_error;
 			return 0;
 		}
 	return 1;
@@ -66,10 +67,10 @@ class conexionSQL{
 		$resultado = $this->mysqli->query($sentencia)->fetch_array();
 		return $resultado[0];
 	}
-	public function insertFoto($nombre, $tipoTapa){
-		$idTapa->ultimaId('foto');
-		$idTapa++;
-		$sentencia="INSERT INTO foto(idFoto, foto, album_idAlbum, tapa_idtapa) VALUES ('".$idTapa."', '".$nombre."','1','".$tipoTapa."')";
+	public function insertFoto($nombre, $idFoto){
+		$idFoto=$this->ultimaId('foto'); //**
+		$idFoto++; //**
+		$sentencia="INSERT INTO foto(idFoto, foto, album_idAlbum, tapa_idtapa) VALUES ('".$idFoto."', '".$nombre."','1','".$idTapa."')";
 	}
 }
 
