@@ -26,8 +26,7 @@
 					//echo $_POST["descripcion"];
 					echo $_FILES['foto']['tmp_name'];
 					//Modificar la tapa
-					//$sentencia="UPDATE tapa SET(nombre='".$_POST["nombre"]."',descripcion='".$_POST["descripcion"]."',tipoTapa_idTipoTapa='".$_SESSION["tipoTapa"]."') WHERE idTapa='".$_SESSION["idTapa"]."'";
-					//$sentencia="UPDATE tapa SET(nombre=".$_POST["nombre"].",descripcion=".$_POST["descripcion"].",tipoTapa_idTipoTapa=".$_SESSION["tipoTapa"].") WHERE idTapa=".$_SESSION["idTapa"]."";
+					
 					$sentencia="UPDATE tapa SET nombre='".$_POST['nombre']."',descripcion='".$_POST['descripcion']."',tipoTapa_idTipoTapa='".$_SESSION['tipoTapa']."' WHERE idTapa='".$_SESSION['idTapa']."'";
 					if($sql->updateSQL($sentencia)){
 						if(!empty($_FILES)){
@@ -44,10 +43,10 @@
 								$nombre=$_FILES['foto']['name'];
 								$sql->insertFoto($nombre,$_POST["idTapa"]);
 							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";}
-							header('Location:../carta.php');
+							//header('Location:../carta.php');
 						}
 						//echo "<p>Datos de Tapa modificados con éxito</p>";
-						//header('Location:../carta.php');
+						header('Location:../carta.php');
 						
 					}else{
 						echo "Se ha producido un error en la modificación de la tapa.";
