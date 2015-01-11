@@ -52,8 +52,7 @@
 				include('php/constantesConexion.php'); //Incluimos el fichero donde está la clase conexionSQL
 				if(isset($_SESSION["esRoot"])){
 					echo "<div class=".'"login"'."align=".'"right"'."><a class=".'"login"'.">".$_SESSION['nick']."</a></div>";
-					//echo "<div id=".'"idMenu"'."class=".'"login"'."align=".'"right"'."><a class=".'"login"'.">".$_POST["nick"]."</a></div>";
-					//echo "<div class=".'"menu"'.">".$_POST["nick"]."</div>";
+					
 				}
 	            else{
 	            //$sql=new mysqli($host, $usuario,$passwd,$bd); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
@@ -66,11 +65,7 @@
 					$clave = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
 					if(password_verify(trim($_POST['password']), $clave["password"]))  //función que valida contraseña con un código hash de la contraseña
 					{
-						//echo "<div id=".'"idMenu"'."class=".'"menu"'."<li>".$_POST["nick"]."</li></div>";
-						//echo "<a class=".'"redesSociales"'.">".$_POST["nick"]."</a>";
-						//echo "<h2>Bienvenido ".$_POST['nick']."</h2>";
-						//session_start();
-						
+												
 						if($clave['esRoot']){
 							$_SESSION['esRoot'] = true;
 							$_SESSION['nick']=$clave["nick"];

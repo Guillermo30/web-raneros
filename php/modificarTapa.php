@@ -18,22 +18,43 @@
 					include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
-					//comprobar si se a subido fichero
-					if ($_FILES['archivo']['error'] != UPLOAD_ERR_NO_FILE) {
-						//Buscamos el tipo de tapa al que pertenece
-						$tipoTapa=$sql->tipoTapaDeTapa($_POST['idTapa']);
-						//Borramos la foto anterior
-						$fotoAntigua = $sql->fotoDeTapa($_POST['idTapa']);
-						unlink('../css/img/tapas/'.$tipoTapa.'/'.$fotoAntigua);
-						//Subir la foto y creamos un nuevo registro de foto
-						move_uploaded_file($_FILES['foto']['tmp_name'],'../css/img/tapas/'.$tipoTapa.'/'.$FILES['foto']['name']);
-						$sql->insertFoto($nombre, $tipoTapa);
-					}
+					//$idTipoTapa=$_SESSION["tipoTapa"];
+					//$idTapa=$_SESSION["idTapa"];
+					//echo $idTipoTapa;
+					//echo $idTapa;
+					//echo $_POST["nombre"];
+					//echo $_POST["descripcion"];
+					echo $_FILES['foto']['tmp_name'];
 					//Modificar la tapa
-					$sentencia="UPDATE tapa SET(nombre=".$_POST['nombre'].", descripcion=".$_POST['descripcion'].")";
-					
-					
-					header('Location: localhost/carta.php');
+					//$sentencia="UPDATE tapa SET(nombre='".$_POST["nombre"]."',descripcion='".$_POST["descripcion"]."',tipoTapa_idTipoTapa='".$_SESSION["tipoTapa"]."') WHERE idTapa='".$_SESSION["idTapa"]."'";
+					//$sentencia="UPDATE tapa SET(nombre=".$_POST["nombre"].",descripcion=".$_POST["descripcion"].",tipoTapa_idTipoTapa=".$_SESSION["tipoTapa"].") WHERE idTapa=".$_SESSION["idTapa"]."";
+					$sentencia="UPDATE tapa SET nombre='".$_POST['nombre']."',descripcion='".$_POST['descripcion']."',tipoTapa_idTipoTapa='".$_SESSION['tipoTapa']."' WHERE idTapa='".$_SESSION['idTapa']."'";
+					if($sql->updateSQL($sentencia)){
+						if(!empty($_FILES)){
+						//comprobar si se a subido fichero
+							if ($_FILES['foto']['error'] != UPLOAD_ERR_NO_FILE) {
+								//Buscamos el tipo de tapa al que pertenece
+								$tipoTapa=$sql->tipoTapaDeTapa($_SESSION['idTapa']);
+								//Borramos la foto anterior
+								$fotoAntigua = $sql->fotoDeTapa($_SESSION['idTapa']);
+								unlink('../css/img/tapas/'.$tipoTapa.'/'.$fotoAntigua);
+								//Subir la foto y creamos un nuevo registro de foto
+								move_uploaded_file($_FILES['foto']['tmp_name'],'../css/img/tapas/'.$tipoTapa.'/'.$_FILES['foto']['name']);
+								//$sql->insertFoto($nombre, $tipoTapa);
+								$nombre=$_FILES['foto']['name'];
+								$sql->insertFoto($nombre,$_POST["idTapa"]);
+							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";}
+							header('Location:../carta.php');
+						}
+						//echo "<p>Datos de Tapa modificados con éxito</p>";
+						//header('Location:../carta.php');
+						
+					}else{
+						echo "Se ha producido un error en la modificación de la tapa.";
+						//echo $sql->mysqli_error;
+					}
+
+										
 				?>
 			</div>
 		</div>
