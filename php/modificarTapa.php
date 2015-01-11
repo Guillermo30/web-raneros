@@ -35,16 +35,18 @@
 								move_uploaded_file($_FILES['foto']['tmp_name'],'../css/img/tapas/'.$tipoTapa.'/'.$_FILES['foto']['name']);
 								//$sql->insertFoto($nombre, $tipoTapa);
 								$nombre=$_FILES['foto']['name'];
-								$sql->insertFoto($nombre,$_POST["idTapa"]);
-							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";}
-							//header('Location:../carta.php');
+								if($sql->insertFoto($nombre,$_POST["idTapa"])){
+									header('Location:../carta.php');
+								}
+								
+							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";
+									header('Location:../carta.php');
+									}
+							
 						}
 						//echo "<p>Datos de Tapa modificados con éxito</p>";
-						header('Location:../carta.php');
-						
-					}else{
-						echo "Se ha producido un error en la modificación de la tapa.";
-						//echo $sql->mysqli_error;
+						//header('Location:../carta.php');
+						echo "ok";
 					}
 
 										

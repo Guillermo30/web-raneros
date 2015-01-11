@@ -67,10 +67,14 @@ class conexionSQL{
 		$resultado = $this->mysqli->query($sentencia)->fetch_array();
 		return $resultado[0];
 	}
-	public function insertFoto($nombre, $idFoto){
+	public function insertFoto($nombre, $idTapa){
 		$idFoto=$this->ultimaId('foto'); //**
 		$idFoto++; //**
 		$sentencia="INSERT INTO foto(idFoto, foto, album_idAlbum, tapa_idtapa) VALUES ('".$idFoto."', '".$nombre."','1','".$idTapa."')";
+		if(!$this->insertarSQl($sentencia)){
+			echo $this->mysqli->error;
+			
+		}
 	}
 }
 
