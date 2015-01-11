@@ -18,13 +18,7 @@
 					include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
-					//$idTipoTapa=$_SESSION["tipoTapa"];
-					//$idTapa=$_SESSION["idTapa"];
-					//echo $idTipoTapa;
-					//echo $idTapa;
-					//echo $_POST["nombre"];
-					//echo $_POST["descripcion"];
-					echo $_FILES['foto']['tmp_name'];
+					
 					//Modificar la tapa
 					
 					$sentencia="UPDATE tapa SET nombre='".$_POST['nombre']."',descripcion='".$_POST['descripcion']."',tipoTapa_idTipoTapa='".$_SESSION['tipoTapa']."' WHERE idTapa='".$_SESSION['idTapa']."'";
