@@ -100,9 +100,9 @@
 			<div id="contacta">
 				<h3>Contacta con nosotros</h3>
 				<hr/>
-				<a>Telf: XXX XXX XXX</a>
+				<a>Telf: 622-112-446 </a>
 				<br></br>
-				<a>Direccion: XXXXXXXXXXX</a>
+				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
 			</div>
 		</div>
 	</div>
