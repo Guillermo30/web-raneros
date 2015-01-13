@@ -51,8 +51,9 @@
                 //Creamos este if para comprobar si ya existe en BD el nick del nuevo usuario
                 if(!$sql->comprobarExisteNick($nick)){
 					$id = $sql->ultimaId('usuario');
+					
 					$id++;
-					$sentencia = "INSERT INTO usuario(idusuarios, nombre, apellidos, nick, password, esRoot,email) VALUES ('".$id."', '".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
+					$sentencia = "INSERT INTO usuario(idusuarios, nombre, apellidos, nick, password, esRoot,email) VALUES ('NULL', '".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
 					
 					if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
 						echo "<h3>Los Raneros nos enorgullece darle la Bienvenida</h3>";

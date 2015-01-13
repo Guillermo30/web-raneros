@@ -43,31 +43,46 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
-					include('php/constantesConexion.php');
-					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
+				
+				//Autenticacion
+				require_once 'Zend/Loader.php';
 					
-					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
-					//Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
-					//que no he podio resolver nose por que
-					//$sql = new mysqli($host, $usuario,$passwd,$bd);
-					$sentencia="SELECT * FROM tipotapa";
-					$consulta=$sql->selectSQL($sentencia);
-					//$consulta=$sql->query($sentencia);
-					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
-						echo "<h3>".$row['nombre']."</h3>";
-						echo "<hr />";
-						//$sql2=new mysqli($host, $usuario,$passwd,$bd);
-						$sql2=new conexionSQL();
-						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
-						//$consulta2 = $sql2->query($sentencia2);
-						$consulta2=$sql2->selectSQL($sentencia2);
-						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
-							//echo "<a>".$row2['nombre']."</a>";
-							echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
-							echo $row2['nombre'];
-							echo "</a>";
-						}
-					}
+				Zend_Loader::loadClass('Zend_Gdata_Photos');
+				Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
+				Zend_Loader::loadClass('Zend_Gdata_AuthSub');
+					
+				$serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+				$user = "webraneros@gmail.com";
+				$pass = "raneros2014!";
+				$client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
+				// update the second argument to be CompanyName-ProductName-Version
+				$gp = new Zend_Gdata_Photos($client, "Raneros");
+				// In version 1.5+, you can enable a debug logging mode to see the
+				// underlying HTTP requests being made, as long as you're not using
+				// a proxy server
+				// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
+				
+				//Obtenemos el nombre del album
+				$album=$_GET['albumName'];
+				
+				
+				// Creates a Zend_Gdata_Photos_AlbumQuery
+				$query = $gp->newAlbumQuery();
+				
+					$query->setUser("default");
+				$query->setAlbumName($album);
+				
+				$albumFeed = $gp->getAlbumFeed($query);
+				foreach ($albumFeed as $albumEntry) {
+					
+					$mediaArray = $albumEntry->getMediaGroup()->getContent();
+					$ImageUrl = $mediaArray[0]->getUrl();
+					echo "<div class='imagenGaleria'>";
+					echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
+					echo "</div>";
+					
+					
+				}
 				?>
 			</div>
 		</div>
