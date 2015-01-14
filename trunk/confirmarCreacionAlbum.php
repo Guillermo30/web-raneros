@@ -69,40 +69,76 @@
 					$service = new Zend_Gdata_Photos ( $client );
 					$gp = new Zend_Gdata_Photos ( $client, "Raneros" );
 					// Creando album
-					$nombreAlbum=$_POST['nombreAlbum'];
+					$nombreAlbum = $_POST ['nombreAlbum'];
 					$entry = new Zend_Gdata_Photos_AlbumEntry ();
-					$entry->setTitle ( $gp->newTitle ($nombreAlbum));
-						
-					$createdEntry = $gp->insertAlbumEntry($entry);
-
-// 					foreach ( $_FILES ['fotos'] ['tmp_name'] as $clave => $tmp_name ) {
-// 						echo $_FILES ['fotos'] ['name'][$clave];
-// 						$username = $user;
-// 						$filename =  $clave . $_FILES ['fotos'] ['tmp_name'] [$clave];
-// 						$photoName =  $clave . $_FILES ['fotos'] ['name'] [$clave];
-						
-// 						$albumId = "6103956432412299745";
-						
-// 						$fd = $gp->newMediaFileSource('C:\Users\Zenbook\Pictures\7.jpg');
-// 						$fd->setContentType("image/jpeg");
-						
-// 						// Create a PhotoEntry
-// 						$photoEntry = $gp->newPhotoEntry();
-// 						$photoEntry->setMediaSource($fd);
-// 						$photoEntry->setTitle($gp->newTitle($photoName));
-						
-// 						// We use the AlbumQuery class to generate the URL for the album
-// 						$albumQuery = $gp->newAlbumQuery();
-						
-// 						$albumQuery->setUser($username);
-// 						$albumQuery->setAlbumId($albumId);
-						
-// 						// We insert the photo, and the server returns the entry representing
-// 						// that photo after it is uploaded
-// 						$insertedEntry = $gp->insertPhotoEntry($photoEntry, $albumQuery->getQueryUrl());
-						 
-// 					}
+					$entry->setTitle ( $gp->newTitle ( $nombreAlbum ) );
 					
+					//La siguiente instruccion crea Album
+					$createdEntry = $gp->insertAlbumEntry($entry);
+					//Devuelve el id del album que se acaba de crear
+// 					echo $createdEntry->getGphotoId();
+					//Insertamos fotos en el a	lbum
+					$contador = COUNT ( $_FILES ['fotos'] ['name'] );
+				 
+					for($i=0;$i<$contador;$i++){
+						
+									
+// 						move_uploaded_file($_FILES['fotos']['tmp_name'][$i],'temporal/'.$_FILES['fotos']['name'][$i]);
+						$username = $user;
+						$filename = $_FILES ['fotos'] ['tmp_name'] [$i];
+						$photoName = $_FILES ['fotos'] ['name'] [$i];
+						
+						$albumId = $createdEntry->getGphotoId();
+							
+						$fd = $gp->newMediaFileSource($filename);
+						$fd->setContentType("image/jpeg");
+							
+						// Create a PhotoEntry
+						$photoEntry = $gp->newPhotoEntry();
+						$photoEntry->setMediaSource($fd);
+						$photoEntry->setTitle($gp->newTitle($photoName));
+							
+						// We use the AlbumQuery class to generate the URL for the album
+						$albumQuery = $gp->newAlbumQuery();
+							
+						$albumQuery->setUser($username);
+						$albumQuery->setAlbumId($albumId);
+							
+						// We insert the photo, and the server returns the entry representing
+						// that photo after it is uploaded
+						$insertedEntry = $gp->insertPhotoEntry($photoEntry, $albumQuery->getQueryUrl());
+						
+					}
+					
+					
+					// foreach ( $_FILES ['fotos'] ['name'] as $clave => $tmp_name ) {
+					// echo "<hr>";
+					// echo $_FILES ['fotos'] ['tmp_name'] [$clave];
+					// $username = $user;
+					// $filename = $clave . $_FILES ['fotos'] ['tmp_name'] [$clave];
+					// $photoName = $clave . $_FILES ['fotos'] ['name'] [$clave];
+					
+					// $albumId = "6103956432412299745";
+					
+					// $fd = $gp->newMediaFileSource('C:\Users\Zenbook\Pictures\7.jpg');
+					// $fd->setContentType("image/jpeg");
+					
+					// // Create a PhotoEntry
+					// $photoEntry = $gp->newPhotoEntry();
+					// $photoEntry->setMediaSource($fd);
+					// $photoEntry->setTitle($gp->newTitle($photoName));
+					
+					// // We use the AlbumQuery class to generate the URL for the album
+					// $albumQuery = $gp->newAlbumQuery();
+					
+					// $albumQuery->setUser($username);
+					// $albumQuery->setAlbumId($albumId);
+					
+					// // We insert the photo, and the server returns the entry representing
+					// // that photo after it is uploaded
+					// $insertedEntry = $gp->insertPhotoEntry($photoEntry, $albumQuery->getQueryUrl());
+					
+					// }
 				} else {
 					echo "Usted no esta autorizado para acceder a esta pagina";
 				}

@@ -50,9 +50,9 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<!-- Formulario para creacion de album -->
-					<form action="confirmarCreacionAlbum.php" class="formularios" method="post" enctype="multipart/form-data" >
+					<form action="confirmarCreacionAlbum.php" class="formularios" method="POST" enctype="multipart/form-data" >
 					<div><a>Nombre de &aacute;lbum</a><br/><input type="text" name="nombreAlbum" id="nick"></input></div>
-					<div><a>Seleccione fotos</a><br/>  <input name="fotos[]" type="file" multiple="multiple" accept="image/*" enctype="multipart/form-data" /></div>
+					<div><a>Seleccione fotos</a><br/>  <input name="fotos[]" type="file" multiple="multiple" accept="image/*" /></div>
 					<div><input type="submit" value="Crear &aacute;lbum"></input></div>
 				</form>
 				<?php
