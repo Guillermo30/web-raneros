@@ -46,6 +46,7 @@
 				$menu->mostrar();
 			?>
 		</div>
+		<br></br>
 		<div id="contenedorCuerpo">	<!-- BODY section --> <!-- add to the <body> of your page -->
 		<div id="wowslider-container0">
 

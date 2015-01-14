@@ -11,7 +11,7 @@
 
 	<script type="text/javascript" src="engine0/jquery.js"></script>
 
-	<!-- End WOWSlider.com HEAD section -->
+	<!--  HEAD section -->
 </head>
 <script type="text/javascript" src="scripts/funciones.js">
 	
@@ -21,7 +21,7 @@
 		<div id="cabecera">
 			<img src="css/img/BannerVerde.jpg" id="fondoCabecera">
 			<div id="titleHeader">
-				<img src="css/img/icono-rana.png" id="logo" width="90px" height="90px">
+				<img src="css/img/rana-coloreada.gif" id="logo" width="140px" height="90px">
 				<h1>Los Raneros</h1>
 				<h3>Cafe Bar</h3>
 			</div>
