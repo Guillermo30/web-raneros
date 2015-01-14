@@ -45,8 +45,8 @@
 							
 						}
 						//echo "<p>Datos de Tapa modificados con éxito</p>";
-						//header('Location:../carta.php');
-						echo "ok";
+						header('Location:../carta.php');
+						//echo "ok";
 					}
 
 										
