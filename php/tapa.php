@@ -35,8 +35,7 @@
 					$_SESSION['tipoTapa']=$idcategoria[0];
 					$_SESSION['idTapa']=$_GET["id"];
 					//usuario
-
-					{
+					if(isset($_SESSION['esRoot'])){
 						if($_SESSION['esRoot']==1)
 						{
 							//echo "<div class='evento'>";
@@ -51,14 +50,18 @@
 							//echo "</br></br><input type='submit' value='Modificar Tapa' />";
 							//echo "</br></br><input type='button' value='Eliminar Tapa' onclick='eliminarTapa(".$row['idTapa'].")' />";
 							echo "</form>";
-							
+								
 							//echo "</div>";
 						} else {
 							echo "<h2>".$row['nombre']."</h2><br>";
 							echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
 							echo "<p>".$row['descripcion']."</p>";
 						}
-					} 
+					}else{
+						echo "<h2>".$row['nombre']."</h2><br>";
+						echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='Smiley face' height='100' width='100'>";
+						echo "<p>".$row['descripcion']."</p>";
+					}
 				?>
 			</div>
 		</div>
