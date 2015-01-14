@@ -54,7 +54,14 @@
 					$consulta=$sql->selectSQL($sentencia);
 					//$consulta=$sql->query($sentencia);
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
-						echo "<h3>".$row['nombre']."</h3>";
+						if(isset($_SESSION['esRoot'])){
+							if($_SESSION['esRoot']==1)
+								echo "<h3>".$row['nombre']."<a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'></a><a href='eliminarTipoTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'></a></h3>";
+							else
+								echo "<h3>".$row['nombre']."</h3>";
+						}else{
+							echo "<h3>".$row['nombre']."</h3>";
+						}
 						echo "<hr />";
 						//$sql2=new mysqli($host, $usuario,$passwd,$bd);
 						$sql2=new conexionSQL();
@@ -65,7 +72,14 @@
 							//echo "<a>".$row2['nombre']."</a>";
 							echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
 							echo $row2['nombre'];
-							echo "</a>";
+							if(isset($_SESSION['esRoot'])){
+								if($_SESSION['esRoot']==1)
+									echo "<a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'></a><a href='eliminarTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'></a></a>";
+								else
+									echo "</a>";
+							}else{
+								echo "</a>";
+							}
 						}
 					}
 				?>
