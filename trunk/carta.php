@@ -49,7 +49,15 @@
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
 					//Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
-					//que no he podio resolver nose por que
+					//que no he podio resolver nose por que  
+					/********************** JUAN ESTE FALLO TE DA PQ CUANDO HACEMOS UN INCLUDE 
+					//DE MENU.PHP A SU VEZ ESTAMOS INCLUYENDO TB CONEXIONSQL.PHP DENTRO DE MENU.PHP
+					// Y POR TANTO ESTARIAMOS INSTANCIANDO 2 VECES EN LA MISMA PÁGINA QUE ES EL ERROR Q T DA. OS LO COMENTO POR SI OS DA ALGÚN OTRO PROBLEMA PARECIDO
+					// EN OTRA PÁGINA, Q OS FIJEIS Q EN LAS PÁGINAS DND HACEMOS INCLUDE('PHP/MENU.PHP') NO HACE FALTA 
+					// HACER OTRO INCLUDE PARA CONEXIONSQL.PHP, PUESTO Q YA SE ESTA HACIENDO EN MENU.PHP
+					// EN LAS QUE NO LLEVEN MENU SI HABRÁ Q HACERLO PARA PODER USAR CONEXIONSQL.PHP 
+					//*********************************************************************************************
+					 */
 					//$sql = new mysqli($host, $usuario,$passwd,$bd);
 					$sentencia="SELECT * FROM tipotapa";
 					$consulta=$sql->selectSQL($sentencia);

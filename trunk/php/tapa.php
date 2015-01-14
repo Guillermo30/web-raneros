@@ -47,8 +47,7 @@
 							echo "</br><a>Descripcion</a></br><input type='text' name='descripcion' id='descripcion' value='".$row['descripcion']."' />";
 							echo "</br></br><button type='submit' value='Enviar'>Modificar Tapa</button>";
 							echo "</br></br><div><button type='button' value='Enviar' onclick='eliminarTapa(".$row['idTapa'].")'>Elminar Tapa</button></div>";
-							//echo "</br></br><input type='submit' value='Modificar Tapa' />";
-							//echo "</br></br><input type='button' value='Eliminar Tapa' onclick='eliminarTapa(".$row['idTapa'].")' />";
+							
 							echo "</form>";
 								
 							//echo "</div>";

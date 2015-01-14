@@ -50,10 +50,18 @@ class conexionSQL{
 		return 0;
 	}
 	public function ultimaId($tabla){
-		$sentencia="SELECT last_insert_id() FROM ".$tabla;
-		$resultado=$this->mysqli->query($sentencia);
-		$fila = $resultado->fetch_array();
-		return $fila[0];
+		//$sentencia="SELECT last_insert_id() FROM ".$tabla;
+		$sentencia="SELECT MAX(id".$tabla.") FROM ".$tabla;
+		//echo $sentencia."         ";
+		if($this->mysqli->query($sentencia)){
+			$resultado=$this->mysqli->query($sentencia);
+			$fila = $resultado->fetch_array();
+			echo $fila[0]."         ";
+			return $fila[0];
+		}else{
+			echo $this->mysqli->error;
+		}
+		
 	}
 	public function tipoTapaDeTapa($idtapa){
 		$sentencia="SELECT tipoTapa_idTipoTapa FROM tapa WHERE idTapa='".$idtapa."'";
@@ -71,6 +79,7 @@ class conexionSQL{
 		$idFoto=$this->ultimaId('foto'); //**
 		$idFoto++; //**
 		$sentencia="INSERT INTO foto(idFoto, foto, album_idAlbum, tapa_idtapa) VALUES ('".$idFoto."', '".$nombre."','1','".$idTapa."')";
+		//echo $sentencia;
 		if(!$this->insertarSQl($sentencia)){
 			echo $this->mysqli->error;
 			
