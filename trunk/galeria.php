@@ -50,7 +50,7 @@
 			<div class="evento">
 				
 				<?php
-				session_start ();
+				
 				require_once 'Zend/Loader.php';
 				
 				Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
