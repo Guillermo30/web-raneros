@@ -48,7 +48,7 @@
 		</div>
 		<!-- <div id="contenedorCuerpo"> -->
 			<?php
-				session_start();
+				
 				include('php/constantesConexion.php'); //Incluimos el fichero donde está la clase conexionSQL
 				if(isset($_SESSION["esRoot"])){
 					echo "<div class=".'"login"'."align=".'"right"'."><a class=".'"login"'.">".$_SESSION['nick']."</a></div>";

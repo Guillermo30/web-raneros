@@ -41,7 +41,7 @@
 				$menu = new menu();
 				$menu->mostrar();
 				
-				if(isset($_SESSION)){
+				if(isset($_SESSION['nick'])){
 					echo "Usuario ". $_SESSION['nick']." conectado";
 				}else{
 					echo "NO CONECTADO";
