@@ -50,7 +50,7 @@
 			<div class="evento">
 				
 				<?php
-					session_start();
+// 					session_start();
 					if(isset($_SESSION['esRoot'])&& $_SESSION['esRoot']==1){
 						require_once 'Zend/Loader.php';
 							

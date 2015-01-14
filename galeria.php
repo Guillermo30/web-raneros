@@ -82,7 +82,24 @@
 					foreach ( $userFeed as $userEntry ) {
 						echo "<a href='verAlbum.php?albumId=" . urlencode ( $userEntry->GphotoId ) . "'>";
 						echo "<div class='albumGaleria'>";
-						echo "<img  width='160px' height='120px' src='css/img/sinImagen.jpg'><br/>";
+						
+						//Para mostrar las caratulas
+						$query = $gp->newAlbumQuery();
+						$query->setUser("default");
+						$query->setAlbumId( $userEntry->GphotoId);
+						$albumFeed = $gp->getAlbumFeed($query);
+						foreach ($albumFeed as $albumEntry) {
+								
+							$mediaArray = $albumEntry->getMediaGroup()->getContent();
+							$ImageUrl = $mediaArray[0]->getUrl();
+							
+							
+							echo "<img  width='160px' height='120px' src='".$ImageUrl."'><br/>";
+							break;
+								
+						}
+						
+// 						echo "<img  width='160px' height='120px' src='css/img/sinImagen.jpg'><br/>";
 						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 							
 							echo "<a href='eliminarAlbum.php?id=" . $userEntry->GphotoId . "'><img src='css/img/eliminar.png' width='16px'/></a>";
