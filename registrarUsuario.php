@@ -58,7 +58,7 @@
 					if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
 						echo "<h3>Los Raneros nos enorgullece darle la Bienvenida</h3>";
 	                    echo "</br><p>Hola ".$_POST['nick']."</p>";
-	                    session_start();
+// 	                    session_start();
 	                }
 					else
 					{
