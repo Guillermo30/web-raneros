@@ -40,6 +40,7 @@
 				
 			?>
 		</div>
+		<br></br>
 		<div id="contenedorCuerpo">
 			<?php
 				//include('php/constantesConexion.php');
