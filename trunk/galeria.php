@@ -50,49 +50,63 @@
 			<div class="evento">
 				
 				<?php
-					require_once 'Zend/Loader.php';
+				session_start ();
+				require_once 'Zend/Loader.php';
+				
+				Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
+				Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
+				Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
+				
+				$serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+				$user = "webraneros@gmail.com";
+				$pass = "raneros2014!";
+				$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $serviceName );
+				// update the second argument to be CompanyName-ProductName-Version
+				$gp = new Zend_Gdata_Photos ( $client, "Raneros" );
+				// In version 1.5+, you can enable a debug logging mode to see the
+				// underlying HTTP requests being made, as long as you're not using
+				// a proxy server
+				// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
+				
+				// Listar los albumes
+				try {
+					$userFeed = $gp->getUserFeed ( "default" );
 					
-					Zend_Loader::loadClass('Zend_Gdata_Photos');
-					Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-					Zend_Loader::loadClass('Zend_Gdata_AuthSub');
-					
-					$serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-					$user = "webraneros@gmail.com";
-					$pass = "raneros2014!";
-					$client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
-					// update the second argument to be CompanyName-ProductName-Version
-					$gp = new Zend_Gdata_Photos($client, "Raneros");
-					// In version 1.5+, you can enable a debug logging mode to see the
-					// underlying HTTP requests being made, as long as you're not using
-					// a proxy server
-					// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
-					
-					//Listar los albumes
-					try {
-						$userFeed = $gp->getUserFeed("default");
-						foreach ($userFeed as $userEntry) {
-							echo"<a href='verAlbum.php?albumName=".urlencode($userEntry->title->text)."'>";
-							echo "<div class='albumGaleria'>";							
-							echo "<img  width='160px' height='120px' src='css/img/sinImagen.jpg'><br/>";
-							echo $userEntry->title->text . "<br />\n";
-							echo "</div>";
-							echo"</a>";
+					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+						echo "<a href='crearAlbum.php'>";
+						echo "<div class='albumGaleria'>";
+						echo "<img  width='160px' height='175px' src='css/img/agregar.png'><br/>";
+						echo "</div>";
+						echo "</a>";
+					}
+					foreach ( $userFeed as $userEntry ) {
+						echo "<a href='verAlbum.php?albumId=" . urlencode ( $userEntry->GphotoId ) . "'>";
+						echo "<div class='albumGaleria'>";
+						echo "<img  width='160px' height='120px' src='css/img/sinImagen.jpg'><br/>";
+						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+							
+							echo "<a href='eliminarAlbum.php?id=" . $userEntry->GphotoId . "'><img src='css/img/eliminar.png' width='16px'/></a>";
 						}
-					} catch (Zend_Gdata_App_HttpException $e) {
-						echo "Error: " . $e->getMessage() . "<br />\n";
-						if ($e->getResponse() != null) {
-							echo "Body: <br />\n" . $e->getResponse()->getBody() .
-							"<br />\n";
-						}
-						// In new versions of Zend Framework, you also have the option
-						// to print out the request that was made.  As the request
-						// includes Auth credentials, it's not advised to print out
-						// this data unless doing debugging
-						// echo "Request: <br />\n" . $e->getRequest() . "<br />\n";
-					} catch (Zend_Gdata_App_Exception $e) {
-						echo "Error: " . $e->getMessage() . "<br />\n";
-					  }
-					
+						
+						echo "<br/>";
+						echo $userEntry->title->text . "<br />\n";
+						echo "</div>";
+						echo "</a>";
+					}
+				} catch ( Zend_Gdata_App_HttpException $e ) {
+					echo "Error: " . $e->getMessage () . "<br />\n";
+					if ($e->getResponse () != null) {
+						echo "Body: <br />\n" . $e->getResponse ()->getBody () . "<br />\n";
+					}
+					// In new versions of Zend Framework, you also have the option
+					// to print out the request that was made. As the request
+					// includes Auth credentials, it's not advised to print out
+					// this data unless doing debugging
+					// echo "Request: <br />\n" . $e->getRequest() . "<br />\n";
+				} catch ( Zend_Gdata_App_Exception $e ) {
+					echo "Error: " . $e->getMessage () . "<br />\n";
+				}
+				
 				?>
 			</div>
 		</div>

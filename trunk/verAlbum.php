@@ -63,14 +63,14 @@
 				// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
 				
 				//Obtenemos el nombre del album
-				$album=$_GET['albumName'];
+				$album=$_GET['albumId'];
 				
 				
 				// Creates a Zend_Gdata_Photos_AlbumQuery
 				$query = $gp->newAlbumQuery();
 				
 					$query->setUser("default");
-				$query->setAlbumName($album);
+				$query->setAlbumId($album);
 				
 				$albumFeed = $gp->getAlbumFeed($query);
 				foreach ($albumFeed as $albumEntry) {

@@ -330,6 +330,7 @@ a{
 	border:solid;
 	float:left;
 	margin:10px;
+	word-wrap: break-word;
 
 }
 
