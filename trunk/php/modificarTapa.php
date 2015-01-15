@@ -4,9 +4,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
 	<title>Los Raneros</title>
+<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
 
+	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+
+	<script type="text/javascript" src="engine0/jquery.js"></script>
+
+	<!-- End WOWSlider.com HEAD section -->
+	</head>
+	<script type="text/javascript" src="scripts/popup.js"></script>	
 	<script type="text/javascript" src="scripts/validacion.js"></script>
-</head>
+
 		
 
 <body>
@@ -40,12 +48,15 @@
 								}
 								
 							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";
-									header('Location:../carta.php');
+									//header('Location:../carta.php');
+									//sleep(5);
+									header("Refresh:2; URL=http://carta.php");
 									}
 							
 						}
-						//echo "<p>Datos de Tapa modificados con éxito</p>";
-						header('Location:../carta.php');
+						echo "</br><p>Datos de Tapa modificados con &eacutexito</p>";
+						//header('Location:../carta.php');
+						header("Refresh:2; URL=../carta.php");
 						//echo "ok";
 					}
 
