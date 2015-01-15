@@ -56,7 +56,7 @@ class conexionSQL{
 		if($this->mysqli->query($sentencia)){
 			$resultado=$this->mysqli->query($sentencia);
 			$fila = $resultado->fetch_array();
-			echo $fila[0]."         ";
+			//echo $fila[0]."         ";
 			return $fila[0];
 		}else{
 			echo $this->mysqli->error;

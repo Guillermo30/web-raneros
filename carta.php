@@ -79,7 +79,8 @@
 						$consulta2=$sql2->selectSQL($sentencia2);
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
 							//echo "<a>".$row2['nombre']."</a>";
-							echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
+							//echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
+							echo "<a href='php/tapa.php?id=".$row2['idTapa']."'>";
 							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
