@@ -65,7 +65,7 @@
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
 						if(isset($_SESSION['esRoot'])){
 							if($_SESSION['esRoot']==1)
-								echo "<h3>".$row['nombre']."<a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'></a><a href='eliminarTipoTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'></a></h3>";
+								echo "<h3>".$row['nombre']." <a href='addTapa.php'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Tapa'> </a><a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
 							else
 								echo "<h3>".$row['nombre']."</h3>";
 						}else{
@@ -84,7 +84,7 @@
 							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
-									echo "<a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'></a><a href='eliminarTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'></a></a>";
+									echo " <a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'> </a><a href='eliminarTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'> </a></a>";
 								else
 									echo "</a>";
 							}else{
