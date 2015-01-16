@@ -87,7 +87,17 @@ class conexionSQL{
 		//echo $sentencia;
 		if(!$this->insertarSQl($sentencia)){
 			echo $this->mysqli->error;
+			
 		}
+		
+	}
+	public function borrarFotoTapa($idTapa){
+		$sentencia="DELETE FROM foto WHERE tapa_idTapa='".$idTapa."'";
+		if(!$this->mysqli->query($sentencia)){
+			echo $this->mysqli->error;
+			return false;
+		}
+		return true;
 	}
 }
 

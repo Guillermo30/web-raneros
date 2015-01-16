@@ -43,14 +43,15 @@
 								move_uploaded_file($_FILES['foto']['tmp_name'],'../css/img/tapas/'.$tipoTapa.'/'.$_FILES['foto']['name']);
 								//$sql->insertFoto($nombre, $tipoTapa);
 								$nombre=$_FILES['foto']['name'];
-								if($sql->insertFoto($nombre,$_POST["idTapa"])){
-									header('Location:../carta.php');
+								if($sql->borrarFotoTapa($_POST["idTapa"])){ //primero borramos la foto existente asociada a esa tapa
+									
+									$sql->insertFoto($nombre,$_POST["idTapa"]); //despues insertamos la nueva foto asociada
+										//header('Location:../carta.php');
 								}
-								
 							}else{ echo "<p>Datos modificados, pero la imagen no ha podido ser modificada";
 									//header('Location:../carta.php');
 									//sleep(5);
-									header("Refresh:2; URL=http://carta.php");
+									header("Refresh:2; URL=../carta.php");
 									}
 							
 						}
