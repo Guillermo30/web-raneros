@@ -70,6 +70,11 @@ class conexionSQL{
 		$resultado = $this->mysqli->query($sentencia)->fetch_array();
 		return $resultado[0];
 	}
+	public function tipoTapa(){
+		$sentencia="SELECT * FROM tipoTapa";
+		$resultado = $this->mysqli->query($sentencia)->fetch_array();
+		return $resultado;
+	}
 	public function fotoDeTapa($idtapa){
 		$sentencia="SELECT foto FROM foto WHERE tapa_idtapa='".$idtapa."'";
 		$resultado = $this->mysqli->query($sentencia)->fetch_array();
@@ -82,7 +87,6 @@ class conexionSQL{
 		//echo $sentencia;
 		if(!$this->insertarSQl($sentencia)){
 			echo $this->mysqli->error;
-			
 		}
 	}
 }
