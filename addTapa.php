@@ -46,6 +46,7 @@
 		</div>
 		<div id="contenedorCuerpo">
 			<?php 
+				//Comprueba si es root
 				if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'] == 1){
 						
 				}else{
@@ -56,22 +57,10 @@
 				<form action="confAddTapa.php" class="formularios" method="post">
 					<div><a>Nombre</a></br><input type="text" name="nombre" id="nombre"></input></div>
 					<div><a>Descripcion</a></br><textarea name="descripcion" rows="5" cols="5"></textarea></div>
-					<div><a>Tipo de Tapa</a></br><select name="tipoTapa">
-						<?php
-							include ('php/conexionSQL.php');
-							echo "<option value='hola' selected='selected'>hola</option>";
-							$sql = new conexionSQL();
-							$tipoTapa = $sql->tipoTapa();
-							echo "<option value='hola' selected='selected'>hola</option>";
-							for($i=0; $i<=count($tipoTapa); $i++){
-// 								$tipo -> $tipoTapa[$i]->fetch_array();
-// 								echo "<option value='".$tipo[0]."' selected='selected'>".$tipo[1]."</option>";
-// 								echo "<option value='".$tipoTapa[$i][0]."' selected='selected'>".$tipo[$i][1]."</option>";
-								echo "<option value='Hola' selected='selected'>hola</option>";
-							}
-							
-						?>
-					</select></div>
+					<div><imput type="hidden" name="tipoTapa" id="tipoTapa" value="<?php echo $_GET['tipoTapa']?>"></imput></div>
+					<div><a>Imagen</a></br><input type="file" name="foto"></input></div>
+					<div><input type="submit" value="Agregar Tapa"></input><input type="reset" value="Reset"></input></div>
+
 				</form>
 			</div>
 		</div>

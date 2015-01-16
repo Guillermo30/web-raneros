@@ -169,6 +169,28 @@ body{
     background: -moz-linear-gradient(top, #cfe6ef 0%, #edfcff 100%);
     background: -webkit-linear-gradient(top, #cfe6ef 0%,#edfcff 100%);
 }
+.formularios input[type='reset']{
+    border: 1px solid #CED5D7;
+    box-shadow:0 0 0 3px #EEF5F7;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px white;
+ 
+    background: #e4f1f6;
+    background: -moz-linear-gradient(top, #e4f1f6 0%, #cfe6ef 100%);
+    background: -webkit-linear-gradient(top, #e4f1f6 0%,#cfe6ef 100%);
+}
+.formularios input[type='reset']:hover{
+    background: #edfcff;
+    background: -moz-linear-gradient(top, #edfcff 0%, #cfe6ef 100%);
+    background: -webkit-linear-gradient(top, #edfcff 0%,#cfe6ef 100%);
+}
+.formularios input[type='reset']:active{
+    background: #cfe6ef;
+    background: -moz-linear-gradient(top, #cfe6ef 0%, #edfcff 100%);
+    background: -webkit-linear-gradient(top, #cfe6ef 0%,#edfcff 100%);
+}
 .formularios button{
 	border: 1px solid #CED5D7;
     box-shadow:0 0 0 3px #EEF5F7;
