@@ -84,7 +84,7 @@
 							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
-									echo " <a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'> </a><a href='eliminarTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'> </a></a>";
+									echo " <a href='modificarTapa.php?idTapa=".$row2['idTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'> </a><a href='eliminarTapa.php?idTapa=".$row2['idTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'> </a></a>";
 								else
 									echo "</a>";
 							}else{
