@@ -51,33 +51,37 @@
 						header('Location: index.php');
 					}
 					//Comienza a insertar
-					include ('constantesConexion.php');
+					include ('php/constantesConexion.php');
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
 					//Inserta La tapa
-					$sql=new conexionSQL();
-					$sentencia="INSERT INTO `tapa`(`idTapa`, `nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES (NULL,".$_POST['nombre'].",".$_POST['descripcion'].",".$_POST['tipoTapa'].")";
-					$consulta=$sql->selectSQL($sentencia);
-					$idTapa = mysql_insert_id();
+					if(!isset($_POST['nombre']))
+						$_POST['nombre']="";
+					if(!isset($_POST['descripcion']))
+						$_POST['descripcion']="";
+					if(!isset($_POST['tipoTapa']))
+						$_POST['tipoTapa']=1;
+					$sentencia="INSERT INTO `tapa`(`idTapa`, `nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES (NULL,'".$_POST['nombre']."','".$_POST['descripcion']."',".$_POST['tipoTapa'].")";
+					$mysqli->query($sentencia);
+					//Obtenemos la id con la que se agrega la tapa para luego relacionarla con la foto
+					$sql = new conexionSQL();
+					$idTapa = $sql->ultimaId('tapa');
 				
 					//Inserta la foto
-					$uploaddir = 'css/img/tapas/';
-					$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+					$sentencia = "SELECT nombre FROM tipoTapa WHERE idTipoTapa=".$_POST['tipoTapa'];
+					$nombreTipoTapa = $mysqli->query($sentencia)->fetch_array()[0];
+					$uploaddir = "css/img/tapas/".$nombreTipoTapa."/";
+					$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
 					
-					echo '<pre>';
-					if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-						echo "El archivo es válido y fue cargado exitosamente.\n";
+					
+					if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)) {
 						//Agrega la entrada en al base de datos de la foto de la tapa
-						$sentencia="INSERT INTO `foto`(`idFoto`, `foto`, `album_idAlbum`, `tapa_idtapa`) VALUES (NULL,".$_FILES['userfile']['tmp_name'].",1,".$idTapa.")";
+						$sentencia="INSERT INTO `foto`(`idFoto`, `foto`, `album_idAlbum`, `tapa_idtapa`) VALUES (NULL,'".$_FILES['foto']['name']."',1,".$idTapa.")";
 						$mysqli->query($sentencia);
+						echo "<h1>La tapa a sido añadida con exito</h1>";
 					} else {
 						$sentencia="DELETE FROM `tapa` WHERE idTapa=".$idTapa."";
 						$mysqli->query($sentencia);
 					}
-					
-					echo 'Aquí hay más información de depurado:';
-					print_r($_FILES);
-					
-					print "</pre>";
 					
 				?>
 			</div>
