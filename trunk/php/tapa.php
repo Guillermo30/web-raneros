@@ -68,20 +68,19 @@
 					echo "<div class='evento'>";
 						$sentencia = "SELECT * FROM usuario WHERE idusuarios=".$row['usuario_idusuarios'];
 						$consulta=$sql->selectSQL($sentencia);
-						$usuario=mysqli_fetch_array($consulta, MYSQLI_NUM)[0];
+						$usuario=mysqli_fetch_array($consulta, MYSQLI_NUM)[1];
 						echo "<h3>".$usuario."</h3><br />";
 						echo "<p>".$row['comentario']."</p>";
 					echo "</div>";
 				}
 				//Crear nuevos comentarios
-				if(isset($_SESSION['esRoot']))
+				if(isset($_SESSION['id']))
 				{
-					echo "<div class='evento'";
-						echo "<h2>Agrege un comentario a esta tapa</h2>";
+					echo "<div class='evento'>";
 						echo "<form action='addComentario.php' class='formularios' method='post'>";
-							echo "<input type='hidden' name'idUsuario' id='idUsuario' value=".$_SESSION['id']."></input>";
-							echo "<input type='hidden' name'idTapa' id='idTapa' value=".$_GET['id']."></input>";
-							echo "<div><textarea name='comentarios'rows='5' cols='5'></textarea></div>";
+							echo "<div><input type='hidden' name='idTapa' id='idTapa' value=".$_GET['id']."></input></div>";
+							echo "<div><input type='hidden' name='idUsuario' id='tipoTapa' value=".$_SESSION['id']."></input></div>";
+							echo "<div><h3>Agrege un comentario a esta tapa</h3><br /><textarea name='comentario' rows='5' cols='5'></textarea></div>";
 							echo "<div><input type='submit' value='Agregar comentario'></input><input type='reset' value='reset'></input></div>";
 						echo "</form>";
 					echo "</div>";	

@@ -58,7 +58,7 @@
 					<div><a>Nombre</a></br><input type="text" name="nombre" id="nombre"></input></div>
 					<div><a>Descripcion</a></br><textarea name="descripcion" rows="5" cols="5"></textarea></div>
 					
-					<div><input type="hidden" name="tipoTapa" id="tipoTapa" value="<?php echo $_GET['tipoTapa']?>"></imput></div>
+					<div><input type="hidden" name="tipoTapa" id="tipoTapa" value="<?php echo $_GET['tipoTapa']?>"></input></div>
 					<div><a>Imagen</a></br><input type="file" name="foto"></input></div>
 					<div><input type="submit" value="Agregar Tapa"></input><input type="reset" value="Reset"></input></div>
 
