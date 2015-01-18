@@ -52,26 +52,12 @@
 					}
 					include ('php/constantesConexion.php');
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
-					//Comienza por listar los datos de dicha tapa
-					$sentencia = "SELECT * FROM tapa WHERE idTapa=".$_GET['idTapa'];
+					//Comienza por eliminar la foto
+					$sentencia = "SELECT * FROM tipotapa WHERE idTipoTapa=".$_GET['tipoTapa'];
 					$resultado = $mysqli->query($sentencia)->fetch_assoc();
-					echo "<form action='confModTapa.php' class='formularios' method='post' enctype='multipart/form-data'>";
-					echo "<input type='hidden' name='idTapa' value='".$_GET['idTapa']."'></input>";
+					echo "<form action='confModTipoTapa.php' class='formularios' method='post' enctype='multipart/form-data'>";
+					echo "<input type='hidden' name='idTipoTapa' value='".$_GET['tipoTapa']."'></input>";
 					echo "<div><a>Nombre</a></br><input type='text' name='nombre' value='".$resultado['nombre']."'></input></div>";
-					echo "<div><a>Descripcion</a></br><textarea name='descripcion' rows='5' cols='5'>".$resultado['descripcion']."</textarea></div>";
-					//Listado de tipo de Tapa para mover una tapa de un tipo de tapa a otro
-					$tipoTapa = $mysqli->query("SELECT tipotapa.nombre FROM tipotapa INNER JOIN tapa ON tipotapa.idTipoTapa = tapa.tipoTapa_idTipoTapa WHERE idTapa=".$_GET['idTapa'])->fetch_assoc()['nombre'];
-					echo "<input type='hidden' name='antiTipoTapa' value='".$tipoTapa."'></input>";
-					$tiposTapa = $mysqli->query("SELECT * FROM tipotapa");
-					echo "<select name='tipoTapa'>";
-					while($row=mysqli_fetch_array($tiposTapa, MYSQLI_ASSOC)){
-						if(strcmp($tipoTapa, $row['nombre']) == 0)
-							echo "<option value=".$row['idTipoTapa']." selected>".$row['nombre']."</option>";
-						else
-							echo "<option value=".$row['idTipoTapa'].">".$row['nombre']."</option>";
-					}
-					echo "</select>";
-					echo "<div><a>Imagen</a></br><input type='file' name='foto'></input></div>";
 					echo "<div><input type='submit' value='Modificar Tapa'></input><input type='reset' value='Reset'></input></div>";
 					echo "</form>";
 				?>

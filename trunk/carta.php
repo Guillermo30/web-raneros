@@ -43,6 +43,7 @@
 		<br></br>
 		<div id="contenedorCuerpo">
 			<div class="evento">
+				<br />
 				<?php
 					include('php/constantesConexion.php');
 					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
@@ -62,10 +63,12 @@
 					$sentencia="SELECT * FROM tipotapa";
 					$consulta=$sql->selectSQL($sentencia);
 					//$consulta=$sql->query($sentencia);
+					if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'])
+						echo "<a href='addTipoTapa.php'>Agregar un nuevo tipo de tapa</a>";
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
 						if(isset($_SESSION['esRoot'])){
 							if($_SESSION['esRoot']==1)
-								echo "<h3>".$row['nombre']." <a href='addTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Tapa'> </a><a href='modificarTipoTapa.php'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
+								echo "<h3>".$row['nombre']." <a href='addTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Tapa'> </a><a href='modificarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
 							else
 								echo "<h3>".$row['nombre']."</h3>";
 						}else{
