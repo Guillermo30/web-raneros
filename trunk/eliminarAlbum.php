@@ -75,7 +75,7 @@
 						$entry = $service->getAlbumEntry($albumQuery);
 						
 						$service->deleteAlbumEntry($entry, true);
-						
+						header ( "Location: galeria.php" );
 					}else{
 						echo "Usted no esta autorizado para acceder a esta pagina";
 					}
