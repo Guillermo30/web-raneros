@@ -52,28 +52,36 @@
 					}
 					include ('php/constantesConexion.php');
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
-					//Comienza por eliminar la foto
-					$sentencia = "SELECT * FROM tapa WHERE idTapa=".$_GET['idTapa'];
-					$resultado = $mysqli->query($sentencia)->fetch_assoc();
-					echo "<form action='confModTapa.php' class='formularios' method='post' enctype='multipart/form-data'>";
-					echo "<input type='hidden' name='idTapa' value='".$_GET['idTapa']."'></input>";
-					echo "<div><a>Nombre</a></br><input type='text' name='nombre' value='".$resultado['nombre']."'></input></div>";
-					echo "<div><a>Descripcion</a></br><textarea name='descripcion' rows='5' cols='5'>".$resultado['descripcion']."</textarea></div>";
-					//Listado de tipo de Tapa para mover una tapa de un tipo de tapa a otro
-					$tipoTapa = $mysqli->query("SELECT tipotapa.nombre FROM tipotapa INNER JOIN tapa ON tipotapa.idTipoTapa = tapa.tipoTapa_idTipoTapa WHERE idTapa=".$_GET['idTapa'])->fetch_assoc()['nombre'];
-					echo "<input type='hidden' name='antiTipoTapa' value='".$tipoTapa."'></input>";
-					$tiposTapa = $mysqli->query("SELECT * FROM tipotapa");
-					echo "<select name='tipoTapa'>";
-					while($row=mysqli_fetch_array($tiposTapa, MYSQLI_ASSOC)){
-						if(strcmp($tipoTapa, $row['nombre']) == 0)
-							echo "<option value=".$row['idTipoTapa']." selected>".$row['nombre']."</option>";
-						else
-							echo "<option value=".$row['idTipoTapa'].">".$row['nombre']."</option>";
+					//Comprueba si a subido una nueva foto
+					if(isset($_FILES['foto']['error']) && $_FILES['foto']['error'] == 4){
+						$sentencia = "UPDATE `tapa` SET `idTapa`=".$_POST['idTapa'].",`nombre`='".$_POST['nombre']."',`descripcion`='".$_POST['descripcion']."',`tipoTapa_idTipoTapa`=".$_POST['tipoTapa']." WHERE idTapa=".$_POST['idTapa'];
+						$mysqli->query($sentencia);
+						echo $sentencia;
+						echo "<h2>Se a modificado la tapa correctamente</h2>";
+					}else{
+						//Eliminamos la foto que tenia anteriormente
+						$sentencia = "SELECT foto.foto, tipotapa.nombre FROM foto INNER JOIN tapa ON tapa.idTapa=foto.tapa_idTapa INNER JOIN tipoTapa ON tipotapa.idTipoTapa=tapa.tipoTapa_idTipoTapa WHERE tapa.idTapa=".$_POST['idTapa'];
+						$resultado = $mysqli->query($sentencia)->fetch_array();
+						$fichero = "css/img/tapas/".$resultado[1]."/".$resultado[0];
+						unlink($fichero);
+						$mysqli->query("DELETE FROM `foto` WHERE foto='".$resultado[0]."'");
+						//Añade las nueva foto
+						$tipoTapa = $mysqli->query("SELECT nombre FROM tipotapa WHERE idTipoTapa=".$_POST['tipoTapa'])->fetch_array()[0];
+						$uploaddir = "css/img/tapas/".$tipoTapa."/";
+						$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
+						if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)) {
+							//Agrega la entrada en al base de datos de la foto de la tapa
+							$sentencia="INSERT INTO `foto`(`idFoto`, `foto`, `album_idAlbum`, `tapa_idtapa`) VALUES (NULL,'".$_FILES['foto']['name']."',1,".$_POST['idTapa'].")";
+							$mysqli->query($sentencia);
+						} else {
+							$sentencia="DELETE FROM `tapa` WHERE idTapa=".$idTapa."";
+							$mysqli->query($sentencia);
+						}
+						//Modificamos los datos
+						$sentencia = "UPDATE `tapa` SET `idTapa`=".$_POST['idTapa'].",`nombre`='".$_POST['nombre']."',`descripcion`='".$_POST['descripcion']."',`tipoTapa_idTipoTapa`=".$_POST['tipoTapa']." WHERE idTapa=".$_POST['idTapa'];
+						$mysqli->query($sentencia);
+						echo "<h2>Se a modificado la tapa correctamente</h2>";
 					}
-					echo "</select>";
-					echo "<div><a>Imagen</a></br><input type='file' name='foto'></input></div>";
-					echo "<div><input type='submit' value='Modificar Tapa'></input><input type='reset' value='Reset'></input></div>";
-					echo "</form>";
 				?>
 			</div>
 		</div>
