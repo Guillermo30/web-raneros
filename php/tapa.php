@@ -55,8 +55,38 @@
 					echo "<h2>".$row['nombre']."</h2><br>";
 					echo "<img src='../css/img/tapas/".$categoria[0]."/".$imagen[0]."' alt='".$row['nombre']."' height='100' width='100'>";
 					echo "<p>".$row['descripcion']."</p>";
+					//Usuario Registrado
 				?>
 			</div>
+			<?php
+				//Muestra los comentarios registratos.
+				include ('constantesConexion.php');
+				$mysqli=new mysqli($host, $usuario,$passwd,$bd);
+				$sentencia = "SELECT * FROM `cometario` WHERE tapa_idTapa=".$_GET['id'];
+				$consulta=$mysqli->query($sentencia);
+				while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
+					echo "<div class='evento'>";
+						$sentencia = "SELECT * FROM usuario WHERE idusuarios=".$row['usuario_idusuarios'];
+						$consulta=$sql->selectSQL($sentencia);
+						$usuario=mysqli_fetch_array($consulta, MYSQLI_NUM)[0];
+						echo "<h3>".$usuario."</h3><br />";
+						echo "<p>".$row['comentario']."</p>";
+					echo "</div>";
+				}
+				//Crear nuevos comentarios
+				if(isset($_SESSION['esRoot']))
+				{
+					echo "<div class='evento'";
+						echo "<h2>Agrege un comentario a esta tapa</h2>";
+						echo "<form action='addComentario.php' class='formularios' method='post'>";
+							echo "<input type='hidden' name'idUsuario' id='idUsuario' value=".$_SESSION['id']."></input>";
+							echo "<input type='hidden' name'idTapa' id='idTapa' value=".$_GET['id']."></input>";
+							echo "<div><textarea name='comentarios'rows='5' cols='5'></textarea></div>";
+							echo "<div><input type='submit' value='Agregar comentario'></input><input type='reset' value='reset'></input></div>";
+						echo "</form>";
+					echo "</div>";	
+				} 
+			?>
 		</div>
 	</div>
 	
