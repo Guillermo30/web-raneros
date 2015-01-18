@@ -57,10 +57,32 @@
 					if(!isset($_POST['nombre'])){
 						echo "<h2>EL nombre es un campo obligatorio</h2>";
 					}else{
-						$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$_POST['nombre']."')";
-						echo $sentencia;
-						$mysqli->query($sentencia);
-						echo "<h2>Se ha creado correctamente</h2>";
+						$nombreTipoTapa=trim($_POST["nombre"]);
+						$nuevoDirectorio="css/img/tapas/".$nombreTipoTapa;
+						if(!file_exists($nuevoDirectorio)){ //si no existe el nuevo directorio para almacenar las tapas lo creamos
+							if(mkdir($nuevoDirectorio)){
+	
+								$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$nombreTipoTapa."')";
+								//echo $sentencia;
+								$mysqli->query($sentencia);
+								
+								//echo $nuevoDirectorio;
+								echo "<h2>Se ha creado correctamente</h2>";
+								header("Refresh: 2;URL=carta.php");
+							}else {
+								echo "Error al crear el directorio";
+								echo "El nuevo Tipo de Tapa no ha podido ser creado";
+								header("Refresh: 2;URL=".$HTTP_REFERER);
+							}
+						}else{ //si existe solo lo creamos en BD
+							$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$nombreTipoTapa."')";
+							//echo $sentencia;
+							$mysqli->query($sentencia);
+							
+							//echo $nuevoDirectorio;
+							echo "<h2>Se ha creado correctamente</h2>";
+							header("Refresh: 2;URL=carta.php");
+						}
 					}
 					
 				?>

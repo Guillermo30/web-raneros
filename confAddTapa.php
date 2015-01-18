@@ -60,7 +60,8 @@
 						$_POST['descripcion']="";
 					if(!isset($_POST['tipoTapa']))
 						$_POST['tipoTapa']=1;
-					$sentencia="INSERT INTO `tapa`(`idTapa`, `nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES (NULL,'".$_POST['nombre']."','".$_POST['descripcion']."',".$_POST['tipoTapa'].")";
+					//$sentencia="INSERT INTO `tapa`(`idTapa`, `nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES (NULL,'".$_POST['nombre']."','".$_POST['descripcion']."',".$_POST['tipoTapa'].")";
+					$sentencia="INSERT INTO `tapa`(`nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES ('".$_POST['nombre']."','".$_POST['descripcion']."',".$_POST['tipoTapa'].")";
 					$mysqli->query($sentencia);
 					//Obtenemos la id con la que se agrega la tapa para luego relacionarla con la foto
 					$sql = new conexionSQL();
