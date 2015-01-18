@@ -110,7 +110,7 @@
 						
 					}
 					
-					
+					header ( "Location: galeria.php" );
 					// foreach ( $_FILES ['fotos'] ['name'] as $clave => $tmp_name ) {
 					// echo "<hr>";
 					// echo $_FILES ['fotos'] ['tmp_name'] [$clave];
