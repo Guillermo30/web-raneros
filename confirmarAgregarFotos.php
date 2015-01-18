@@ -103,7 +103,7 @@
 						$insertedEntry = $gp->insertPhotoEntry($photoEntry, $albumQuery->getQueryUrl());
 						
 					}
-					
+					header ( "Location: verAlbum.php?albumId=$albumId" );
 					
 					// foreach ( $_FILES ['fotos'] ['name'] as $clave => $tmp_name ) {
 					// echo "<hr>";

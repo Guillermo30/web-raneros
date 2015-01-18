@@ -31,9 +31,8 @@
 					<div id="redesTitle">
 						<h3>Social Links</h3>
 					</div>
-					<div id="redesLinks">
-						<img src="css/img/iconos/facebook.png" class="logoSocial"> <img
-							src="css/img/iconos/twitter.png" class="logoSocial">
+					<div id=>
+						
 					
 					</div>
 				</div>

@@ -78,21 +78,36 @@
 				$query->setAlbumId ( $album );
 				$albumFeed = $gp->getAlbumFeed ( $query );
 				
-				//Si el usuario es admin puede agregar fotos al album.
+				// Si el usuario es admin puede agregar fotos al album.
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
-					echo "<a href='agregarFotoAlbum.php?id=".$album."'>";
-					echo "<div class='albumGaleria'>";
-					echo "<img  width='160px' height='175px' src='css/img/agregar.png'><br/>";
+					echo "<a href='agregarFotoAlbum.php?id=" . $album . "'>";
+					echo "<div class='imagenGaleria'>";
+					echo "<img  width='160px' height='170px' src='css/img/agregar.png'><br/>";
 					echo "</div>";
 					echo "</a>";
 				}
+				
+				$cont=0;
+				
 				foreach ( $albumFeed as $albumEntry ) {
-					
+					if($cont>0){
 					$mediaArray = $albumEntry->getMediaGroup ()->getContent ();
 					$ImageUrl = $mediaArray [0]->getUrl ();
+					if (isset ( $_GET ['photo'] ) && $_GET ['photo'] == $ImageUrl) {
+						if ($ImageUrl == $_GET ['photo']) {
+							$albumEntry->delete ();
+							header ( "Location: verAlbum.php?albumId=$album" );
+						}
+					}
 					echo "<div class='imagenGaleria'>";
 					echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
+					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+						echo "<a href='verAlbum.php?photo=" . $ImageUrl . "&albumId=" . $album . "'><img src='css/img/eliminar.png' width='16px'/>";
+					}
+					echo "</a>";
 					echo "</div>";
+					}
+				$cont++;
 				}
 				?>
 			</div>
