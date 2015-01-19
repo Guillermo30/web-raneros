@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<!-- para los iconos de las redes sociales -->
-<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
-
 <title>Los Raneros</title>
+	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
 
-<script type="text/javascript" src="scripts/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="scripts/scrollJQuery.js"></script>
+	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+
+	<script type="text/javascript" src="engine0/jquery.js"></script>
+
+	<!-- End WOWSlider.com HEAD section --></head>
 	
-
-</head>
+	<script type="text/javascript" src="scripts/popup.js"></script>	
 
 <body>
 	<div id="contenido">
@@ -20,17 +20,17 @@
 			<img src="css/img/BannerVerde.jpg" id="fondoCabecera">
 			<div id="titleHeader">
 				<img src="css/img/rana-coloreada.gif" id="logo" width="140px" height="90px">
-				
 				<h1>Los Raneros</h1>
 				<h3>Cafe Bar</h3>
-				
 			</div>
 			<div id="redesSociales">
-				<center>
-					<a href="http://twitter.com/minimalmonkey" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-					<a href="http://facebook.com" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-					<a href="http://plus.google.com" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
-				</center>	
+				<div id="redesTitle">
+					<h3>Social Links</h3>
+				</div>
+				<div id="redesLinks">
+					<img src="css/img/iconos/facebook.png" class="logoSocial">
+					<img src="css/img/iconos/twitter.png" class="logoSocial">
+				</div>
 			</div>
 		</div>
 		<div id="menuID" class="menu">
@@ -41,10 +41,9 @@
 			?>
 		</div>
 		<br></br>
-		<div id="contenedorCuerpo">	<!-- BODY section --> <!-- add to the <body> of your page -->
-		
-		<div id="wowslider-container0">
-		<div class="evento">
+		<div id="contenedorCuerpo">
+			<div class="evento">
+				<br />
 				<?php
 					include('php/constantesConexion.php');
 					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
@@ -56,38 +55,41 @@
 					$sentencia="SELECT * FROM evento";
 					$consulta=$sql->selectSQL($sentencia);
 					//$consulta=$sql->query($sentencia);
+					if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'])
+						echo "<a href='addEvento.php'><label>Agregar un evento nuevo</label></a>";
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
-						echo "<h3>".$row['nombre']."</h3>";
+						if(isset($_SESSION['esRoot'])){
+							if($_SESSION['esRoot']==1)
+								echo "<h3>".$row['nombre']." <a href='addTapa.php?evento=".$row['idEvento']."'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Evento'> </a><a href='modificarEvento.php?evento=".$row['idEvento']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Evento'> </a><a href='eliminarEvento.php?evento=".$row['idEvento']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></h3>";
+							else
+								echo "<h3>".$row['nombre']."</h3>";
+						}else{
+							echo "<h3>".$row['nombre']."</h3>";
+						}
 						echo "<hr />";
 						//$sql2=new mysqli($host, $usuario,$passwd,$bd);
 						$sql2=new conexionSQL();
-						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
+						$sentencia2="SELECT * FROM evento WHERE idEvento='".$row['idEvento']."'";
 						//$consulta2 = $sql2->query($sentencia2);
 						$consulta2=$sql2->selectSQL($sentencia2);
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
 							//echo "<a>".$row2['nombre']."</a>";
-							echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
+							//echo "<a href='php/tapa.php?id=".$row2['idTapa']."' onClick='javascript:popup(this.href); return false;'>";
+							echo "<a href='php/evento.php?id=".$row2['idEvento']."'>";
 							echo $row2['nombre'];
-							echo "</a>";
+							if(isset($_SESSION['esRoot'])){
+								if($_SESSION['esRoot']==1)
+									echo " <a href='modificarEvento.php?idTapa=".$row2['idEvento']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idTapa=".$row2['idEvento']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+								else
+									echo "</a>";
+							}else{
+								echo "</a>";
+							}
 						}
 					}
 				?>
-		
-		
-		<br></br>
-		<br></br>
-		<br></br>
-		
-		
-		
-		
-
-		<!-- BODY section -->
-		<div class="ws_shadow"></div>
-		</div>	
-			
+			</div>
 		</div>
-		
 		<div id="pie">
 			<div id="enlaces">
 				<h3>Sitios Relacionados</h3>
@@ -101,7 +103,6 @@
 				<br></br>
 				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
 			</div>
-					
 		</div>
 	</div>
 </body>
