@@ -1,19 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Los Raneros</title>
-	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-
-	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
-
-	<script type="text/javascript" src="engine0/jquery.js"></script>
-
-	<!-- End WOWSlider.com HEAD section --></head>
 	
+	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+	
+	
+	<script type="text/javascript" src="engine0/jquery.js"></script>
 	<script type="text/javascript" src="scripts/popup.js"></script>	
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyAy_t8Qh1kpzv9-49L-Ur_VHXcLX9hklt0"></script>
+	<script type="text/javascript">
+  		google.load('maps', '2', {callback:simple2});var map;
+		function simple2(){	
+			if (GBrowserIsCompatible()) { 
+			var map = new GMap2(document.getElementById("map2"));
+			map.addControl(new GLargeMapControl());
+			map.addControl(new GMapTypeControl());	  
+			map.setCenter(new GLatLng(36.986714,-2.619436),15);
+			}
+		}
+		window.onload=function(){simple2();
+		}
+	</script>
 
+</head>
+	
+	
+		
 <body>
 	<div id="contenido">
 		<div id="cabecera">
@@ -47,6 +63,9 @@
 				
 				<center>
 					<h3>Aqui esta nuestro local.</h3>
+
+					<div id="map2" style="width:360px;height:200px;border:2px solid green;" ></div>
+					
 				</center>
 				
 				<form action="registrarUsuario.php" class="formularios" name="formularioRegistro" method="post">
