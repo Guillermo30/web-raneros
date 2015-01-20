@@ -28,4 +28,6 @@ class menu {
 		}
 	}
 }
+
+include_once("analyticstracking.php");
 ?>
