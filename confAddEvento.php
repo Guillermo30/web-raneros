@@ -132,14 +132,14 @@
 				// Comienza a insertar
 				// sentecias de insercion
 				
-				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '$fechaHora','1','{$albumId}')";
+				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum,idAlbum) 
+					VALUES ('{$nombre}','{$descripcion}', '$fechaHora','1','1','{$albumId}')";
 				echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
 					echo "</br>Ha ocurrido un error al introducir el evento, int&eacutentelo de nuevo";
-// 					header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
+					header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
 					// header("Location:".$_SERVER['HTTP_REFERER']
 				} else {
 					echo "Evento agregado correctamente";
