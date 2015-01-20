@@ -74,12 +74,14 @@
 					while ( $row2 = mysqli_fetch_array ( $consulta2, MYSQLI_ASSOC ) ) {
 						
 // 						echo "<a href='php/evento.php?id=" . $row2 ['idEvento'] . "'>";
-						echo "<div class='evento'>";
+						echo "<div class='eventoCaja'>";
+						//Sacamos la caratula del evento
 						echo "<img  width='160px' height='175px' src='css/img/agregar.png'><br/>";
 						echo "Nombre de evento: ".$row2 ['nombre']."<br/	>";
 						echo "Fecha: ".$row2 ['fecha']."<br/	>";
 						echo "Hora: <br/	>";
-						echo "Descripcion del evento: ".$row2 ['descripcion'];
+						echo "Descripcion del evento: ".$row2 ['descripcion']."<br/>";
+						echo "<a href='' >Ver fotos de evento	</a><br/>";
 						
 						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 							
@@ -88,7 +90,7 @@
 								echo "</a>";
 						}else{
 							echo"</div>";
-// 							echo "</a>";
+							echo "</a>";
 						}
 					}
 				}
