@@ -50,6 +50,7 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
+				$fechaEvento=$_POST['fecha'];
 				// Comprueba si es root, en caso contrario devuelve al index
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 				} else {
@@ -133,7 +134,7 @@
 				// sentecias de insercion
 				
 				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum,idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '$fechaHora','1','1','{$albumId}')";
+					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','1','1','{$albumId}')";
 				echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
@@ -144,7 +145,7 @@
 				} else {
 					echo "Evento agregado correctamente";
 					// header ( "Refresh: 2;URL=eventos.php" );
-					header ( "Location: eventos.php" );
+// 					header ( "Location: eventos.php" );
 				}
 				
 				?>
