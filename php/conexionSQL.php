@@ -24,6 +24,15 @@ class conexionSQL{
 
 	}
 	
+	public function deleteSQL($sentencia){
+		if(!$this->mysqli->query($sentencia)){
+			echo "Error en borrado de datos";
+			return 0;
+		}
+		return 1;
+	
+	}
+	
 	//Función para realizar sentencias SELECT: devuelve el conjunto de resultados para poder manipularlos
 	public function selectSQL($sentencia){	     
 		return $this->mysqli->query($sentencia);
