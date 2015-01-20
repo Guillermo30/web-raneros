@@ -140,10 +140,11 @@
 					echo $sql->mysqli->error;
 					echo "</br>Ha ocurrido un error al introducir el evento, int&eacutentelo de nuevo";
 					header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
-					// header("Location:".$_SERVER['HTTP_REFERER']
+				
 				} else {
 					echo "Evento agregado correctamente";
 					// header ( "Refresh: 2;URL=eventos.php" );
+					header ( "Location: eventos.php" );
 				}
 				
 				?>
