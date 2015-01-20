@@ -55,9 +55,9 @@
 				// include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 				
 				$sql = new conexionSQL (); // instanciamos objeto de la clase creada en el fichero "conexionSQL"
-				                        // Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
-				                        // que no he podio resolver nose por que
-				                        // $sql = new mysqli($host, $usuario,$passwd,$bd);
+				                           // Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
+				                           // que no he podio resolver nose por que
+				                           // $sql = new mysqli($host, $usuario,$passwd,$bd);
 				$sentencia = "SELECT * FROM evento";
 				$consulta = $sql->selectSQL ( $sentencia );
 				// $consulta=$sql->query($sentencia);
@@ -65,33 +65,69 @@
 					echo "<a href='addEvento.php'><label>Agregar un evento nuevo</label></a><br/>";
 				while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
 					
-				
 					$sql2 = new conexionSQL ();
 					$sentencia2 = "SELECT * FROM evento WHERE idEvento='" . $row ['idEvento'] . "'";
-				
+					
 					$consulta2 = $sql2->selectSQL ( $sentencia2 );
 					
 					while ( $row2 = mysqli_fetch_array ( $consulta2, MYSQLI_ASSOC ) ) {
 						
-// 						echo "<a href='php/evento.php?id=" . $row2 ['idEvento'] . "'>";
+						// echo "<a href='php/evento.php?id=" . $row2 ['idEvento'] . "'>";
 						echo "<div class='eventoCaja'>";
-						//Sacamos la caratula del evento
-						echo "<img  width='160px' height='175px' src='css/img/agregar.png'><br/>";
-						echo "Nombre de evento: ".$row2 ['nombre']."<br/	>";
-						echo "Fecha: ".$row2 ['fecha']."<br/	>";
-						echo "Hora: <br/	>";
-						echo "Descripcion del evento: ".$row2 ['descripcion']."<br/>";
-						echo "<a href='' >Ver fotos de evento	</a><br/>";
+						// Sacamos la caratula del evento
+						require_once 'Zend/Loader.php';
 						
-						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+						Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
+						Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
+						Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
+						
+						$serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+						$user = "webraneros@gmail.com";
+						$pass = "raneros2014!";
+						$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $serviceName );
+						// update the second argument to be CompanyName-ProductName-Version
+						$gp = new Zend_Gdata_Photos ( $client, "Raneros" );
+						// In version 1.5+, you can enable a debug logging mode to see the
+						// underlying HTTP requests being made, as long as you're not using
+						// a proxy server
+						// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
+						
+						// Obtenemos el nombre del album
+					
+						$album=$row2 ['idAlbum'];
+						
+						// Creates a Zend_Gdata_Photos_AlbumQuery
+						$query = $gp->newAlbumQuery ();
+						$query->setUser ( "default" );
+						$query->setAlbumId ( $album );
+						$albumFeed = $gp->getAlbumFeed ( $query );
+						
+						foreach ( $albumFeed as $albumEntry ) {
 							
-								echo " <a href='modificarEvento.php?idTapa=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idTapa=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
-								echo"</div>";
-								echo "</a>";
-						}else{
-							echo"</div>";
-							echo "</a>";
+							$mediaArray = $albumEntry->getMediaGroup ()->getContent ();
+							$ImageUrl = $mediaArray [0]->getUrl ();
+							break;
+							
 						}
+				
+				
+				//
+				echo "<img  width='200px' height='150px' src='$ImageUrl;'><br/>";
+				echo "Nombre de evento: " . $row2 ['nombre'] . "<br/	>";
+				echo "Fecha: " . $row2 ['fecha'] . "<br/	>";
+				echo "Hora: <br/	>";
+				echo "Descripcion de evento:" . $row2 ['descripcion'] . "<br/>";
+				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
+				
+				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+					
+					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idTapa=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					echo "</div>";
+					echo "</a>";
+				} else {
+					echo "</div>";
+					echo "</a>";
+				}
 					}
 				}
 				?>
