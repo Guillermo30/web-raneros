@@ -31,8 +31,6 @@
 	</script>
 
 </head>
-	
-	
 		
 <body>
 	<div id="contenido">
@@ -72,18 +70,19 @@
 					
 				</center>
 				
-				<form action="enviarCorreoReserva.php" class="formularios" name="formularioRegistro" method="post">
+				<form action="enviarCorreoReserva.php" class="formularios" name="formulariocontacto" method="post" enctype="multipart/form-data">
 					<center>
 					<h3>Haz tu reserva y nostros contactaremos contigo.</h3>
-					<div><label>Nombre</label><input type="text" name="nombre" id="nombre" />
-					<div><br/><label>Telefono</label><input type="text" name="telefono" id="telefono" />
-					<div><br/><label>Correo Electronico</label><input type="text" name="correo" id="correo" />
+					<div><label>Nombre</label><input type="text" name="nombre" id="nombre" /></div>
+					<div><br/><label>Telefono</label><input type="text" name="telefono" id="telefono" /></div>
+					<div><br/><label>Correo Electronico</label><input type="text" name="correo" id="correo" /></div>
 					<div><br/><label>Asunto</label><textarea type="text" name="asunto" id="asunto" cols="80"></textarea></div>
 					<div><label>Mensaje</br></label><textarea name="mensaje" id="mensaje" rows="10" cols="80"></textarea></div>
-					<div><button type="button" value="Enviar" onclick="comprobar()">Enviar</button></div>
+					<div><button type="submit" value="Enviar" >Enviar</button></div>
 					<div><button type="reset" value="reset">Limpiar</button></div>
 					</center>
 				</form>
+				
 				<br/>
 			</div>
 		</div>

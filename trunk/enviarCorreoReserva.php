@@ -4,20 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Los Raneros</title>
-	<!--  HEAD section --> <!-- add to the <head> of your page -->
+	
 
 	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
-
-	<script type="text/javascript" href="engine0/jquery.js"></script>
-	
 	<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
-
-	<!-- HEAD section -->
 	
+	<script type="text/javascript" href="engine0/jquery.js"></script>
 	<script type="text/javascript" src="scripts/jquery-2.1.1.js"></script>
 	<script type="text/javascript" src="scripts/scrollJQuery.js"></script>
 	
-
 </head>
 
 <body>
@@ -55,50 +50,64 @@
  				} //la función recogeDatos comprueba si se ha recibido un dato y recoge su valor
   
  				//si no se ha recibido, le asigna un valor vacío.
- 				$nombre    = recogeDato('nombre');
- 				$correo    = recogeDato('telefono');
- 				$correo    = recogeDato('correo');
+ 				$nombre  = recogeDato('nombre');
+ 				$telefono  = recogeDato('telefono');
+ 				$correo  = recogeDato('correo');
  				$asunto  = recogeDato('asunto');
  				$mensaje = recogeDato('mensaje');
  				$para="cafebarlosraneros@gmail.com";
  				$algunerror = FALSE;
- 
+ 				$email_subject = "Contacto desde el sitio web";
 				//una vez recogidos, los validamos (campos obligatorios, etc...)
 
  				if($nombre==''){ //comprobamos que el nombre no haya quedado vacío
      				$algunerror = TRUE;
-     				echo "<p class=\"erroneo\">No has introducido tu nombre.</p>\n";
+     				echo "<h3>No has introducido tu nombre.</h3>\n";
  					}
  
  				if($telefono==''){ //comprobamos que el contenido de la pregunta no esté vacío
  					$algunerror = TRUE;
- 					echo "<p class=\"erroneo\">El área de la consulta no puede quedar en blanco.</p>\n";
+ 					echo "<h3>El área de la consulta no puede quedar en blanco.</h3>\n";
  				}
  
  				if($correo==''){ //validamos los que el email no esté vacio
  					$algunerror = TRUE; //si encontramos un error,mostramos un mensaje
- 					echo "<p class=\"erroneo\">No has introducido tu eMail</p>\n";
+ 					echo "<h3>No has introducido tu eMail</h3>\n";
  				}
  
  				if($asunto==''){ //comprobamos que el contenido de la pregunta no esté vacío
-     			$algunerror = TRUE;
-     			echo "<p class=\"erroneo\">Asunto no puede quedar en blanco.</p>\n";
+     				$algunerror = TRUE;
+     				echo "<h3>Asunto no puede quedar en blanco.</h3>\n";
   				}
   				if($mensaje==''){ //comprobamos que el contenido de la pregunta no esté vacío
   					$algunerror = TRUE;
-  					echo "<p class=\"erroneo\">El área de la consulta no puede quedar en blanco.</p>\n";
+  					echo "<h3>El área de la consulta no puede quedar en blanco.</h3>\n";
   				}
   
   				if ($algunerror){ //comprobamos si ha habido algún error
-    				echo "<p>&nbsp;</p>\n"; //si los hay, se lo indicamos al usuario
-    		 		echo "<p>No se ha podido enviar el mensaje por los errores que se detallan arriba.</p>\n";
-     				echo "<p>Por favor, vuelve a rellenar el formulario.</p>\n";
-     				echo "<p class=\"centrado\">< href=\"conocenos.php\">Volver al formulario</a></p>\n";
+    				echo "<h3>&nbsp;</p>\n"; //si los hay, se lo indicamos al usuario
+    		 		echo "<h3>No se ha podido enviar el mensaje por los errores que se detallan arriba.</h3>\n";
+     				echo "<h3>Por favor, vuelve a rellenar el formulario.</h3>\n";
+     				echo "<h3>< href=\"conocenos.php\">Volver al formulario</a></h3>\n";
      
   				}else{
-     				mail($para, $asunto, $mensaje); //y lo enviamos
-     				echo "<p>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</p>\n";
-     				echo "<p>Nos pondremos en contacto lo antes posible.</p>\n";
+  					
+  					$email_message = "Detalles del formulario de contacto:\n\n";
+  					$email_message .= "Asunto: " . $asunto . "\n";
+					$email_message .= "Nombre: " . $nombre . "\n";
+					$email_message .= "Teléfono: " . $telefono . "\n";
+					$email_message .= "E-mail: " . $correo . "\n";
+					$email_message .= "Mensaje: " . $mensaje . "\n";
+				
+
+     				// Ahora se envía el e-mail usando la función mail() de PHP
+					$headers = 'From: '.$correo."\r\n".
+					'Reply-To: '.$correo."\r\n" .
+					'X-Mailer: PHP/' . phpversion();
+					@mail($para, $asunto, $email_message, $headers);
+
+     				echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
+     				echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
   				}
 ?>
 			
