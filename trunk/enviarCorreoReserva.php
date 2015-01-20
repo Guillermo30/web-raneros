@@ -104,10 +104,12 @@
 					$headers = 'From: '.$correo."\r\n".
 					'Reply-To: '.$correo."\r\n" .
 					'X-Mailer: PHP/' . phpversion();
-					@mail($para, $asunto, $email_message, $headers);
+					mail($para, $asunto, $email_message, $headers);
 
      				echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
      				echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
+     				echo "$para";
+     				echo "$telefono";
   				}
 ?>
 			
