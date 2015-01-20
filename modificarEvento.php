@@ -96,7 +96,7 @@
 					<div><label>Hora evento</br></label><input type="time" name="hora"></div>
 					<div><label>Fecha Actual</br></label><script>fecha();</script></div>
 					<div><label>Imagen</a></br><input type="file" name="foto"></div>
-					<div><input type="submit" value="Agregar Evento"></input><input type="reset" value="Reset"></div>
+					<div><input type="submit" value="Modificar Evento"></input><input type="reset" value="Reset"></div>
 
 				</form>
 			</div>
