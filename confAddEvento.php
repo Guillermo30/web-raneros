@@ -132,15 +132,22 @@
 				$sql = new conexionSQL ();
 				// Comienza a insertar
 				// sentecias de insercion
+				//Insertamos primero el album procedente de picasa en nuestra tabla de albums
+				$sentencia="INSERT INTO album (nombre,idAlbum) VALUES ('{$nombre}','{$albumId}')";
+				if(!$sql->insertarSQL($sentencia)){
+					echo $sql->mysqli->error;
+					echo "</br>";
+					echo "Ha ocurrido un error en la insercion del album";
+				}
 				
-				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum,idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','1','1','{$albumId}')";
+				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum) 
+					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','1','{$albumId}')";
 				echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
 					echo "</br>Ha ocurrido un error al introducir el evento, int&eacutentelo de nuevo";
-					header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
+					//header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
 				
 				} else {
 					echo "Evento agregado correctamente";
