@@ -74,66 +74,12 @@
 				$fechaHora .= " ";
 				$fechaHora .= $_POST ['hora'];
 				$foto=$_FILES['foto']['tmp_name'];
-				// Creamos album con el nombre del evento
-				// Y obtenemos su id para guardarlo en la base de datos
-				require_once 'Zend/Loader.php';
 				
-				Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
-				Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumQuery' );
-				Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumEntry' );
-				Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
-				Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
-				
-				$user = "webraneros@gmail.com";
-				$pass = "raneros2014!";
-				
-				$service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-				$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $service );
-				$service = new Zend_Gdata_Photos ( $client );
-				$gp = new Zend_Gdata_Photos ( $client, "Raneros" );
-				// Creando album
-				$nombreAlbum = $nombre;
-				$entry = new Zend_Gdata_Photos_AlbumEntry ();
-				$entry->setTitle ( $gp->newTitle ( $nombreAlbum ) );
-				
-				// La siguiente instruccion crea Album
-				$createdEntry = $gp->insertAlbumEntry ( $entry );
-				// Devuelve el id del album que se acaba de crear
-				// echo $createdEntry->getGphotoId();
-				// Insertamos fotos en el a lbum
-				
-				$username = $user;
-				$filename =$foto;
-				$photoName = $_FILES ['foto'] ['name'];
-				
-				$albumId = $createdEntry->getGphotoId ();
-				
-				$fd = $gp->newMediaFileSource ( $filename );
-				$fd->setContentType ( "image/jpeg" );
-				
-				// Create a PhotoEntry
-				$photoEntry = $gp->newPhotoEntry ();
-				$photoEntry->setMediaSource ( $fd );
-				$photoEntry->setTitle ( $gp->newTitle ( $photoName ) );
-				
-				// We use the AlbumQuery class to generate the URL for the album
-				$albumQuery = $gp->newAlbumQuery ();
-				
-				$albumQuery->setUser ( $username );
-				$albumQuery->setAlbumId ( $albumId );
-				
-				// We insert the photo, and the server returns the entry representing
-				// that photo after it is uploaded
-				$insertedEntry = $gp->insertPhotoEntry ( $photoEntry, $albumQuery->getQueryUrl () );
-				
-				
-				// Album creado
 				$sql = new conexionSQL ();
 				// Comienza a insertar
 				// sentecias de insercion
 				
-				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum,idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '$fechaHora','1','1','{$albumId}')";
+				$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fecha}'";
 				echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
