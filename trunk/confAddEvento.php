@@ -50,6 +50,17 @@
 					}else{
 						header('Location: index.php');
 					}
+					
+					
+					if(!isset($_POST['nombre']))
+						$_POST['nombre']="";
+					if(!isset($_POST['descripcion']))
+						$_POST['descripcion']="";
+					if(!isset($_POST['date']))
+						$_POST['fecha']="";
+					if(!isset($_POST['hora']))
+						$_POST['hora']="";
+					
 					$nombre = $_POST['nombre']; //Nombre
 					$descripcion = $_POST['descripcion']; //Cuerpo del mensaje
 					$fecha = $_POST['fecha']; //Fecha de la cita
@@ -58,49 +69,25 @@
 					$fechaHora = $_POST['fecha'];
 					$fechaHora .= " ";
 					$fechaHora .= $_POST['hora'];
-
-
-					//Comienza a insertar
-					include ('php/constantesConexion.php');
-					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
-					/*
-					if(!isset($_POST['nombre']))
-						$_POST['nombre']="";
-					if(!isset($_POST['descripcion']))
-						$_POST['descripcion']="";
-					if(!isset($_POST['date']))
-						$_POST['fecha']="";
-					if(!isset($_POST['hora']))
-						$_POST['hora']="";	
-						*/
-					
-					//sentecias de insercion
-					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha) 
-					VALUES ('{$_POST['nombre']}','{$_POST['descripcion']}', '$fechaHora')";
-					$mysqli->query($sentencia);
-					
-					//Obtenemos la id con la que se agrega la tapa para luego relacionarla con la foto
-					$sql = new conexionSQL();
-					
-					
-					
-				
-					//Inserta la foto
-					$sentencia = "SELECT idEvento FROM evento WHERE nombre=".$_POST['nombre'];
-					$nombreEvento = $mysqli->query($sentencia);
-					$uploaddir = "css/img/eventos/".$nombreEvento."/";
-					$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
-					
-					
-					if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)) {
-						//Agrega la entrada en al base de datos de la foto de la tapa
 						
-						echo "<h1>El evento a sido añadido con exito</h1>";
-					} else {
-						$sentencia="DELETE FROM `evento` WHERE idEvento=".$idEvento."";
-						$mysqli->query($sentencia);
-					}
+					$sql=new conexionSQL();
+					//Comienza a insertar
+					//sentecias de insercion
 					
+					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum) 
+					VALUES ('{$nombre}','{$descripcion}', '$fechaHora','1','1')";
+					echo $sentencia."</br>";
+					//echo $sentencia;
+					if(!$sql->insertarSQL($sentencia)){
+						echo $sql->mysqli->error;
+						echo "</br>Ha ocurrido un error al introducir el evento, int&eacutentelo de nuevo";
+						header("Refresh: 3;URL=".$_SERVER['HTTP_REFERER']);
+						//header("Location:".$_SERVER['HTTP_REFERER']
+					}else{
+						echo "Evento agregado correctamente";
+						header("Refresh: 2;URL=eventos.php");
+					}			
+						
 				?>
 			</div>
 		</div>

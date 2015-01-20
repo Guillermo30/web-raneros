@@ -72,7 +72,7 @@
 							}else {
 								echo "Error al crear el directorio";
 								echo "El nuevo Tipo de Tapa no ha podido ser creado";
-								header("Refresh: 2;URL=".$HTTP_REFERER);
+								header("Refresh: 2;URL=".$_SERVER['HTTP_REFERER']);
 							}
 						}else{ //si existe solo lo creamos en BD
 							$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$nombreTipoTapa."')";
