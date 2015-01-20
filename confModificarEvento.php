@@ -50,6 +50,7 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
+				$fechaEvento=$_POST['fecha'];
 				// Comprueba si es root, en caso contrario devuelve al index
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 				} else {
@@ -79,7 +80,7 @@
 				// Comienza a insertar
 				// sentecias de insercion
 				
-				$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fecha}'";
+				$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fechaEvento}'";
 				echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
