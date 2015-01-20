@@ -8,7 +8,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
 	
-	
 	<script type="text/javascript" src="engine0/jquery.js"></script>
 	<script type="text/javascript" src="scripts/popup.js"></script>	
 	<script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyAy_t8Qh1kpzv9-49L-Ur_VHXcLX9hklt0"></script>
@@ -16,13 +15,18 @@
   		google.load('maps', '2', {callback:simple2});var map;
 		function simple2(){	
 			if (GBrowserIsCompatible()) { 
+				
 			var map = new GMap2(document.getElementById("map2"));
+			
 			map.addControl(new GLargeMapControl());
 			map.addControl(new GMapTypeControl());	  
-			map.setCenter(new GLatLng(36.986714,-2.619436),15);
+			map.setCenter(new GLatLng(36.986714,-2.619436),15); 
+			map.addOverlay(marker);
+			 
 			}
 		}
-		window.onload=function(){simple2();
+		window.onload=function(){
+			simple2();
 		}
 	</script>
 
@@ -64,23 +68,23 @@
 				<center>
 					<h3>Aqui esta nuestro local.</h3>
 
-					<div id="map2" style="width:360px;height:200px;border:2px solid green;" ></div>
+					<div id="map2" style="width:500px;height:240px;border:10px solid green;" ></div>
 					
 				</center>
 				
-				<form action="registrarUsuario.php" class="formularios" name="formularioRegistro" method="post">
+				<form action="enviarCorreoReserva.php" class="formularios" name="formularioRegistro" method="post">
 					<center>
 					<h3>Haz tu reserva y nostros contactaremos contigo.</h3>
-					<div><label>Nombre</label></br><input type="text" name="nombre" id="nombre" />
-					<div><label>Telefono</label></br><input type="text" name="telefono" id="telefono" />
-					<div><label>Correo Electronico</label></br><input type="text" name="correo" id="correo" />
-					<div><label>Asunto</br></label><textarea type="text" name="asunto" id="asunto" cols="80"></textarea></div>
-					<div><label>Mensaje</br></label><textarea name="mensaje" rows="10" cols="80"></textarea></div>
-					<div><button type="button" value="Enviar" onclick="comprobar()">Enviar Registro</button></div>
+					<div><label>Nombre</label><input type="text" name="nombre" id="nombre" />
+					<div><br/><label>Telefono</label><input type="text" name="telefono" id="telefono" />
+					<div><br/><label>Correo Electronico</label><input type="text" name="correo" id="correo" />
+					<div><br/><label>Asunto</label><textarea type="text" name="asunto" id="asunto" cols="80"></textarea></div>
+					<div><label>Mensaje</br></label><textarea name="mensaje" id="mensaje" rows="10" cols="80"></textarea></div>
+					<div><button type="button" value="Enviar" onclick="comprobar()">Enviar</button></div>
 					<div><button type="reset" value="reset">Limpiar</button></div>
 					</center>
 				</form>
-				<br />
+				<br/>
 			</div>
 		</div>
 		<div id="pie">
@@ -98,5 +102,6 @@
 			</div>
 		</div>
 	</div>
+	<?php include_once("analyticstracking.php") ?>
 </body>
 </html>
