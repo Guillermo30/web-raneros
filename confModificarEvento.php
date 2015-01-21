@@ -81,7 +81,7 @@
 				// sentecias de insercion
 				
 				$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fechaEvento}'";
-				echo $sentencia . "</br>";
+				 
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
