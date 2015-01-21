@@ -1,6 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script type="text/javascript"> 
+function abrir(dir) { 
+	 var margen=100;
+	 var width=screen.width-margen;
+	 var height=screen.height-margen;
+	 var left=margen/3;
+	open(dir,'','left='+left+',height='+height+',width='+width+'') ; 
+
+} 
+</script> 
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Los Raneros</title>
@@ -69,8 +80,11 @@
 						$sql2=new conexionSQL();
 						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
 						$consulta2=$sql2->selectSQL($sentencia2);
+						$ind="Hola";
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
-							echo "<a href='php/tapa.php?id=".$row2['idTapa']."'>";
+
+							?> <a href="#" onClick="abrir('<?php echo  "php/tapa.php?id=".$row2['idTapa'] ?>')"><?php
+
 							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
