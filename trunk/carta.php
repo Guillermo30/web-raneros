@@ -43,7 +43,6 @@
 		<br></br>
 		<div id="contenedorCuerpo">
 			<div class="evento">
-				<br />
 				<?php
 					include('php/constantesConexion.php');
 					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
@@ -68,6 +67,12 @@
 					//contador para las columnas
 					$contadorColumnas=1;
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
+						//colocamos en la columna de la derecha o izquierda
+						if(($contadorColumnas%2)==1){
+							echo "<div class='columLeft'>";
+						}else{
+							echo "<div class='columRigth'>";
+						}
 						if(isset($_SESSION['esRoot'])){
 							if($_SESSION['esRoot']==1)
 								echo "<h3>".$row['nombre']." <a href='addTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Tapa'> </a><a href='modificarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
@@ -76,17 +81,9 @@
 						}else{
 							echo "<h3>".$row['nombre']."</h3>";
 						}
-						//colocamos en la columna de la derecha o izquierda
-						if(($contadorColumnas%2)==1){
-							echo "<div class='columLeft'>";
-						}else{
-							echo "<div class='columRigth'>";
-						}
 						echo "<hr />";
-						//$sql2=new mysqli($host, $usuario,$passwd,$bd);
 						$sql2=new conexionSQL();
 						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
-						//$consulta2 = $sql2->query($sentencia2);
 						$consulta2=$sql2->selectSQL($sentencia2);
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
 							echo "<a href='php/tapa.php?id=".$row2['idTapa']."'>";
