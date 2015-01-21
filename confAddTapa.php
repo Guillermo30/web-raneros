@@ -65,7 +65,7 @@
 					// Agrega la entrada en al base de datos de la foto de la tapa
 					$sentencia = "INSERT INTO `foto`(`idFoto`, `foto`, `album_idAlbum`, `tapa_idtapa`) VALUES (NULL,'" . $_FILES ['foto'] ['name'] . "',1," . $idTapa . ")";
 					$mysqli->query ( $sentencia );
-					echo "<h1>La tapa a sido añadida con exito</h1>";
+					echo "<h1>La tapa a sido agregada con exito</h1>";
 				} else {
 					$sentencia = "DELETE FROM `tapa` WHERE idTapa=" . $idTapa . "";
 					$mysqli->query ( $sentencia );
