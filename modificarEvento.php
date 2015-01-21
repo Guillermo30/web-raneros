@@ -7,7 +7,7 @@
 	<!--  HEAD section --> <!-- add to the <head> of your page -->
 
 	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
-
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 	<script type="text/javascript" href="engine0/jquery.js"></script>
 	
 	<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
@@ -54,23 +54,7 @@
 
 <body>
 	<div id="contenido">
-		<div id="cabecera">
-			<img src="css/img/BannerVerde.jpg" id="fondoCabecera">
-			<div id="titleHeader">
-				<img src="css/img/rana-coloreada.gif" id="logo" width="140px" height="90px">
-				<h1>Los Raneros</h1>
-				<h3>Cafe Bar</h3>
-			</div>
-			<div id="redesSociales">
-				<div id="redesTitle">
-					<h3>Social Links</h3>
-				</div>
-				<div id="redesLinks">
-					<a href="http://www.facebook.com"><img src="css/img/iconos/facebook.png" class="logoSocial"></a>
-					<a href="http://www.twitter.com"><img src="css/img/iconos/twitter.png" class="logoSocial"></a>
-				</div>
-			</div>
-		</div>
+		  <?php include('php/cabecera.php');?>
 		<div id="menuID" class="menu">
 			<?php 
 				include ('php/menu.php');
