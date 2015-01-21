@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-01-2015 a las 19:47:15
+-- Tiempo de generación: 21-01-2015 a las 19:54:43
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -131,6 +131,19 @@ INSERT INTO `menu` (`idMenu`, `nombre`, `url`, `soloRoot`, `usuario_idusuarios`)
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE IF NOT EXISTS `producto` (
+`idProducto` int(11) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `imagen` varchar(500) NOT NULL,
+  `precio` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tapa`
 --
 
@@ -188,17 +201,18 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nick` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `esRoot` tinyint(1) NOT NULL DEFAULT '0'
+  `esRoot` tinyint(1) NOT NULL DEFAULT '0',
+  `aceptarCorreo` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idusuarios`, `nombre`, `apellidos`, `nick`, `email`, `password`, `esRoot`) VALUES
-(1, 'prueba', 'prueba', 'prueba', 'admin@raneros.es', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0),
-(2, 'adasd', 'adfasdf', 'admin', 'asdfasdf', '$2y$10$0/hS4Nd7VNltVtLCYJiqv.SOe7rwVuFE0CI3nJLD.Q97/xK3pjnhq', 1),
-(3, 'Bogdan', 'Tokovenko', 'btokovenko', 'btokovenko@gmail.com', '$2y$10$ABu.3q8UgbIKiqIYP8D/EOuhLIbPumPYWT5yPGOKdevmzswJ8VDtu', 0);
+INSERT INTO `usuario` (`idusuarios`, `nombre`, `apellidos`, `nick`, `email`, `password`, `esRoot`, `aceptarCorreo`) VALUES
+(1, 'prueba', 'prueba', 'prueba', 'admin@raneros.es', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0, 0),
+(2, 'adasd', 'adfasdf', 'admin', 'asdfasdf', '$2y$10$0/hS4Nd7VNltVtLCYJiqv.SOe7rwVuFE0CI3nJLD.Q97/xK3pjnhq', 1, 0),
+(3, 'Bogdan', 'Tokovenko', 'btokovenko', 'btokovenko@gmail.com', '$2y$10$ABu.3q8UgbIKiqIYP8D/EOuhLIbPumPYWT5yPGOKdevmzswJ8VDtu', 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -233,6 +247,12 @@ ALTER TABLE `foto`
 --
 ALTER TABLE `menu`
  ADD PRIMARY KEY (`idMenu`), ADD KEY `fk_menu_usuario1_idx` (`usuario_idusuarios`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+ ADD PRIMARY KEY (`idProducto`);
 
 --
 -- Indices de la tabla `tapa`
@@ -276,6 +296,11 @@ MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 ALTER TABLE `foto`
 MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tapa`
 --
