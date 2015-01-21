@@ -458,7 +458,7 @@ a{
 .eventoCaja{
 	overflow:hidden;
 	height:auto;
-	  border: 1px solid red;
+	  border-bottom: 31px solid #b5b6ae;
 	  margin-top:15px;
 	  padding:10px;
 	 text-align:justify
