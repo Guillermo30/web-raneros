@@ -47,7 +47,7 @@
 					$consulta=$sql->selectSQL($sentencia);
 					//$consulta=$sql->query($sentencia);
 					if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'])
-						echo "<a href='addTipoTapa.php'>Agregar un nuevo tipo de tapa</a>";
+						echo "<div class='agregar'><a href='addTipoTapa.php'>Agregar un nuevo tipo de tapa</a></div>";
 					//contador para las columnas
 					$contadorColumnas=1;
 					while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
