@@ -111,7 +111,7 @@
 						$service->deleteAlbumEntry ( $entry, true );
 						header ( "Location: galeria.php" );
 					} else {
-						echo $idEvento;
+						
 						echo "<center>Album vinculado a un evento,quere borrar el evento?<br/>";
 						echo "<a href='eliminarEventoAlbum.php?idEvento=".$idEvento."&id=".$idAlbum."'>Si</a>";
 						echo "<a href='galeria.php'>No</a> </center>";
