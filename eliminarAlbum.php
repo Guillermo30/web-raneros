@@ -50,36 +50,62 @@
 			<div class="evento">
 				
 				<?php
-// 					session_start();
-					if(isset($_SESSION['esRoot'])&& $_SESSION['esRoot']==1){
+				// session_start();
+				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+					$borrar = false;
+					include ('php/constantesConexion.php');
+					// include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
+					
+					$sql = new conexionSQL (); // instanciamos objeto de la clase creada en el fichero "conexionSQL"
+					                           // Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
+					                           // que no he podio resolver nose por que
+					                           // $sql = new mysqli($host, $usuario,$passwd,$bd);
+					$idAlbum = $_GET ['id'];
+					$sentencia = "SELECT * FROM album WHERE nombre=$idAlbum";
+					$consulta = $sql->selectSQL ( $sentencia );
+					// $consulta=$sql->query($sentencia);
+					$contador = 0;
+					while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
+						// echo $row['idAlbum'];
+						$contador ++;
+					}
+					if ($contador == 0) {
+						$borrar = true;
+					}
+					
+					if ($borrar) {
 						require_once 'Zend/Loader.php';
-							
-						Zend_Loader::loadClass('Zend_Gdata_Photos');
-						Zend_Loader::loadClass('Zend_Gdata_Photos_AlbumQuery');
-						Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-						Zend_Loader::loadClass('Zend_Gdata_AuthSub');
+						Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
+						Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumQuery' );
+						Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
+						Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
 						
 						$user = "webraneros@gmail.com";
 						$pass = "raneros2014!";
-					
-						$id=$_GET['id'];
+						
+						$id = $_GET ['id'];
 						$service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-						$client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
-						$service = new Zend_Gdata_Photos($client);
- 						$albumQuery = new Zend_Gdata_Photos_AlbumQuery;
-// 						$albumQuery->setUser("sample.user");
+						$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $service );
+						$service = new Zend_Gdata_Photos ( $client );
+						$albumQuery = new Zend_Gdata_Photos_AlbumQuery ();
+						// $albumQuery->setUser("sample.user");
 						
-						$albumQuery->setAlbumId($id);
-// 						$albumQuery->setType('entry');
+						$albumQuery->setAlbumId ( $id );
+						// $albumQuery->setType('entry');
 						
-						$entry = $service->getAlbumEntry($albumQuery);
+						$entry = $service->getAlbumEntry ( $albumQuery );
 						
-						$service->deleteAlbumEntry($entry, true);
+						$service->deleteAlbumEntry ( $entry, true );
 						header ( "Location: galeria.php" );
-					}else{
-						echo "Usted no esta autorizado para acceder a esta pagina";
+					} else {
+						echo "<center>Album vinculado a un evento,quere borrar el evento? </center><br/>";
+						echo "<a href=''>Si</a>";
+						echo "<a href=''>No</a>";
 					}
-					
+				} else {
+					echo "Usted no esta autorizado para acceder a esta pagina";
+				}
+				
 				?>
 			</div>
 		</div>
