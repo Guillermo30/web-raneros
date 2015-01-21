@@ -6,6 +6,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Los Raneros</title>
 	<!--  HEAD section --> <!-- add to the <head> of your page -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 
 	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
 

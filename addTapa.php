@@ -3,19 +3,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<title>Los Raneros</title>
-	<!--  HEAD section --> <!-- add to the <head> of your page -->
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
+	<title>Los Raneros</title> <!--  HEAD section -->
+	<!-- add to the <head> of your page -->
+	<link rel="stylesheet"
+		href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
 
-	<script type="text/javascript" href="engine0/jquery.js"></script>
-	
-	<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
+		<script type="text/javascript" href="engine0/jquery.js"></script>
 
-	<!-- HEAD section -->
-	
-	<script type="text/javascript" src="scripts/jquery-2.1.1.js"></script>
-	<script type="text/javascript" src="scripts/scrollJQuery.js"></script>
+		<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
+
+		<!-- HEAD section -->
+
+		<script type="text/javascript" src="scripts/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="scripts/scrollJQuery.js"></script>
+
 </head>
 
 <body>
@@ -38,13 +40,29 @@
 				}
 			?>
 			<div class="evento">
-				<form action="confAddTapa.php" class="formularios" method="post" enctype="multipart/form-data">
-					<div><a>Nombre</a></br><input type="text" name="nombre" id="nombre"></input></div>
-					<div><a>Descripcion</a></br><textarea name="descripcion" rows="5" cols="5"></textarea></div>
-					
-					<div><input type="hidden" name="tipoTapa" id="tipoTapa" value="<?php echo $_GET['tipoTapa']?>"></input></div>
-					<div><a>Imagen</a></br><input type="file" name="foto"></input></div>
-					<div><input type="submit" value="Agregar Tapa"></input><input type="reset" value="Reset"></input></div>
+				<form action="confAddTapa.php" class="formularios" method="post"
+					enctype="multipart/form-data">
+					<div>
+						<a>Nombre</a></br>
+						<input type="text" name="nombre" id="nombre"></input>
+					</div>
+					<div>
+						<a>Descripcion</a></br>
+						<textarea name="descripcion" rows="5" cols="5"></textarea>
+					</div>
+
+					<div>
+						<input type="hidden" name="tipoTapa" id="tipoTapa"
+							value="<?php echo $_GET['tipoTapa']?>"></input>
+					</div>
+					<div>
+						<a>Imagen</a></br>
+						<input type="file" name="foto"></input>
+					</div>
+					<div>
+						<input type="submit" value="Agregar Tapa"></input><input
+							type="reset" value="Reset"></input>
+					</div>
 
 				</form>
 			</div>
@@ -52,17 +70,17 @@
 		<div id="pie">
 			<div id="enlaces">
 				<h3>Sitios Relacionados</h3>
-				<hr/>
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo de Terque</a>
+				<hr />
+				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo
+					de Terque</a>
 			</div>
 			<div id="contacta">
 				<h3>Contacta con nosotros</h3>
-				<hr/>
-				<a>Telf: 622-112-446 </a>
-				<br></br>
-				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
+				<hr />
+				<a>Telf: 622-112-446 </a> <br></br> <a>Direccion: Plaza del la
+					Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
 			</div>
-					
+
 		</div>
 	</div>
 </body>
