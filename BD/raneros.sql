@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-12-2014 a las 12:40:55
+-- Tiempo de generación: 21-01-2015 a las 09:25:54
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -50,15 +50,22 @@ CREATE TABLE IF NOT EXISTS `cometario` (
   `idcomentario` int(11) NOT NULL AUTO_INCREMENT,
   `comentario` varchar(500) NOT NULL,
   `usuario_idusuarios` int(11) NOT NULL,
-  `evento_idEvento` int(11) NOT NULL,
-  `tapa_idTapa` int(11) NOT NULL,
-  `foto_idFoto` int(11) NOT NULL,
+  `evento_idEvento` int(11) DEFAULT NULL,
+  `tapa_idTapa` int(11) DEFAULT NULL,
+  `foto_idFoto` int(11) DEFAULT NULL,
   PRIMARY KEY (`idcomentario`),
   KEY `fk_cometario_usuario1_idx` (`usuario_idusuarios`),
   KEY `fk_cometario_evento1_idx` (`evento_idEvento`),
   KEY `fk_cometario_tapa1_idx` (`tapa_idTapa`),
   KEY `fk_cometario_foto1_idx` (`foto_idFoto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `cometario`
+--
+
+INSERT INTO `cometario` (`idcomentario`, `comentario`, `usuario_idusuarios`, `evento_idEvento`, `tapa_idTapa`, `foto_idFoto`) VALUES
+(6, 'mu rica', 1, NULL, 27, NULL);
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `foto` (
   UNIQUE KEY `idFoto_UNIQUE` (`idFoto`),
   KEY `fk_foto_album1_idx` (`album_idAlbum`),
   KEY `tapa_idtapa` (`tapa_idtapa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `foto`
@@ -101,7 +108,8 @@ CREATE TABLE IF NOT EXISTS `foto` (
 
 INSERT INTO `foto` (`idFoto`, `foto`, `album_idAlbum`, `tapa_idtapa`) VALUES
 (1, 'tomate.jpg', 1, 1),
-(2, 'lomo.jpg', 1, 2);
+(2, 'lomo.jpg', 1, 2),
+(19, 'carneConTomate.jpg', 1, 27);
 
 -- --------------------------------------------------------
 
@@ -146,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `tapa` (
   PRIMARY KEY (`idTapa`),
   UNIQUE KEY `idTapa_UNIQUE` (`idTapa`),
   KEY `fk_tapa_tipoTapa1_idx` (`tipoTapa_idTipoTapa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Volcado de datos para la tabla `tapa`
@@ -154,7 +162,8 @@ CREATE TABLE IF NOT EXISTS `tapa` (
 
 INSERT INTO `tapa` (`idTapa`, `nombre`, `descripcion`, `tipoTapa_idTipoTapa`) VALUES
 (1, 'Tomate', 'Pan rustico y crujiente con un rico tomate de la tierra aderezado con aceite de oliva virgen extra.', 1),
-(2, 'Lomo', 'Jugoso filete de lomo en bollo crujiente sobre una base de pimiento y tomate de la tierra.', 3);
+(2, 'Lomo', 'Jugoso filete de lomo en bollo crujiente sobre una base de pimiento y tomate de la tierra.', 3),
+(27, 'Carne con Tomate', 'Carne con Tomate', 3);
 
 -- --------------------------------------------------------
 
@@ -167,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `tipotapa` (
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idTipoTapa`),
   UNIQUE KEY `idTipoTapa_UNIQUE` (`idTipoTapa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `tipotapa`
@@ -177,7 +186,7 @@ INSERT INTO `tipotapa` (`idTipoTapa`, `nombre`) VALUES
 (1, 'Desayunos'),
 (2, 'Alpargatas'),
 (3, 'Almuerzos'),
-(4, 'Bodega');
+(5, 'Bodegas');
 
 -- --------------------------------------------------------
 
@@ -194,14 +203,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `password` varchar(100) NOT NULL,
   `esRoot` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idusuarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`nombre`, `apellidos`, `nick`, `password`, `esRoot`,`email`) VALUES
-('prueba', 'prueba', 'prueba', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0,'admin@raneros.es');
+INSERT INTO `usuario` (`idusuarios`, `nombre`, `apellidos`, `nick`, `email`, `password`, `esRoot`) VALUES
+(1, 'prueba', 'prueba', 'prueba', 'admin@raneros.es', '$2y$10$qbUqzFdOXu3iSMkW3tS6Te5cZhcgzMwY3s0JmEk3zt7SA2ivnb91G', 0),
+(2, 'adasd', 'adfasdf', 'admin', 'asdfasdf', '$2y$10$0/hS4Nd7VNltVtLCYJiqv.SOe7rwVuFE0CI3nJLD.Q97/xK3pjnhq', 1);
 
 --
 -- Restricciones para tablas volcadas
@@ -226,20 +236,8 @@ ALTER TABLE `evento`
 -- Filtros para la tabla `foto`
 --
 ALTER TABLE `foto`
-  ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`tapa_idtapa`) REFERENCES `tapa` (`idTapa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_foto_album1` FOREIGN KEY (`album_idAlbum`) REFERENCES `album` (`idAlbum`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `fk_menu_usuario1` FOREIGN KEY (`usuario_idusuarios`) REFERENCES `usuario` (`idusuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tapa`
---
-ALTER TABLE `tapa`
-  ADD CONSTRAINT `fk_tapa_tipoTapa1` FOREIGN KEY (`tipoTapa_idTipoTapa`) REFERENCES `tipotapa` (`idTipoTapa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_foto_album1` FOREIGN KEY (`album_idAlbum`) REFERENCES `album` (`idAlbum`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`tapa_idtapa`) REFERENCES `tapa` (`idTapa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
