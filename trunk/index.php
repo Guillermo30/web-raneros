@@ -8,7 +8,7 @@
 	<!--  HEAD section --> <!-- add to the <head> of your page -->
 
 	<link rel="stylesheet" type="text/css" href="engine0/style.css"></link>
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 	<script type="text/javascript" href="engine0/jquery.js"></script>
 	
 	<link rel"icon" type"image/png" src="css/img/favicon.png"></link>
@@ -22,6 +22,7 @@
 </head>
 
 <body>
+	
 	<div id="contenido">
         <?php include('php/cabecera.php');?>
 		<div id="menuID" class="menu">
@@ -34,7 +35,7 @@
 		</div>
 		<br></br>
 		<div id="contenedorCuerpo">
-			<!-- BODY section --> <!-- add to the <body> of your page -->
+			
 		<div id="wowslider-container0">
 
 		<div class="ws_images"><ul>
@@ -73,27 +74,13 @@
 		</div>	
 
 		<script type="text/javascript" src="engine0/wowslider.js"></script>
-
 		<script type="text/javascript" src="engine0/script.js"></script>
 
-		<!-- BODY section -->
+		
 			
 		</div>
-		<div id="pie">
-			<div id="enlaces">
-				<h3>Sitios Relacionados</h3>
-				<hr/>
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo de Terque</a>
-			</div>
-			<div id="contacta">
-				<h3>Contacta con nosotros</h3>
-				<hr/>
-				<a>Telf: 622-112-446 </a>
-				<br></br>
-				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
-			</div>
-					
-		</div>
+		<?php include('php/pie.php');?>
 	</div>
+	<?php include_once("php/analyticstracking.php") ?>
 </body>
 </html>

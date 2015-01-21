@@ -10,9 +10,9 @@ echo '
 			<div id="redesSociales">
 				<div id="redesTitle">
 					       <div class="caja-redes">
-						   <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-						   <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-						   <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+						   <a href="https://twitter.com/cblosraneros" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+						   <a href="https://www.facebook.com/javi.fernandez.5099?fref=ts" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+						   <a href="https://plus.google.com/u/0/b/106447427081502158231/106447427081502158231/about" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
 							</div>
                     
 				</div>

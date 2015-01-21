@@ -33,27 +33,11 @@
 </head>
 		
 <body>
+	
 	<div id="contenido">
 
-		<div id="cabecera">
-			<img src="css/img/BannerVerde.jpg" id="fondoCabecera">
-			<div id="titleHeader">
-				<img src="css/img/rana-coloreada.gif" id="logo" width="140px" height="90px">
-				<h1>Los Raneros</h1>
-				<h3>Cafe Bar</h3>
-			</div>
-			<div id="redesSociales">
-				<div id="redesTitle">
-					<h3>Social Links</h3>
-				</div>
-				<div id="redesLinks">
-					<a href="http://www.facebook.com"><img src="css/img/iconos/facebook.png" class="logoSocial"></a>
-					<a href="http://www.twitter.com"><img src="css/img/iconos/twitter.png" class="logoSocial"></a>
-				</div>
-			</div>
-		</div>
-
-	 
+		<?php include('php/cabecera.php');?>
+		
 		<div id="menuID" class="menu">
 			<?php 
 				include ('php/menu.php');
@@ -74,7 +58,6 @@
 				</center>
 				
 				<form action="enviarCorreoReserva.php" class="formularios" name="formulariocontacto" method="post" enctype="multipart/form-data">
-					<center>
 					<h3>Haz tu reserva y nostros contactaremos contigo.</h3>
 					<div><label>Nombre</label><input type="text" name="nombre" id="nombre" /></div>
 					<div><br/><label>Telefono</label><input type="text" name="telefono" id="telefono" /></div>
@@ -89,22 +72,8 @@
 				<br/>
 			</div>
 		</div>
-		<div id="pie">
-			<div id="enlaces">
-				<h3>Sitios Relacionados</h3>
-				<hr/>
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo de Terque</a></br>
-				<a href="http://www.alpujarradetapas.com/" title="Alpujarra de Tapas">Alpujarra de Tapas</a></br>
-				<a href="https://www.facebook.com/pages/Casas-Rurales-Luisi/727170950674635" title="Casas Rurales Luisi">Casas Rurales Luisi</a></br>
-			</div>
-			<div id="contacta">
-				<h3>Contacta con nosotros</h3>
-				<hr/>
-				<a>Telf: 622-112-446 </a></br>
-				<a>Direccion: Plaza del la Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
-			</div>
-		</div>
+		<?php include('php/pie.php');?>
 	</div>
-	
+<?php include_once("php/analyticstracking.php") ?>	
 </body>
 </html>
