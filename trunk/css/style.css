@@ -453,3 +453,13 @@ float:left;
 margin-right:15px;
 
 }
+
+//Columnas de carta
+.columLeft{
+	float: left;
+    width: 40%;
+}
+.columRigth{
+	float: rigth;
+    width: 40%;
+}
