@@ -96,10 +96,12 @@
 				
 				
 				//
+				$fecha = substr( $row2 ['fecha'],0,10);
+				$hora=substr( $row2 ['fecha'],10,6);
 				echo "<img  width='200px' height='150px' src='$ImageUrl;'><br/>";
 				echo "<b>Nombre de evento:</b> " . $row2 ['nombre'] . "<br/	>";
-				echo "<b>Fecha:</b> " . $row2 ['fecha'] . "<br/	>";
-				echo "<b>Hora:</b> <br/	>";
+				echo "<b>Fecha:</b> " . $fecha . "<br/	>";
+				echo "<b>Hora:</b>".$hora." <br/	>";
 				echo "<b>Descripcion de evento:</b>" . $row2 ['descripcion'] . "<br/>";
 // 				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
 				
