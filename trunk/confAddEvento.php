@@ -101,7 +101,7 @@
 				$createdEntry = $gp->insertAlbumEntry ( $entry );
 				// Devuelve el id del album que se acaba de crear
 				// echo $createdEntry->getGphotoId();
-				// Insertamos fotos en el a lbum
+				// Insertamos fotos en el album
 				
 				$username = $user;
 				$filename =$foto;
@@ -139,10 +139,10 @@
 					echo "</br>";
 					echo "Ha ocurrido un error en la insercion del album";
 				}
-				
+				// Ahora insertamos el Evento con el idalbum
 				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','1','{$albumId}')";
-				echo $sentencia . "</br>";
+					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','{$photoName}','{$albumId}')";
+				//echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
@@ -151,7 +151,7 @@
 				
 				} else {
 					echo "Evento agregado correctamente";
-					// header ( "Refresh: 2;URL=eventos.php" );
+					header ( "Refresh: 4;URL=eventos.php" );
 // 					header ( "Location: eventos.php" );
 				}
 				
