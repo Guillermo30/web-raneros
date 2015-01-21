@@ -9,8 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
 
 	<script type="text/javascript" src="engine0/jquery.js"></script>
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-	<!-- End WOWSlider.com HEAD section -->
+	<link rel="stylesheet"
+		href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+		<!-- End WOWSlider.com HEAD section -->
 
 </head>
 
@@ -30,7 +31,7 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
-				$fechaEvento=$_POST['fecha'];
+				$fechaEvento = $_POST ['fecha'];
 				// Comprueba si es root, en caso contrario devuelve al index
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 				} else {
@@ -54,7 +55,7 @@
 				$fechaHora = $_POST ['fecha'];
 				$fechaHora .= " ";
 				$fechaHora .= $_POST ['hora'];
-				$foto=$_FILES['foto']['tmp_name'];
+				$foto = $_FILES ['foto'] ['tmp_name'];
 				// Creamos album con el nombre del evento
 				// Y obtenemos su id para guardarlo en la base de datos
 				require_once 'Zend/Loader.php';
@@ -84,7 +85,7 @@
 				// Insertamos fotos en el album
 				
 				$username = $user;
-				$filename =$foto;
+				$filename = $foto;
 				$photoName = $_FILES ['foto'] ['name'];
 				
 				$albumId = $createdEntry->getGphotoId ();
@@ -107,43 +108,58 @@
 				// that photo after it is uploaded
 				$insertedEntry = $gp->insertPhotoEntry ( $photoEntry, $albumQuery->getQueryUrl () );
 				
-				
 				// Album creado
 				$sql = new conexionSQL ();
 				// Comienza a insertar
 				// sentecias de insercion
-				//Insertamos primero el album procedente de picasa en nuestra tabla de albums
-				$sentencia="INSERT INTO album (nombre,idAlbum) VALUES ('{$albumId}','NULL')";
-				if(!$sql->insertarSQL($sentencia)){
+				// Insertamos primero el album procedente de picasa en nuestra tabla de albums
+				$sentencia = "INSERT INTO album (nombre,idAlbum) VALUES ('{$albumId}','NULL')";
+				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
 					echo "</br>";
 					echo "Ha ocurrido un error en la insercion del album";
 				}
 				// Ahora insertamos el Evento con el idalbum
-				//Obtenemos el id del album creado de la tabla album
-				$sentencia="SELECT * FROM album WHERE nombre=$albumId";
-				$consulta=$sql->selectSQL($sentencia);
-				 
-				echo $fechaEvento=$fechaEvento." ".$hora.":00";
-				while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
-						
+				// Obtenemos el id del album creado de la tabla album
+				$sentencia = "SELECT * FROM album WHERE nombre=$albumId";
+				$consulta = $sql->selectSQL ( $sentencia );
+				
+				echo $fechaEvento = $fechaEvento . " " . $hora . ":00";
+				while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
 					
 					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum)
 					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','{$photoName}','{$row['idAlbum']}')";
-					 
+					$idAlbum=$row['idAlbum'];
 				}
 				
-				//echo $sentencia . "</br>";
+				// echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
 					echo "</br>Ha ocurrido un error al introducir el evento, int&eacutentelo de nuevo";
-					//header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
-				
+					// header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
 				} else {
+					// Enviamos correo a todos usuarios que lo permitieron
+					$sentencia3 = "SELECT * FROM usuario WHERE aceptarCorreo=1";
+					$consulta3 = $sql->selectSQL ( $sentencia3 );
+					$correo = "cafebarlosraneros@gmail.com";
+					$asunto = '[EVENTO BAR LOS RANEROS],' . $nombre;
+					$cuerpoEmail = "
+						
+						";
+					$headers = 'From: ' . $correo . "\r\n" . 'Reply-To: ' . $correo . "\r\n" . 'X-Mailer: PHP/' . phpversion ();
+					while ( $row3 = mysqli_fetch_array ( $consulta3, MYSQLI_ASSOC ) ) {
+						if (mail ( $row3 ['email'], $asunto, $cuerpoEmail, $headers )) {
+							
+							echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
+							echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
+						
+						} else {
+							echo ErrorException;
+						}
+					}
 					echo "Evento agregado correctamente";
-					header ( "Refresh: 4;URL=eventos.php" );
-// 					header ( "Location: eventos.php" );
+					// header ( "Refresh: 4;URL=eventos.php" );
 				}
 				
 				?>
