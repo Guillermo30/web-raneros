@@ -7,6 +7,19 @@ body{
 	margin-top:Arial;
 	font-family: Verdana;
 }
+/*Estilo de los enlaces*/
+a:link {
+	text-decoration:none; color: black;
+	} /* Link no visitado*/
+a:visited {
+	text-decoration:none; color:black;
+	} /*Link visitado*/
+a:active {
+	text-decoration:none; color:black; 
+	} /*Link activo*/
+a:hover {
+	text-decoration:none; color:black; 
+	} /*Mause sobre el link*/
 .textbox{
 	margin-right:5px;
 	margin-left:auto;
