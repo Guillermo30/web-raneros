@@ -87,7 +87,9 @@
 						}
 						
 						echo "<br/>";
+						echo "<a href=''>";
 						echo $userEntry->title->text . "<br />\n";
+						echo "</a>";
 						echo "</div>";
 						echo "</a>";
 					}

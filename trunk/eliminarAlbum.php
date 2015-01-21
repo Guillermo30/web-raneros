@@ -92,9 +92,9 @@
 						header ( "Location: galeria.php" );
 					} else {
 						
-						echo "<center>Album vinculado a un evento,quere borrar el evento?<br/>";
-						echo "<a href='eliminarEventoAlbum.php?idEvento=".$idEvento."&id=".$idAlbum."'>Si</a>";
-						echo "<a href='galeria.php'>No</a> </center>";
+						echo "<center>Album vinculado a un evento,quiere borrar el evento?<br/>";
+						echo "<a href='eliminarEventoAlbum.php?idEvento=".$idEvento."&id=".$idAlbum."'><img width='25px' src='css/img/aceptar.png'/></a>";
+						echo "<a href='galeria.php'>&nbsp;&nbsp;&nbsp;<img width='25px' src='css/img/eliminar.png'/></a> </center>";
 					}
 				} else {
 					echo "Usted no esta autorizado para acceder a esta pagina";
