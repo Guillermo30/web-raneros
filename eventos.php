@@ -42,7 +42,7 @@
 				$consulta = $sql->selectSQL ( $sentencia );
 				// $consulta=$sql->query($sentencia);
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'])
-					echo "<a href='addEvento.php'>Agregar un evento nuevo </a><br/>";
+					echo "<div class='agregar'><a href='addEvento.php'>Agregar un evento nuevo </a></div>";
 				while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
 					
 					$sql2 = new conexionSQL ();
