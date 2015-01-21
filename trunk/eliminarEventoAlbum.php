@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="engine0/style.css" />
 
 <script type="text/javascript" src="engine0/jquery.js"></script>
-
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 <!-- End WOWSlider.com HEAD section --></head>
 
 <script type="text/javascript" src="scripts/popup.js"></script>
