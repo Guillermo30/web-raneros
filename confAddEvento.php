@@ -133,15 +133,24 @@
 				// Comienza a insertar
 				// sentecias de insercion
 				//Insertamos primero el album procedente de picasa en nuestra tabla de albums
-				$sentencia="INSERT INTO album (nombre,idAlbum) VALUES ('{$nombre}','{$albumId}')";
+				$sentencia="INSERT INTO album (nombre,idAlbum) VALUES ('{$albumId}','NULL')";
 				if(!$sql->insertarSQL($sentencia)){
 					echo $sql->mysqli->error;
 					echo "</br>";
 					echo "Ha ocurrido un error en la insercion del album";
 				}
 				// Ahora insertamos el Evento con el idalbum
-				$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum) 
-					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','{$photoName}','{$albumId}')";
+				//Obtenemos el id del album creado de la tabla album
+				$sentencia="SELECT * FROM album WHERE nombre=$albumId";
+				$consulta=$sql->selectSQL($sentencia);
+				while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
+						
+					
+					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum)
+					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','{$photoName}','{$row['idAlbum']}')";
+					
+				}
+				
 				//echo $sentencia . "</br>";
 				// echo $sentencia;
 				if (! $sql->insertarSQL ( $sentencia )) {
