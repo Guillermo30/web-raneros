@@ -108,31 +108,25 @@
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
 					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					echo "<a href='verAlbum.php?albumId=".$album."'>Agregar fotos al evento</a>";
+					echo"<div class='verFoto'><a href='verAlbum.php?albumId=".$album."'>Ver fotos</a></div>";
 					echo "</div>";
+					
 					echo "</a>";
+					 
 				} else {
+					echo"<div class='verFoto'><a href='verAlbum.php?albumId=".$album."'>Ver fotos</a></div>";
 					echo "</div>";
 					echo "</a>";
+					 
 				}
+				
 					}
 				}
 				?>
 			</div>
 		</div>
-		<div id="pie">
-			<div id="enlaces">
-				<h3>Sitios Relacionados</h3>
-				<hr />
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo
-					de Terque</a>
-			</div>
-			<div id="contacta">
-				<h3>Contacta con nosotros</h3>
-				<hr />
-				<a>Telf: 622-112-446 </a> <br></br> <a>Direccion: Plaza del la
-					Constituci&oacute;n Bentarique(Almer&iacute;a).</a>
-			</div>
-		</div>
+		 <?php include('php/pie.php');?>
 	</div>
 </body>
 </html>
