@@ -45,7 +45,7 @@
 						$nuevoDirectorio="css/img/tapas/".$nombreTipoTapa;
 						if(!file_exists($nuevoDirectorio)){ //si no existe el nuevo directorio para almacenar las tapas lo creamos
 							if(mkdir($nuevoDirectorio)){
-	
+								echo"Se ha creado nueva carpeta  ".$nuevoDirectorio;
 								$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$nombreTipoTapa."')";
 								//echo $sentencia;
 								$mysqli->query($sentencia);
@@ -62,7 +62,8 @@
 							$sentencia="INSERT INTO `tipotapa`(`idTipoTapa`, `nombre`) VALUES (NULL,'".$nombreTipoTapa."')";
 							//echo $sentencia;
 							$mysqli->query($sentencia);
-							
+							 
+						 
 							//echo $nuevoDirectorio;
 							echo "<h2>Se ha creado correctamente</h2>";
 							header("Refresh: 2;URL=carta.php");
