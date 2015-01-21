@@ -123,12 +123,14 @@
 				//Obtenemos el id del album creado de la tabla album
 				$sentencia="SELECT * FROM album WHERE nombre=$albumId";
 				$consulta=$sql->selectSQL($sentencia);
+				 
+				echo $fechaEvento=$fechaEvento." ".$hora.":00";
 				while($row=mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
 						
 					
 					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum)
 					VALUES ('{$nombre}','{$descripcion}', '{$fechaEvento}','{$photoName}','{$row['idAlbum']}')";
-					
+					 
 				}
 				
 				//echo $sentencia . "</br>";
