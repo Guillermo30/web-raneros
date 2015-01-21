@@ -3,15 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-	<title>Los Raneros</title> <!-- Start WOWSlider.com HEAD section -->
-	<!-- add to the <head> of your page -->
+	<link rel="stylesheet"
+		href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+		<title>Los Raneros</title> <!-- Start WOWSlider.com HEAD section -->
+		<!-- add to the <head> of your page -->
 
-	<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+		<link rel="stylesheet" type="text/css" href="engine0/style.css" />
 
-	<script type="text/javascript" src="engine0/jquery.js"></script>
+		<script type="text/javascript" src="engine0/jquery.js"></script>
 
-	<!-- End WOWSlider.com HEAD section -->
+		<!-- End WOWSlider.com HEAD section -->
 
 </head>
 
@@ -29,12 +30,13 @@
 		</div>
 		<br></br>
 		<div id="contenedorCuerpo">
+
 			<div class="evento">
+			
 				<?php
 				
 				// Autenticacion
 				require_once 'Zend/Loader.php';
-				
 				Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
 				Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
 				Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
@@ -58,39 +60,45 @@
 				$query->setUser ( "default" );
 				$query->setAlbumId ( $album );
 				$albumFeed = $gp->getAlbumFeed ( $query );
-				
+			 
 				// Si el usuario es admin puede agregar fotos al album.
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
-					echo "<a href='agregarFotoAlbum.php?id=" . $album . "'>";
+					
 					echo "<div class='imagenGaleria'>";
+					echo "<a href='agregarFotoAlbum.php?id=" . $album . "'>";
 					echo "<img  width='160px' height='170px' src='css/img/agregar.png'><br/>";
-					echo "</div>";
 					echo "</a>";
+					echo "</div>";
+					
 				}
-				
-				$cont=0;
+				 
+				$cont = 0;
 				
 				foreach ( $albumFeed as $albumEntry ) {
-					if($cont>0){
-					$mediaArray = $albumEntry->getMediaGroup ()->getContent ();
-					$ImageUrl = $mediaArray [0]->getUrl ();
-					if (isset ( $_GET ['photo'] ) && $_GET ['photo'] == $ImageUrl) {
-						if ($ImageUrl == $_GET ['photo']) {
-							$albumEntry->delete ();
-							header ( "Location: verAlbum.php?albumId=$album" );
+					if ($cont > 0) {
+						$mediaArray = $albumEntry->getMediaGroup ()->getContent ();
+						$ImageUrl = $mediaArray [0]->getUrl ();
+						if (isset ( $_GET ['photo'] ) && $_GET ['photo'] == $ImageUrl) {
+							if ($ImageUrl == $_GET ['photo']) {
+								$albumEntry->delete ();
+								header ( "Location: verAlbum.php?albumId=$album" );
+							}
 						}
+						echo "<div class='imagenGaleria'>";
+						echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
+						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
+							echo "<a href='verAlbum.php?photo=" . $ImageUrl . "&albumId=" . $album . "'><img src='css/img/eliminar.png' width='16px'/>";
+						}
+						echo "</a>";
+						
+						echo "</div>";
+						echo "</div>";
 					}
-					echo "<div class='imagenGaleria'>";
-					echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
-					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
-						echo "<a href='verAlbum.php?photo=" . $ImageUrl . "&albumId=" . $album . "'><img src='css/img/eliminar.png' width='16px'/>";
-					}
-					echo "</a>";
-					echo "</div>";
-					}
-				$cont++;
+					$cont ++;
 				}
+			
 				?>
+			
 			</div>
 		</div>
 		<div id="pie">
