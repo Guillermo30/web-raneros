@@ -119,19 +119,7 @@
 				?>
 			</div>
 		</div>
-		<div id="pie">
-			<div id="enlaces">
-				<h3>Sitios Relacionados</h3>
-				<hr />
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo
-					de Terque</a>
-			</div>
-			<div id="contacta">
-				<h3>Contacta con nosotros</h3>
-				<hr />
-				<a>Telf: XXX XXX XXX</a> <br></br> <a>Direccion: XXXXXXXXXXX</a>
-			</div>
-		</div>
+		 <?php include('php/pie.php');?>
 	</div>
 </body>
 </html>

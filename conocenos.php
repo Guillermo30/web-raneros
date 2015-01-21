@@ -58,6 +58,7 @@
 				</center>
 				
 				<form action="enviarCorreoReserva.php" class="formularios" name="formulariocontacto" method="post" enctype="multipart/form-data">
+					<center>
 					<h3>Haz tu reserva y nostros contactaremos contigo.</h3>
 					<div><label>Nombre</label><input type="text" name="nombre" id="nombre" /></div>
 					<div><br/><label>Telefono</label><input type="text" name="telefono" id="telefono" /></div>

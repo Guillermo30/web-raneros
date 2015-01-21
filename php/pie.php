@@ -4,9 +4,9 @@ echo '
 			<div id="enlaces">
 				<h3>Sitios Relacionados</h3>
 				<hr/>
-				<a href="http://www.museodeterque.com/" title="Museo de Terque">Museo de Terque</a></br>
-				<a href="http://www.alpujarradetapas.com/" title="Alpujarra de Tapas">Alpujarra de Tapas</a></br>
-				<a href="https://www.facebook.com/pages/Casas-Rurales-Luisi/727170950674635" title="Casas Rurales Luisi">Casas Rurales Luisi</a></br>
+				<a target="_blanc" href="http://www.museodeterque.com/" title="Museo de Terque">Museo de Terque</a></br>
+				<a target="_blanc" href="http://www.alpujarradetapas.com/" title="Alpujarra de Tapas">Alpujarra de Tapas</a></br>
+				<a target="_blanc" href="https://www.facebook.com/pages/Casas-Rurales-Luisi/727170950674635" title="Casas Rurales Luisi">Casas Rurales Luisi</a></br>
 			</div>
 			<div id="contacta">
 				<h3>Contacta con nosotros</h3>

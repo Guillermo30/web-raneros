@@ -9,16 +9,16 @@ body{
 }
 /*Estilo de los enlaces*/
 a:link {
-	text-decoration:none; color: black;
+	text-decoration:none; color: #005C00;
 	} /* Link no visitado*/
 a:visited {
-	text-decoration:none; color:black;
+	text-decoration:none; color:#005C00;
 	} /*Link visitado*/
 a:active {
-	text-decoration:none; color:black; 
+	text-decoration:none; color:#005C00; 
 	} /*Link activo*/
 a:hover {
-	text-decoration:none; color:black; 
+	text-decoration:none; color:#005C00; 
 	} /*Mause sobre el link*/
 .textbox{
 	margin-right:5px;
@@ -67,9 +67,10 @@ a:hover {
 	width: 220px;
 	margin-top:-110px;
 	margin-right: 50px;
+	 
 }
 #redesTitle{
-	background-color: #2b4e78;
+	background-color: none;
 	padding-left: 20px;
 }
 #redesTitle h3{
@@ -653,5 +654,9 @@ margin-right:15px;
 /* Fin redes sociales*/
 .agregar{
 	text-align:center;
+	}
+	.verFoto{
+	text-align:right;
+	 
 	}
 }
