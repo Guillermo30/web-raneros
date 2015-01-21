@@ -39,7 +39,7 @@
  				$correo  = recogeDato('correo');
  				$asunto  = recogeDato('asunto');
  				$mensaje = recogeDato('mensaje');
- 				$para="fsierra@gmail.com";
+ 				$para="cafebarlosraneros@gmail.com";
  				$algunerror = FALSE;
  				$email_subject = "Contacto desde el sitio web";
 				//una vez recogidos, los validamos (campos obligatorios, etc...)
