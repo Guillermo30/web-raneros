@@ -67,7 +67,6 @@
 					
 					$sql2 = new conexionSQL ();
 					$sentencia2 = "SELECT * FROM evento WHERE idEvento='" . $row ['idEvento'] . "'";
-					
 					$consulta2 = $sql2->selectSQL ( $sentencia2 );
 					
 					while ( $row2 = mysqli_fetch_array ( $consulta2, MYSQLI_ASSOC ) ) {
@@ -92,10 +91,15 @@
 						// a proxy server
 						// $gp->enableRequestDebugLogging('/tmp/gp_requests.log');
 						
-						// Obtenemos el nombre del album
-					
-						$album=$row2 ['idAlbum'];
-						
+						// Obtenemos el id del album
+						 
+						$sentencia3 = "SELECT *  FROM album  WHERE idAlbum='" . $row ['album_idAlbum'] . "'";
+						 
+						$consulta3 = $sql2->selectSQL ( $sentencia3 );
+							
+						while ( $row3 = mysqli_fetch_array ( $consulta3, MYSQLI_ASSOC ) ) {
+						$album=$row3['nombre'];
+						}
 						// Creates a Zend_Gdata_Photos_AlbumQuery
 						$query = $gp->newAlbumQuery ();
 						$query->setUser ( "default" );
@@ -117,11 +121,11 @@
 				echo "Fecha: " . $row2 ['fecha'] . "<br/	>";
 				echo "Hora: <br/	>";
 				echo "Descripcion de evento:" . $row2 ['descripcion'] . "<br/>";
-				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
+// 				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
 				
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
-					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $row2 ['idAlbum']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
 					echo "</div>";
 					echo "</a>";
 				} else {
