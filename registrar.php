@@ -27,6 +27,7 @@
 		</div>
 		<br></br>
 		<div id="contenedorCuerpo">
+		 
 			<div class="evento">
 				<form action="registrarUsuario.php" class="formularios" name="formularioRegistro" method="post">
 					<div>
@@ -43,6 +44,8 @@
 					<div><a>Apellidos</a></br><input type="text" name="apellidos" id="apellidos" />
 					</div>
 					<div><a>Correo electronico</a></br><input type="text" name="correo" id="correo" />
+					</div> 
+					<div> <input type="checkbox" name="correoUsu"   checked>Deseo recibir los correo de este sitio<br> 
 					</div> 
 					<div><button type="button" value="Enviar" onclick="comprobar()">Enviar Registro</button></div>
 					<div><button type="reset" value="reset">Limpiar</button></div>

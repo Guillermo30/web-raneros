@@ -27,6 +27,11 @@
 		<br></br>
 		<div id="contenedorCuerpo">
 			<?php
+			$correoUsuario=0;
+			if(isset($_POST['correoUsu'])){
+				$correoUsuario=1;
+			}
+			echo $correoUsuario;
 				//include('php/constantesConexion.php');
                 //include('php/conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
 				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT); //función para crear codigo hash de contraseña
@@ -38,7 +43,7 @@
 					
 					
 					
-					$sentencia = "INSERT INTO usuario(idusuarios, nombre, apellidos, nick, password, esRoot,email) VALUES ('NULL', '".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."')";
+					$sentencia = "INSERT INTO usuario(idusuarios, nombre, apellidos, nick, password, esRoot,email,aceptarCorreo) VALUES ('NULL', '".$_POST['nombre']."','".$_POST['apellidos']."','".$nick."','".$newPassword."', False,'".$_POST['correo']."','{$correoUsuario}')";
 					
 					if($sql->insertarSQL($sentencia)){  //realizamos el Insert con la sentencia anterior
 						echo "<h3>Los Raneros nos enorgullece darle la Bienvenida</h3>";
