@@ -54,7 +54,8 @@
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
 				
 					$mysqli->query("DELETE FROM `evento` WHERE idevento=".$_GET['idEvento']);
-					//Eliminamos tambien el album
+					
+					//Eliminar elbum 
 					require_once 'Zend/Loader.php';
 					Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
 					Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumQuery' );
@@ -77,8 +78,7 @@
 					$entry = $service->getAlbumEntry ( $albumQuery );
 					
 					$service->deleteAlbumEntry ( $entry, true );
-					//
-					header ( "Location: eventos.php" );
+					header ( "Location: galeria.php" );
 				?>
 			</div>
 		</div>

@@ -125,7 +125,7 @@
 				
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
-					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
 					echo "</div>";
 					echo "</a>";
 				} else {

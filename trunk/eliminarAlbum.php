@@ -68,6 +68,19 @@
 					while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
 						// echo $row['idAlbum'];
 						$contador ++;
+						
+						$sentencia2 = "SELECT * FROM evento WHERE album_idAlbum={$row['idAlbum']}";
+						 
+						$consulta2 = $sql->selectSQL ( $sentencia2 );
+						// $consulta=$sql->query($sentencia);
+						
+						while ( $row2 = mysqli_fetch_array ( $consulta2, MYSQLI_ASSOC ) ) {
+							$idEvento=$row2['idEvento'];
+							
+					 							
+						}
+						
+						
 					}
 					if ($contador == 0) {
 						$borrar = true;
@@ -98,9 +111,10 @@
 						$service->deleteAlbumEntry ( $entry, true );
 						header ( "Location: galeria.php" );
 					} else {
-						echo "<center>Album vinculado a un evento,quere borrar el evento? </center><br/>";
-						echo "<a href=''>Si</a>";
-						echo "<a href=''>No</a>";
+						echo $idEvento;
+						echo "<center>Album vinculado a un evento,quere borrar el evento?<br/>";
+						echo "<a href='eliminarEventoAlbum.php?idEvento=".$idEvento."&id=".$idAlbum."'>Si</a>";
+						echo "<a href='galeria.php'>No</a> </center>";
 					}
 				} else {
 					echo "Usted no esta autorizado para acceder a esta pagina";
