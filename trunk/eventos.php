@@ -97,10 +97,10 @@
 				
 				//
 				echo "<img  width='200px' height='150px' src='$ImageUrl;'><br/>";
-				echo "Nombre de evento: " . $row2 ['nombre'] . "<br/	>";
-				echo "Fecha: " . $row2 ['fecha'] . "<br/	>";
-				echo "Hora: <br/	>";
-				echo "Descripcion de evento:" . $row2 ['descripcion'] . "<br/>";
+				echo "<b>Nombre de evento:</b> " . $row2 ['nombre'] . "<br/	>";
+				echo "<b>Fecha:</b> " . $row2 ['fecha'] . "<br/	>";
+				echo "<b>Hora:</b> <br/	>";
+				echo "<b>Descripcion de evento:</b>" . $row2 ['descripcion'] . "<br/>";
 // 				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
 				
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
