@@ -55,7 +55,7 @@
  				$correo  = recogeDato('correo');
  				$asunto  = recogeDato('asunto');
  				$mensaje = recogeDato('mensaje');
- 				$para="cafebarlosraneros@gmail.com";
+ 				$para="fsierra@gmail.com";
  				$algunerror = FALSE;
  				$email_subject = "Contacto desde el sitio web";
 				//una vez recogidos, los validamos (campos obligatorios, etc...)
@@ -104,13 +104,17 @@
 					$headers = 'From: '.$correo."\r\n".
 					'Reply-To: '.$correo."\r\n" .
 					'X-Mailer: PHP/' . phpversion();
-					mail($para, $asunto, $email_message, $headers);
+					if(mail($para, $asunto, $email_message, $headers)){
 
-     				echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
-     				echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
-     				echo "$para";
-     				echo "$telefono";
+     					echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
+     					echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
+     					echo "$para";
+     					echo "$telefono";
+     				}else{
+							echo ErrorException;
+						}
   				}
+  				echo $correo;
 ?>
 			
 		</div>
