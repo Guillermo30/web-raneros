@@ -90,5 +90,6 @@
 		
 		 <?php include('php/pie.php');?>
 	</div>
+	<?php include_once("php/analyticstracking.php") ?>
 </body>
 </html>
