@@ -28,6 +28,7 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
+					include('php/funciones.php');
 					//Comprueba si es root, en caso contrario devuelve al index
 					if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'] == 1){
 					
@@ -42,9 +43,18 @@
 					if(count($tapasAsociadas)>0){
 						echo "<h1>Lo sentimos pero previamente debe eliminarse las tapas asociadas a dicho tipo de tapa</h1>";
 					}else{
-						//Eliminamos la tapa
+						//Obtenemos en nombre del tipo de tapa para poder borrar dicho directorio asociado
+						$sentencia="SELECT nombre FROM tipotapa WHERE idTipoTapa=".$_GET['tipoTapa'];
+						$sql=new conexionSQL();
+						$resultado=$sql->selectSQL($sentencia);//guardamos nombre tipoTapa
+						$nombreTipo=$resultado->fetch_assoc();//guardamos nombre tipoTapa
+							
+						
 						$mysqli->query("DELETE FROM `tipotapa` WHERE idTipoTapa=".$_GET['tipoTapa']);
+						$directorio=new Directorios(); //instanciamos objeto directorio
+						$directorio->eliminarDir("css/img/tapas/".$nombreTipo['nombre']); //llamamos a la funcion eliminarDirectorio del objeto
 						echo "<h1>Se ha eliminado correctamente dicho tipo de tapa</h1>";
+						header('Refresh: 3;carta.php');
 					}
 				?>
 			</div>
