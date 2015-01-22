@@ -151,15 +151,14 @@
 					while ( $row3 = mysqli_fetch_array ( $consulta3, MYSQLI_ASSOC ) ) {
 						if (mail ( $row3 ['email'], $asunto, $cuerpoEmail, $headers )) {
 							
-							echo "<h3>Tu mensaje se ha enviado correctamente. Gracias por contactar con nosotros.</h3>\n";
-							echo "<h3>Nos pondremos en contacto lo antes posible.</h3>\n";
+							
 						
 						} else {
 							echo ErrorException;
 						}
 					}
 					echo "Evento agregado correctamente";
-					// header ( "Refresh: 4;URL=eventos.php" );
+					header ( "Refresh: 4;URL=eventos.php" );
 				}
 				
 				?>
