@@ -12,7 +12,16 @@
 	<script type="text/javascript" src="engine0/jquery.js"></script>
 
 	<!-- End WOWSlider.com HEAD section -->
+<script type="text/javascript"> 
+function abrir(dir) { 
+	 var margen=100;
+	 var width=screen.width-margen;
+	 var height=screen.height-margen;
+	 var left=margen/3;
+	open(dir,'','left='+left+',height='+height+',width='+width+'') ; 
 
+} 
+</script> 
 </head>
 
 <script type="text/javascript" src="scripts/popup.js"></script>
@@ -81,7 +90,9 @@
 						}
 					}
 					echo "<div class='imagenGaleria'>";
+				    ?> <a href="#" onClick="abrir('<?php echo  "verFoto.php?url=".$ImageUrl ?>')"><?php 
 					echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
+					echo "</a>";
 					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 						echo "<a href='verAlbum.php?photo=" . $ImageUrl . "&albumId=" . $album . "'><img src='css/img/eliminar.png' width='16px'/>";
 					}
