@@ -81,10 +81,17 @@ function abrir(dir) {
 						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
 						$consulta2=$sql2->selectSQL($sentencia2);
 						$ind="Hola";
+						$count=1;
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
-
-							?> <a href="#" onClick="abrir('<?php echo  "php/tapa.php?id=".$row2['idTapa'] ?>')"><?php
-
+							$sentencia3="SELECT * From foto WHERE tapa_idtapa='".$row2['idTapa']."'";
+							$sql3=new conexionSQL();
+							$consulta3=$sql3->selectSQL($sentencia3);
+							$row3=mysqli_fetch_array($consulta3, MYSQLI_ASSOC);
+							 $count++;
+							echo "<div>"; 
+							echo "<img onclick='javascript:this.width=500;this.height=400' ondblclick='javascript:this.width=100;this.height=80' 
+									class='imagenGrande' z-index='".$count." name'imagenGrande' src='css/img/tapas/".$row['nombre']."/".$row3['foto'] ."' width='100'/>";
+							echo "</div>";
 							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
