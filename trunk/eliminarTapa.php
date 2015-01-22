@@ -39,9 +39,11 @@
 					//Comienza por eliminar la foto
 					$sentencia = "SELECT * FROM foto WHERE tapa_idTapa=".$_GET['idTapa'];
 					$foto = $mysqli->query($sentencia)->fetch_assoc();
-					$sentencia = "SELECT tipotapa.nombre FROM tipoTapa INNER JOIN tapa ON tipoTapa.idTipoTapa = tapa.tipoTapa_idTipoTapa WHERE tapa.idTapa=".$_GET['idTapa'];
+					$sentencia = "SELECT tipotapa.nombre FROM tipotapa INNER JOIN tapa ON tipotapa.idTipoTapa = tapa.tipoTapa_idTipoTapa WHERE tapa.idTapa=".$_GET['idTapa'];
+					 
 					$tipoTapa = $mysqli->query($sentencia)->fetch_assoc();
 					$rutaFoto = "css/img/tapas/".$tipoTapa['nombre']."/".$foto['foto'];
+					
 					unlink($rutaFoto);
 					$mysqli->query("DELETE FROM `cometario` WHERE tapa_idTapa=".$_GET['idTapa']);
 					 
