@@ -18,9 +18,11 @@
 
 <body>
 	<div id="contenido">
-		
+		 
 		<div id="contenedorCuerpo">
+		
 			<div class="evento">
+			<center><h2><a href="javascript:history.back();" ></>Volver atras</a></h2></center>
 				<?php 
 					session_start();
 					include('conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL

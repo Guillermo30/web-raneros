@@ -1,16 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script type="text/javascript"> 
-function abrir(dir) { 
-	 var margen=100;
-	 var width=screen.width-margen;
-	 var height=screen.height-margen;
-	 var left=margen/3;
-	open(dir,'','left='+left+',height='+height+',width='+width+'') ; 
-
-} 
-</script> 
+ 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -26,6 +17,9 @@ function abrir(dir) {
 	<script type="text/javascript" src="scripts/popup.js"></script>	
 </head>
 <body>
+<script type="text/javascript">
+lightgallery.init();
+</script>
 	<div id="contenido">
 		  <?php include('php/cabecera.php');?>
 		<div id="menuID" class="menu">
@@ -40,17 +34,17 @@ function abrir(dir) {
 			<div class="evento">
 				<?php
 					include('php/constantesConexion.php');
-					//include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
+					//include('php/conexionSQL.php'); //Incluimos el fichero donde estï¿½ la clase conexionSQL
 					
 					$sql=new conexionSQL(); //instanciamos objeto de la clase creada en el fichero "conexionSQL"
 					//Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
 					//que no he podio resolver nose por que  
 					/********************** JUAN ESTE FALLO TE DA PQ CUANDO HACEMOS UN INCLUDE 
 					//DE MENU.PHP A SU VEZ ESTAMOS INCLUYENDO TB CONEXIONSQL.PHP DENTRO DE MENU.PHP
-					// Y POR TANTO ESTARIAMOS INSTANCIANDO 2 VECES EN LA MISMA PÁGINA QUE ES EL ERROR Q T DA. OS LO COMENTO POR SI OS DA ALGÚN OTRO PROBLEMA PARECIDO
-					// EN OTRA PÁGINA, Q OS FIJEIS Q EN LAS PÁGINAS DND HACEMOS INCLUDE('PHP/MENU.PHP') NO HACE FALTA 
+					// Y POR TANTO ESTARIAMOS INSTANCIANDO 2 VECES EN LA MISMA Pï¿½GINA QUE ES EL ERROR Q T DA. OS LO COMENTO POR SI OS DA ALGï¿½N OTRO PROBLEMA PARECIDO
+					// EN OTRA Pï¿½GINA, Q OS FIJEIS Q EN LAS Pï¿½GINAS DND HACEMOS INCLUDE('PHP/MENU.PHP') NO HACE FALTA 
 					// HACER OTRO INCLUDE PARA CONEXIONSQL.PHP, PUESTO Q YA SE ESTA HACIENDO EN MENU.PHP
-					// EN LAS QUE NO LLEVEN MENU SI HABRÁ Q HACERLO PARA PODER USAR CONEXIONSQL.PHP 
+					// EN LAS QUE NO LLEVEN MENU SI HABRï¿½ Q HACERLO PARA PODER USAR CONEXIONSQL.PHP 
 					//*********************************************************************************************
 					 */
 					//$sql = new mysqli($host, $usuario,$passwd,$bd);
@@ -70,7 +64,7 @@ function abrir(dir) {
 						}
 						if(isset($_SESSION['esRoot'])){
 							if($_SESSION['esRoot']==1)
-								echo "<h3>".$row['nombre']." <a href='addTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/add.png' class='icon' alt='Añadir Tapa'> </a><a href='modificarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
+								echo "<h3>".$row['nombre']." <a href='addTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/add.png' class='icon' alt='Aï¿½adir Tapa'> </a><a href='modificarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modifiar Tipo de Tapa'> </a><a href='eliminarTipoTapa.php?tipoTapa=".$row['idTipoTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tipo de Tapa'> </a></h3>";
 							else
 								echo "<h3>".$row['nombre']."</h3>";
 						}else{
@@ -81,18 +75,23 @@ function abrir(dir) {
 						$sentencia2="SELECT * FROM tapa WHERE tipoTapa_idTipoTapa='".$row['idTipoTapa']."'";
 						$consulta2=$sql2->selectSQL($sentencia2);
 						$ind="Hola";
-						$count=1;
 						while($row2=mysqli_fetch_array($consulta2, MYSQLI_ASSOC)){
+
+						 
 							$sentencia3="SELECT * From foto WHERE tapa_idtapa='".$row2['idTapa']."'";
 							$sql3=new conexionSQL();
 							$consulta3=$sql3->selectSQL($sentencia3);
 							$row3=mysqli_fetch_array($consulta3, MYSQLI_ASSOC);
-							 $count++;
-							echo "<div>"; 
-							echo "<img onclick='javascript:this.width=500;this.height=400' ondblclick='javascript:this.width=100;this.height=80' 
-									class='imagenGrande' z-index='".$count." name'imagenGrande' src='css/img/tapas/".$row['nombre']."/".$row3['foto'] ."' width='100'/>";
+							 
+							echo"<div>"; 
+							 
+							echo"<a href='php/tapa.php?id='".$row2['idTapa'] ."'>";
+							?>
+							<a href="php/tapa.php?id=<?php echo $row2['idTapa'] ?>">
+							<?php 
+							echo $row2['nombre'].$row2['idTapa'];
+							echo"</a>";
 							echo "</div>";
-							echo $row2['nombre'];
 							if(isset($_SESSION['esRoot'])){
 								if($_SESSION['esRoot']==1)
 									echo " <a href='modificarTapa.php?idTapa=".$row2['idTapa']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Tapa'> </a><a href='eliminarTapa.php?idTapa=".$row2['idTapa']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Tapa'> </a></a>";
@@ -112,6 +111,5 @@ function abrir(dir) {
 		</div>
 		 <?php include('php/pie.php');?>
 	</div>
-	<?php include_once("php/analyticstracking.php") ?>
 </body>
 </html>
