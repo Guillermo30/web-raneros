@@ -43,7 +43,10 @@
 					$tipoTapa = $mysqli->query($sentencia)->fetch_assoc();
 					$rutaFoto = "css/img/tapas/".$tipoTapa['nombre']."/".$foto['foto'];
 					unlink($rutaFoto);
+					$mysqli->query("DELETE FROM `cometario` WHERE tapa_idTapa=".$_GET['idTapa']);
+					 
 					$mysqli->query("DELETE FROM `foto` WHERE idFoto=".$foto['idFoto']);
+
 					//Eliminamos la tapa
 					$mysqli->query("DELETE FROM `tapa` WHERE idTapa=".$_GET['idTapa']);
 					echo "<h1>Se ha eliminado correctamente dicha tapa</h1>";
