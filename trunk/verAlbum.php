@@ -96,7 +96,7 @@ lightgallery.init();
 						}
 					}
 					echo "<div class='imagenGaleria'>";
-					echo '<a href="'.$ImageUrl.'" rel="lightgallery" >';
+					echo '<a href="'.$ImageUrl.'" rel="lightgallery[Losraneros]" >';
 					echo "<img   width='170px' height='170px' src='$ImageUrl'><br/>";
 					echo "</a>";
 					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
