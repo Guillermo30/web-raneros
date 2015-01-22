@@ -56,7 +56,7 @@
 				$idTapa = $sql->ultimaId ( 'tapa' );
 				
 				// Inserta la foto
-				$sentencia = "SELECT nombre FROM tipoTapa WHERE idTipoTapa=" . $_POST ['tipoTapa'];
+				$sentencia = "SELECT nombre FROM tipotapa WHERE idTipoTapa=" . $_POST ['tipoTapa'];
 				$nombreTipoTapa = $mysqli->query ( $sentencia )->fetch_array ()[0];
 				$uploaddir = "css/img/tapas/" . $nombreTipoTapa . "/";
 				$uploadfile = $uploaddir . basename ( $_FILES ['foto'] ['name'] );
