@@ -1,6 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script src="scripts/lightgallery/lightgallery.min.js" type="text/javascript"></script>
+<link href="scripts/lightgallery/skins/default/style.css" type="text/css" media="screen" rel="stylesheet" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
@@ -27,6 +30,9 @@ function abrir(dir) {
 <script type="text/javascript" src="scripts/popup.js"></script>
 
 <body>
+<script type="text/javascript">
+lightgallery.init();
+</script>
 	<div id="contenido">
 		  <?php include('php/cabecera.php');?>
 		<div id="menuID" class="menu">
@@ -90,8 +96,8 @@ function abrir(dir) {
 						}
 					}
 					echo "<div class='imagenGaleria'>";
-				    ?> <a href="#" onClick="abrir('<?php echo  "verFoto.php?url=".$ImageUrl ?>')"><?php 
-					echo "<img  width='170px' height='170px' src='$ImageUrl'><br/>";
+					echo '<a href="'.$ImageUrl.'" rel="lightgallery" >';
+					echo "<img   width='170px' height='170px' src='$ImageUrl'><br/>";
 					echo "</a>";
 					if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 						echo "<a href='verAlbum.php?photo=" . $ImageUrl . "&albumId=" . $album . "'><img src='css/img/eliminar.png' width='16px'/>";
