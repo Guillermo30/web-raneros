@@ -31,7 +31,7 @@
 			if(isset($_POST['correoUsu'])){
 				$correoUsuario=1;
 			}
-			echo $correoUsuario;
+			//echo $correoUsuario;
 				//include('php/constantesConexion.php');
                 //include('php/conexionSQL.php');  //Incluimos fichero donde está la clase "conexionSQL" creada para poder instanciarla
 				$newPassword = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT); //función para crear codigo hash de contraseña
