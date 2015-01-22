@@ -54,7 +54,7 @@
 						$directorio=new Directorios(); //instanciamos objeto directorio
 						$directorio->eliminarDir("css/img/tapas/".$nombreTipo['nombre']); //llamamos a la funcion eliminarDirectorio del objeto
 						echo "<h1>Se ha eliminado correctamente dicho tipo de tapa</h1>";
-						header('Refresh: 3;carta.php');
+						header('Refresh: 5;carta.php');
 					}
 				?>
 			</div>
