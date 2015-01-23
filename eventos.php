@@ -38,7 +38,7 @@
 				                           // Al intentar hacer la conexion con el fichero conexionSQL me daba algun tipo de fallo
 				                           // que no he podio resolver nose por que
 				                           // $sql = new mysqli($host, $usuario,$passwd,$bd);
-				$sentencia = "SELECT * FROM evento";
+				$sentencia = "SELECT * FROM evento ORDER BY  fecha ASC ";
 				$consulta = $sql->selectSQL ( $sentencia );
 				// $consulta=$sql->query($sentencia);
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'])
