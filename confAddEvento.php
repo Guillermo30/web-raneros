@@ -145,7 +145,8 @@
 					$correo = "cafebarlosraneros@gmail.com";
 					$asunto = '[EVENTO BAR LOS RANEROS],' . $nombre;
 					$cuerpoEmail = "
-						
+						El dia ".$fechaEvento." a las ".$hora." se celebrara el evento ".$nombre." en el bar
+						Los Raneros. No te lo pierdas!
 						";
 					$headers = 'From: ' . $correo . "\r\n" . 'Reply-To: ' . $correo . "\r\n" . 'X-Mailer: PHP/' . phpversion ();
 					while ( $row3 = mysqli_fetch_array ( $consulta3, MYSQLI_ASSOC ) ) {
