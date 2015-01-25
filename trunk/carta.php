@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  
+<script src="scripts/lightgallery/lightgallery.min.js" type="text/javascript"></script>
+<link href="scripts/lightgallery/skins/default/style.css" type="text/css" media="screen" rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -85,11 +87,17 @@ lightgallery.init();
 							 
 							echo"<div>"; 
 							 
-							echo"<a href='php/tapa.php?id='".$row2['idTapa'] ."'>";
+							//echo"<a href='php/tapa.php?id='".$row2['idTapa'] ."'>";
+							
+							//<!-- MEDIANTE IMAGEN -->
+							//echo "<a href='' rel="lightbox" title="TITULO DE LA IMAGEN"><img src="URL DE LA IMAGEN PEQUEÑA"/></a>"
+							//<!-- MEDIANTE URL -->
+							//echo "<a href='css/img/tapas/".$row['nombre']."/".$row3['foto']."' rel='lightbox' title='Tapa'><img src='css/img/tapas/".$row['nombre']."/".$row3['foto']."'/></a>"
+							
 							?>
-							<a href="php/tapa.php?id=<?php echo $row2['idTapa'] ?>">
+							<a href="tapa.php?id=<?php echo $row2['idTapa'] ?>">
 							<?php 
-							echo $row2['nombre'].$row2['idTapa'];
+							echo $row2['nombre'];
 							echo"</a>";
 							echo "</div>";
 							if(isset($_SESSION['esRoot'])){

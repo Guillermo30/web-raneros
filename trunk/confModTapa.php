@@ -65,7 +65,7 @@
 						$sentencia = "UPDATE `tapa` SET `idTapa`=".$_POST['idTapa'].",`nombre`='".$_POST['nombre']."',`descripcion`='".$_POST['descripcion']."',`tipoTapa_idTipoTapa`=".$_POST['tipoTapa']." WHERE idTapa=".$_POST['idTapa'];
 						$mysqli->query($sentencia);
 						echo "<h2>Se a modificado la tapa correctamente</h2>";
-						header('Refresh: 5;carta.php');
+						header('Refresh: 2;carta.php');
 					}
 				?>
 			</div>
