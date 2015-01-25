@@ -99,15 +99,17 @@
 				$fecha = substr( $row2 ['fecha'],0,10);
 				$hora=substr( $row2 ['fecha'],10,6);
 				echo "<img  width='200px' height='150px' src='$ImageUrl;'><br/>";
+				//echo "<div class:'prueba'>";
 				echo "<b>Nombre de evento:</b> " . $row2 ['nombre'] . "<br/	>";
 				echo "<b>Fecha:</b> " . $fecha . "<br/	>";
-				echo "<b>Hora:</b>".$hora." <br/	>";
-				echo "<b>Descripcion de evento:</b>" . $row2 ['descripcion'] . "<br/>";
+				echo "<b>Hora:</H3>".$hora." <br/	>";
+				echo "<h3>Descripcion de evento:</h3>" . $row2 ['descripcion'] . "<br/>";
+				//echo "</div>";
 // 				echo "<a href='verAlbum.php?albumId=".$album."' >Ver fotos de evento	</a><br/>";
 				
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
-					echo " <a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					echo " </br><a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
 					echo "<a href='verAlbum.php?albumId=".$album."'>Agregar fotos al evento</a>";
 					echo"<div class='verFoto'><a href='verAlbum.php?albumId=".$album."'>Ver fotos</a></div>";
 					echo "</div>";

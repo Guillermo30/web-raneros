@@ -52,7 +52,7 @@
 					//Eliminamos la tapa
 					$mysqli->query("DELETE FROM `tapa` WHERE idTapa=".$_GET['idTapa']);
 					echo "<h1>Se ha eliminado correctamente dicha tapa</h1>";
-					header('Refresh: 5;carta.php');
+					header('Refresh: 2;carta.php');
 				?>
 			</div>
 		</div>

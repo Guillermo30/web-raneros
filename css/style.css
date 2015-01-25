@@ -662,4 +662,13 @@ margin-right:15px;
 	text-align:right;
 	 
 	}
+	
+#prueba{
+	text-align:right;
+	float:right;
+	margin-left:-150px;
+	padding-top: 45px;
+	color:#d4d4d4;
+}
+
 }
