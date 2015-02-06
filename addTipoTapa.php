@@ -40,7 +40,7 @@
 			<div class="evento">
 				<form action="confAddTipoTapa.php" class="formularios" method="post">
 					<div><a>Nombre</a></br><input type="text" name="nombre" id="nombre"></input></div>
-					<div><input type="submit" value="Agregar Tapa"></input><input type="reset" value="Reset"></input></div>
+					<div><input type="submit" value="Agregar Tipo Tapa"></input><input type="reset" value="Reset"></input></div>
 				</form>
 			</div>
 		</div>

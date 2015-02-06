@@ -41,7 +41,7 @@
 						$sentencia = "UPDATE `tapa` SET `idTapa`=".$_POST['idTapa'].",`nombre`='".$_POST['nombre']."',`descripcion`='".$_POST['descripcion']."',`tipoTapa_idTipoTapa`=".$_POST['tipoTapa']." WHERE idTapa=".$_POST['idTapa'];
 						$mysqli->query($sentencia);
 						echo "<h2>Se a modificado la tapa correctamente</h2>";
-						header('Refresh: 5;carta.php');
+						header('Refresh: 3;carta.php');
 					}else{
 						//Eliminamos la foto que tenia anteriormente
 						$sentencia = "SELECT foto.foto, tipotapa.nombre FROM foto INNER JOIN tapa ON tapa.idTapa=foto.tapa_idTapa INNER JOIN tipoTapa ON tipotapa.idTipoTapa=tapa.tipoTapa_idTipoTapa WHERE tapa.idTapa=".$_POST['idTapa'];

@@ -41,7 +41,8 @@
 					$sentencia = "SELECT * FROM tapa WHERE tipoTapa_idTipoTapa=".$_GET['tipoTapa'];
 					$tapasAsociadas = $mysqli->query($sentencia)->fetch_assoc();
 					if(count($tapasAsociadas)>0){
-						echo "<h1>Lo sentimos pero previamente debe eliminarse las tapas asociadas a dicho tipo de tapa</h1>";
+						echo "<h1>Lo sentimos pero previamente deben eliminarse las tapas asociadas a dicho tipo de tapa</h1>";
+						header('Refresh: 3;carta.php');
 					}else{
 						//Obtenemos en nombre del tipo de tapa para poder borrar dicho directorio asociado
 						$sentencia="SELECT nombre FROM tipotapa WHERE idTipoTapa=".$_GET['tipoTapa'];
@@ -54,7 +55,7 @@
 						$directorio=new Directorios(); //instanciamos objeto directorio
 						$directorio->eliminarDir("css/img/tapas/".$nombreTipo['nombre']); //llamamos a la funcion eliminarDirectorio del objeto
 						echo "<h1>Se ha eliminado correctamente dicho tipo de tapa</h1>";
-						header('Refresh: 5;carta.php');
+						header('Refresh: 3;carta.php');
 					}
 				?>
 			</div>
