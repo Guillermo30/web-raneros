@@ -37,7 +37,7 @@
 					exit ();
 					echo "Gracias por su visita";
 				}else{
-					echo "Usted no ha iniciado la sesion";
+					echo "Usted no ha iniciado la sesi&oacuten";
 				}
 				
 				?>
