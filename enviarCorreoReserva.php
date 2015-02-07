@@ -51,7 +51,7 @@
  
  				if($telefono==''){ //comprobamos que el contenido de la pregunta no esté vacío
  					$algunerror = TRUE;
- 					echo "<h3>El área de la consulta no puede quedar en blanco.</h3>\n";
+ 					echo "<h3>El &aacuterea de la consulta no puede quedar en blanco.</h3>\n";
  				}
  
  				if($correo==''){ //validamos los que el email no esté vacio
@@ -65,14 +65,14 @@
   				}
   				if($mensaje==''){ //comprobamos que el contenido de la pregunta no esté vacío
   					$algunerror = TRUE;
-  					echo "<h3>El área de la consulta no puede quedar en blanco.</h3>\n";
+  					echo "<h3>El &aacuterea de la consulta no puede quedar en blanco.</h3>\n";
   				}
   
   				if ($algunerror){ //comprobamos si ha habido algún error
     				echo "<h3>&nbsp;</p>\n"; //si los hay, se lo indicamos al usuario
     		 		echo "<h3>No se ha podido enviar el mensaje por los errores que se detallan arriba.</h3>\n";
      				echo "<h3>Por favor, vuelve a rellenar el formulario.</h3>\n";
-     				echo "<h3>< href=\"conocenos.php\">Volver al formulario</a></h3>\n";
+     				echo "<h3><a href='conocenos.php'>Volver al formulario</a></h3>\n";
      
   				}else{
   					
