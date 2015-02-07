@@ -124,7 +124,7 @@
 				$sentencia = "SELECT * FROM album WHERE nombre=$albumId";
 				$consulta = $sql->selectSQL ( $sentencia );
 				
-				echo $fechaEvento = $fechaEvento . " " . $hora . ":00";
+				//echo $fechaEvento = $fechaEvento . " " . $hora . ":00";
 				while ( $row = mysqli_fetch_array ( $consulta, MYSQLI_ASSOC ) ) {
 					
 					$sentencia = "INSERT INTO evento (nombre, descripcion, fecha,portada,album_idAlbum)
@@ -158,7 +158,7 @@
 						}
 					}
 					echo "Evento agregado correctamente";
-					header ( "Refresh: 4;URL=eventos.php" );
+					header ( "Refresh: 2;URL=eventos.php" );
 				}
 				
 				?>

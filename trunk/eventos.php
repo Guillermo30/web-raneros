@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,6 +11,25 @@
 	<script type="text/javascript" src="engine0/jquery.js"></script>
 
 	<!-- End WOWSlider.com HEAD section -->
+	
+	<script type="text/javascript">
+	
+	//function confirmacionEliminar(){		
+		
+	//	if(!confirm('\u00bf'+'Est'+'\u00e1'+ ' seguro de que desea eliminar el evento?, ello conllevar'+'\u00e1'+' la eliminaci'+'\u00f3'+'n de sus galer'+'\u00ed'+'as y fotos asociadas'))
+	//	{
+	//		var prueba=""
+	//			document.write("prueba = " + prueba);
+	//			alert(prueba);
+	//		document.location="eventos.php";
+	//		return false;
+	//	}else{
+	//		document.location=url;
+	//		return true;
+
+			}
+	}
+	</script>
 
 </head>
 
@@ -31,6 +50,7 @@
 			<div class="evento">
 				<br />
 				<?php
+				
 				include ('php/constantesConexion.php');
 				// include('php/conexionSQL.php'); //Incluimos el fichero donde está la clase conexionSQL
 				
@@ -109,7 +129,28 @@
 				
 				if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
-					echo " </br><a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					//echo " </br><a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "' onclick='confirmacion()'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					//echo " </br><a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='javascript:;' onclick='confirmacion('eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento'] . "') ; return false;'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
+					$url="'eliminarEvento.php?id=".$album."&idEvento=" . $row2 ['idEvento']."'";
+					//echo $url;
+					echo "<script>
+						function confirmacionEliminar(){
+					
+							if(!confirm('\u00bf'+'Est'+'\u00e1'+ ' seguro de que desea eliminar el evento?, ello conllevar'+'\u00e1'+' la eliminaci'+'\u00f3'+'n de sus galer'+'\u00ed'+'as y fotos asociadas'))
+							{
+								
+								document.location='eventos.php';
+								return false;
+							}else{
+								document.location=".$url."
+								return true;
+					
+					}
+					}
+					</script>";
+					
+					
+					echo " </br><a href='modificarEvento.php?idEvento=" . $row2 ['idEvento'] . "&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&fecha=". $row2 ['fecha']."&Album=". $album."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar Evento'> </a><a href='javascript:;' onclick='confirmacionEliminar(); return false;'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Evento'> </a></a>";
 					echo "<a href='verAlbum.php?albumId=".$album."'>Agregar fotos al evento</a>";
 					echo"<div class='verFoto'><a href='verAlbum.php?albumId=".$album."'>Ver fotos</a></div>";
 					echo "</div>";
