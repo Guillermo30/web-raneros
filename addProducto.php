@@ -47,7 +47,7 @@
 					<div><label>Descripcion</br></label><textarea name="descripcion" rows="5" cols="5"></textarea></div>
 					<div><label>Precio</br></label><input type="number" step="0.01" name="precio" ></div>
 					<div><label>Imagen</a></br><input type="file" name="foto"></div>
-					<div><input type="submit" value="Agregar Producto"></input><input type="reset" value="Reset"></div>
+					<div><input type="submit" value="Agregar Producto"> &nbsp; </input><input type="reset" value="Reset"></div>
 
 				</form>
 			</div>

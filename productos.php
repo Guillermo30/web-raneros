@@ -58,7 +58,7 @@
 						
 						if (isset ( $_SESSION ['esRoot'] ) && $_SESSION ['esRoot'] == 1) {
 					
-							echo " <a href='modificarProducto.php?idProducto=".$row2['idProducto']."&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&foto=". $row2 ['descripcion']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar producto'> </a><a href='eliminarProducto.php?id="."&idProducto=".$row2['idProducto']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Producto'> </a></a>";
+							echo " <a href='modificarProducto.php?id="."&idProducto=".$row2['idProducto']."&nombre=". $row2 ['nombre']."&descripcion=". $row2 ['descripcion']."&foto=". $row2 ['descripcion']."'><img src='css/img/iconos/edit.png' class='icon' alt='Modificar producto'> </a><a href='eliminarProducto.php?id="."&idProducto=".$row2['idProducto']."'><img src='css/img/iconos/delete.png' class='icon' alt='Eliminar Producto'> </a></a>";
 							echo "</div>";
 							echo "</a>";
 					
