@@ -29,21 +29,22 @@
 			?>
 		</div>
 		<br></br>
-		<div id="contenedorCuerpo">
+		<div id="contenedorCuerpo1">
 			 <h1>Aviso legal</h1>
 <?php header("Content-Type: text/html; charset=iso-8859-1");  ?>
+
 <p>ÍNDICE:</p>
 <p><strong>I.- CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL Y CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE PASTIFICIO SERVICE, S.L. (Sociedad Unipersonal) Y LOS USUARIOS.</strong></p>
 <p>1) TITULARIDAD DEL PORTAL</p>
 <p>2) CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL<br />
  2.1.- Introducción<br />
  2.2.- Propiedad intelectual e industrial<br />
- 2.3.- Responsabilidad de ---------------------------------<br />
+ 2.3.- Responsabilidad de Café-Bar Los Raneros<br />
  2.4.- Obligaciones del usuario<br />
  2.5.- Comunicaciones<br />
  2.6.- Nulidad de las cláusulas<br />
  2.7.- Ley aplicable y jurisdicción</p>
-<p>3) CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE ---------------------- Y LOS USUARIOS<br />
+<p>3) CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE Café-Bar Los Raneros Y LOS USUARIOS<br />
  3.1.- Información previa<br />
  3.2.- Reclamaciones</p>
 <p><strong>II.- POLÍTICA DE PROTECCIÓN DE DATOS DE CARÁCTER PERSONAL.</strong></p>
@@ -54,14 +55,14 @@
 5 &#8211; Derechos de acceso, rectificación, cancelación y oposición.<br />
 6.- Seguridad de los datos personales<br />
 7.- Modificaciones de la política de privacidad</p>
-<h2>I.- CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL Y CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE ---------------------- Y LOS USUARIOS</h2>
+<h2>I.- CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL Y CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE Café-Bar Los Raneros Y LOS USUARIOS</h2>
 <p>1) TITULARIDAD DEL PORTAL</p>
 <p>En cumplimiento de la obligación de información general contenida en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se informa que los datos identificativos del responsable titular del portal son los siguientes:</p>
 <p><strong>DENOMINACIÓN SOCIAL</strong>: ----------------------.</p>
 <p><strong>CIF</strong>: ---------------------- </p>
 <p><strong>DOMICILIO SOCIAL</strong>: ----------------------.</p>
 <p><strong>REGISTRO MERCANTIL DE ALMERIA</strong>: --------------------------------------------------------.</p>
-<p>A efectos aclaratorios ---------------------- quedará identificada en todo el documento como Café-Bar Los Raneros.</p>
+<p>A efectos aclaratorios Café-Bar Los Raneros quedará identificada en todo el documento como Café-Bar Los Raneros.</p>
 <p>2) CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL</p>
 <p>2.1.- Introducción</p>
 <p>Las presentes Condiciones Generales de Utilización del Portal, junto con las condiciones generales de contratación que rijan la prestación de los servicios, y/o las condiciones particulares que puedan establecerse, tienen por finalidad regular tanto la puesta a disposición de la información como las relaciones comerciales/contractuales que surjan entre Café-Bar Los Raneros y los usuarios del Portal. </p>
@@ -105,7 +106,7 @@ Las comunicaciones de Café-Bar Los Raneros al Usuario se realizarán conforme a l
 <p>Café-Bar Los Raneros dispone de Hojas de Reclamaciones, a disposición de sus clientes en el establecimiento de referencia. Recomendamos a los Usuarios que tramiten su reclamación en el establecimiento encargado de la prestación efectiva del servicio.</p>
 <h2>II.- POLÍTICA DE PROTECCIÓN DE DATOS DE CARÁCTER PERSONAL</h2>
 <p>1.- Responsable del fichero</p>
-<p>En cumplimiento de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal (LOPD) y de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), se informa a los Usuarios y éstos consienten expresamente que los datos de carácter personal que nos faciliten a través de la presente página web, www.cafebarlosraneros.com (en adelante, la Página Web), sean incorporados al fichero de “USUARIOS WEB”, responsabilidad de ---------------, con domicilio social en --------------------------------------, quien garantiza el pleno cumplimiento de la normativa vigente en cada momento en materia de protección de datos de carácter personal.</p>
+<p>En cumplimiento de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal (LOPD) y de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), se informa a los Usuarios y éstos consienten expresamente que los datos de carácter personal que nos faciliten a través de la presente página web, www.cafebarlosraneros.com (en adelante, la Página Web), sean incorporados al fichero de “USUARIOS WEB”, responsabilidad de Guillermo Cantón Tortosa, con domicilio social en C/ Escalerillas Nº2 Bentarique (Almería), quien garantiza el pleno cumplimiento de la normativa vigente en cada momento en materia de protección de datos de carácter personal.</p>
 <p>2.- Finalidad del tratamiento de los datos personales</p>
 <p>La vista a esta Página Web no supone que el Usuario esté obligado a facilitar ninguna información sobre sí mismo. Café-Bar Los Raneros informa a los Usuarios y éstos consienten expresamente que los datos personales que voluntariamente suministren a Café-Bar Los Raneros al cumplimentar el formulario de registro ubicado en la Página Web sean tratados para cumplir con las obligaciones legales y contractuales asumidas frente a dichos Usuarios, en particular para la posibilidad de franquiciarse, para el uso de la bolsa de empleo, para ser posibles proveedores, para encuestas especialmente dirigidas, así como para el envío de comunicaciones comerciales, por medio de correo electrónico, tratándose no obstante los mismos en cualquier caso en la forma y con las limitaciones y derechos que recoge la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal dentro del marco establecido por la legislación española. Si el usuario no quiere recibir información comercial podrá hacérnoslo saber a la dirección de correo electrónico: cafebarlosraneros@gmai.com</a></p>
 <p>En el momento de proceder a la recogida de los datos se indicará el carácter voluntario u obligatorio de los datos objeto de recogida. La negativa a proporcionar los datos calificados obligatorios supondrá la no prestación o la imposibilidad de acceder al servicio para los que eran solicitados. Los datos obligatorios que el Usuario deberá facilitar a Café-Bar Los Raneros para que nos pongamos en contacto con el Usuario son: nombre, Teléfono, e-mail.</p>
@@ -117,7 +118,7 @@ Las comunicaciones de Café-Bar Los Raneros al Usuario se realizarán conforme a l
 <p>Igualmente se informa por parte de Café-Bar Los Raneros, de la imposibilidad de realizar comprobaciones sobre la veracidad y exactitud de los datos personales proporcionados, por lo que recomienda para los casos de tales actuaciones que supervisen el proceso de registro de sus hijos o tutelados. En su caso, Café-Bar Los Raneros gestionará las solicitudes derivadas del ejercicio, por los padres o tutores, de los derechos de acceso, cancelación, rectificación y oposición de los datos de los menores o incapaces, sin perjuicio de que puede ponerse en contacto con nosotros para realizar las advertencias que considere oportunas, por cualquiera de los medios ya referenciados.</p>
 <p>Asimismo, el Usuario se obliga a mantener indemne a Café-Bar Los Raneros frente a cualquier reclamación que pueda ser interpuesta contra éste (en especial, en caso de apertura de cualquier tipo de expediente por la Agencia Española de Protección de Datos por el incumplimiento por el Usuario de las obligaciones recogidas en la presente Política de Privacidad, así como en la legislación vigente en cada momento en materia de protección de datos personales y acepta satisfacer el importe al que, en concepto de sanción, multa, indemnización, daños, perjuicios e intereses pueda ser condenado Café-Bar Los Raneros, incluyendo honorarios de abogados, con motivo del citado incumplimiento).</p>
 <p>5. Derechos de acceso, rectificación, cancelación y oposición</p>
-<p>De conformidad con lo establecido en la Ley Orgánica 15/1999 del 13 de Diciembre de Protección de Datos de Carácter Personal, el Cliente o Usuario queda igualmente informado sobre la posibilidad de ejercer los derechos de acceso, rectificación, cancelación y oposición, en los términos establecidos en la legislación vigente, siendo ---------------------------- el responsable del fichero automatizado y pudiendo dirigirse por escrito, indicando en el sobre “Protección de datos” -----------------------, -------------------------, España o bien mediante correo electrónico a la siguiente dirección: cafebarlosraneros@gmail.com</p>
+<p>De conformidad con lo establecido en la Ley Orgánica 15/1999 del 13 de Diciembre de Protección de Datos de Carácter Personal, el Cliente o Usuario queda igualmente informado sobre la posibilidad de ejercer los derechos de acceso, rectificación, cancelación y oposición, en los términos establecidos en la legislación vigente, siendo Guillermo Cantón Tortosa el responsable del fichero automatizado y pudiendo dirigirse  mediante correo electrónico a la siguiente dirección: cafebarlosraneros@gmail.com</p>
 <p>6.- Seguridad de los datos personales</p>
 <p>Café-Bar Los Raneros se compromete al cumplimiento de su obligación de secreto respecto de los datos de carácter personal de los Usuarios y de su deber de guardarlos, y adoptará las medidas de índole técnica y organizativas necesarias que garanticen la seguridad de los datos de carácter personal y eviten su alteración, pérdida, tratamiento o acceso no autorizado, habida cuenta del estado de la tecnología, la naturaleza de los datos almacenados y los riesgos a que están expuestos, ya provengan de la acción humana o del medio físico o natural.</p>
 <p>7.- Modificaciones de la política de privacidad</p>
