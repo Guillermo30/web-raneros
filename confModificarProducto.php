@@ -50,25 +50,28 @@
 				$precio = $_POST ['precio']; // Precio
 				$foto=$_FILES['foto']['tmp_name'];
 				
-				//echo $idP;
+				echo $_POST['idProducto'];
+				
+				echo $idP;
 				
 				$sql = new conexionSQL ();
 				// Comienza a insertar
 				// sentecias de insercion
 				
-				$sentencia = "UPDATE producto SET descripcion='.$descripcion.',imagen='.$foto.',precio='.$precio.',nombre='.$nombre.' WHERE idProducto ='.$idP';";
-				 
+				$sentencia = "UPDATE producto SET descripcion='{$descripcion}', imagen='{$foto}',precio='{$precio}' ,nombre='{$nombre}' WHERE idProducto ='{$idP}'";
+				//echo $sentencia;
+				//$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fechaEvento}'";
 				//echo $idP;
 	// echo $sentencia;
-				if (! $sql->insertarSQL ( $sentencia )) {
+				if (! $sql->updateSQL ( $sentencia )) {
 					echo $sql->mysqli->error;
 					echo "</br>Ha ocurrido un error al introducir el producto, int&eacutentelo de nuevo";
 					header ( "Refresh: 3;URL=" . $_SERVER ['HTTP_REFERER'] );
 				
 				} else {
-					echo "Producto agregado correctamente";
-					// header ( "Refresh: 2;URL=eventos.php" );
-					header ( "Location: eventos.php" );
+					echo "Producto modificado correctamente";
+					 header ( "Refresh: 10;URL=productos.php" );
+					//header ( "Location: productos.php" );
 				}
 				
 				?>
