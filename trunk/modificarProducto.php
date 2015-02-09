@@ -46,12 +46,12 @@
 			?>
 			<div class="evento">
 				<form action="confModificarProducto.php" class="formularios" method="post" enctype="multipart/form-data">
-					<div><input type="hidden" name="idProducto" id="idProducto" value="<?php $_GET['idProducto']?>"></input></div>
+					<div><input type="hidden" name="idProducto" id="idProducto" value="<?php echo $_GET['idProducto']?>"></input></div>
 					<div><label>Nombre</br></label><input type="text" name="nombre" id="nombre" value="<?php echo $_GET ['nombre'] ?>"></div>
 					<div><label>Descripcion</br></label><textarea name="descripcion" rows="5" cols="5" ><?php echo $_GET ['descripcion'] ?></textarea></div>
 					<div><label>Precio</br></label><input type="number" step="0.01" name="precio" ></div>
 					<div><label>Imagen</a></br><input type="file" name="foto"></div>
-					<div><input type="submit" value="Modificar Producto"></input><input type="reset" value="Reset"></div>
+					<div><input type="submit" value="Modificar Producto"></input> &nbsp;<input type="reset" value="Reset"></div>
 
 				</form>
 			</div>

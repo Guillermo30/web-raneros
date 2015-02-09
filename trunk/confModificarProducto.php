@@ -50,9 +50,8 @@
 				$precio = $_POST ['precio']; // Precio
 				$foto=$_FILES['foto']['tmp_name'];
 				
-				echo $_POST['idProducto'];
-				
-				echo $idP;
+				//echo $_POST['idProducto'];
+				//echo $idP;
 				
 				$sql = new conexionSQL ();
 				// Comienza a insertar
@@ -70,7 +69,7 @@
 				
 				} else {
 					echo "Producto modificado correctamente";
-					 header ( "Refresh: 10;URL=productos.php" );
+					 header ( "Refresh: 2;URL=productos.php" );
 					//header ( "Location: productos.php" );
 				}
 				
