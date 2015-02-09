@@ -109,6 +109,24 @@ a:hover {
 	float: left;
 	z-index:1;
 }
+#contenedorCuerpo1{
+	color: #FFFFFF ;
+	height : auto;
+	width : 760px;
+	background-image:url(img/fondoContenedorCuerpo.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;         
+    background-size: 100% 100%;
+	margin-left:100px;
+	margin-right:120px;
+	margin-top:0px;
+	padding-top:15px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:15px;
+	float: left;
+	z-index:1;
+}
 #central
 {
 	padding-left : 10px;
