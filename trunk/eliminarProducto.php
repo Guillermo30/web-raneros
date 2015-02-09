@@ -28,6 +28,7 @@
 		<div id="contenedorCuerpo">
 			<div class="evento">
 				<?php
+					include("php/constantesConexion.php");
 					//Comprueba si es root, en caso contrario devuelve al index
 					if(isset($_SESSION['esRoot']) && $_SESSION['esRoot'] == 1){
 					
@@ -38,30 +39,30 @@
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
 				
 					$mysqli->query("DELETE FROM `producto` WHERE idProducto=".$_GET['idProducto']);
-					$mysqli->query("DELETE FROM `album` WHERE nombre=".$_GET['id']);
+					//$mysqli->query("DELETE FROM `album` WHERE nombre=".$_GET['id']);
 					//Eliminamos tambien el album
-					require_once 'Zend/Loader.php';
-					Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
-					Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumQuery' );
-					Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
-					Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
+					//require_once 'Zend/Loader.php';
+					//Zend_Loader::loadClass ( 'Zend_Gdata_Photos' );
+					//Zend_Loader::loadClass ( 'Zend_Gdata_Photos_AlbumQuery' );
+					//Zend_Loader::loadClass ( 'Zend_Gdata_ClientLogin' );
+					//Zend_Loader::loadClass ( 'Zend_Gdata_AuthSub' );
 					
-					$user = "webraneros@gmail.com";
-					$pass = "raneros2014!";
+					//$user = "webraneros@gmail.com";
+					//$pass = "raneros2014!";
 					
-					$id = $_GET ['id'];
-					$service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-					$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $service );
-					$service = new Zend_Gdata_Photos ( $client );
-					$albumQuery = new Zend_Gdata_Photos_AlbumQuery ();
+					//$id = $_GET ['id'];
+					//$service = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+					//$client = Zend_Gdata_ClientLogin::getHttpClient ( $user, $pass, $service );
+					//$service = new Zend_Gdata_Photos ( $client );
+					//$albumQuery = new Zend_Gdata_Photos_AlbumQuery ();
 					// $albumQuery->setUser("sample.user");
 					
-					$albumQuery->setAlbumId ( $id );
+					//$albumQuery->setAlbumId ( $id );
 					// $albumQuery->setType('entry');
 					
-					$entry = $service->getAlbumEntry ( $albumQuery );
+					//$entry = $service->getAlbumEntry ( $albumQuery );
 					
-					$service->deleteAlbumEntry ( $entry, true );
+					//$service->deleteAlbumEntry ( $entry, true );
 					//
 					header ( "Location: productos.php" );
 				?>
