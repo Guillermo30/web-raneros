@@ -29,6 +29,7 @@
 			$menu->mostrar ();
 			?>
 		</div>
+		<br></br>
 		<div id="contenedorCuerpo">
 
 			<div class="evento">
