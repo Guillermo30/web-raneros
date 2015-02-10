@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html"; charset="utf-8/ISO-8859-1"; />
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8/ISO-8859-1" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 <title>Los Raneros</title>
@@ -58,11 +58,11 @@
 <h2>I.- CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL Y CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE Café-Bar Los Raneros Y LOS USUARIOS</h2>
 <p>1) TITULARIDAD DEL PORTAL</p>
 <p>En cumplimiento de la obligación de información general contenida en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se informa que los datos identificativos del responsable titular del portal son los siguientes:</p>
-<p><strong>DENOMINACIÓN SOCIAL</strong>: ----------------------.</p>
-<p><strong>CIF</strong>: ---------------------- </p>
-<p><strong>DOMICILIO SOCIAL</strong>: ----------------------.</p>
+<p><strong>DENOMINACIÓN SOCIAL</strong>: CAFE BAR LOS RANEROS CB.</p>
+<p><strong>CIF</strong>: E04778411 </p>
+<p><strong>DOMICILIO SOCIAL</strong>: ESQUINA LEONARDO ORTEGA 04569 BENTARIQUE (ALMERIA).</p>
 <p><strong>REGISTRO MERCANTIL DE ALMERIA</strong>: --------------------------------------------------------.</p>
-<p>A efectos aclaratorios Café-Bar Los Raneros quedará identificada en todo el documento como Café-Bar Los Raneros.</p>
+<p>A efectos aclaratorios CAFE BAR LOS RANEROS CB quedará identificada en todo el documento como Café-Bar Los Raneros.</p>
 <p>2) CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL</p>
 <p>2.1.- Introducción</p>
 <p>Las presentes Condiciones Generales de Utilización del Portal, junto con las condiciones generales de contratación que rijan la prestación de los servicios, y/o las condiciones particulares que puedan establecerse, tienen por finalidad regular tanto la puesta a disposición de la información como las relaciones comerciales/contractuales que surjan entre Café-Bar Los Raneros y los usuarios del Portal. </p>
@@ -99,7 +99,7 @@ Las comunicaciones de Café-Bar Los Raneros al Usuario se realizarán conforme a l
 <p>Las partes renuncian expresamente al fuero que les pudiera corresponder y se someten expresamente a los Juzgados y Tribunales de Almería para resolver cualquier controversia que pueda surgir en la interpretación o ejecución de las presentes condiciones contractuales.</p>
 <p>3) CONDICIONES PARA LA PRESTACIÓN DE SERVICIOS ENTRE CAFE-BAR LOS RANEROS Y LOS USUARIOS</p>
 <p>3.1.- Información previa:</p>
-<p>Estas Condiciones Generales de Contratación junto, en su caso, con las Condiciones Particulares que puedan establecerse, regularán expresamente las relaciones que Café-Bar Los Raneros, con CIF: ----------, y domicilio social en -----------------------------------------------------------, entable con los Usuarios a través del Portal.</p>
+<p>Estas Condiciones Generales de Contratación junto, en su caso, con las Condiciones Particulares que puedan establecerse, regularán expresamente las relaciones que Café-Bar Los Raneros, con CIF: E04778411, y domicilio social en ESQUINA LEONARDO ORTEGA 04569 BENTARIQUE (ALMERIA), entable con los Usuarios a través del Portal.</p>
 <p>La utilización y/o la prestación de cualesquiera de los servicios del Portal, suponen la aceptación como Usuario, sin reservas de ninguna clase, a todas y cada una de las Condiciones Generales de Contratación, de las Condiciones Generales de Utilización del Portal así como a las Condiciones Particulares.</p>
 <p>Café-Bar Los Raneros, informa que los trámites para obtener la prestación de los servicios ofrecidos, son aquellos que se describen en las presentes condiciones generales, así como aquellos otros específicos que se indiquen en pantalla durante la navegación, de manera que el Usuario declara conocer y aceptar dichos trámites como necesarios para acceder a los servicios ofrecidos en el Portal.</p>
 <p>3.2.- Reclamaciones: </p>
