@@ -37,7 +37,12 @@
 					}
 					
 					$mysqli = new mysqli($host, $usuario, $passwd, $bd);
-				
+					
+					$sentencia = "SELECT * FROM producto WHERE idProducto=".$_GET['idProducto'];
+					$foto = $mysqli->query($sentencia)->fetch_assoc();
+					$rutaFoto = "css/img/producto/".$foto['imagen'];
+					unlink($rutaFoto);
+					
 					$mysqli->query("DELETE FROM `producto` WHERE idProducto=".$_GET['idProducto']);
 					//$mysqli->query("DELETE FROM `album` WHERE nombre=".$_GET['id']);
 					//Eliminamos tambien el album

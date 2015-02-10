@@ -54,6 +54,10 @@
 				
 				
 				$sql = new conexionSQL ();
+				
+				$uploaddir = "css/img/producto/";
+				$uploadfile = $uploaddir . basename ( $_FILES ['foto'] ['name'] );
+				move_uploaded_file ($foto, $uploadfile);
 				$sentencia = "INSERT INTO producto (descripcion,imagen,precio,nombre)
 					VALUES ('{$descripcion}','{$photoName}','{$precio}','{$nombre}')";
 				
