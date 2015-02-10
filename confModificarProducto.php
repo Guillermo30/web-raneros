@@ -49,15 +49,27 @@
 				$descripcion = $_POST ['descripcion']; // Cuerpo del mensaje
 				$precio = $_POST ['precio']; // Precio
 				$foto=$_FILES['foto']['tmp_name'];
+				$photoName = $_FILES ['foto'] ['name'];
 				
 				//echo $_POST['idProducto'];
 				//echo $idP;
 				
-				$sql = new conexionSQL ();
-				// Comienza a insertar
-				// sentecias de insercion
+				include ('php/constantesConexion.php');
+				$mysqli = new mysqli($host, $usuario, $passwd, $bd);
 				
-				$sentencia = "UPDATE producto SET descripcion='{$descripcion}', imagen='{$foto}',precio='{$precio}' ,nombre='{$nombre}' WHERE idProducto ='{$idP}'";
+				//elimina la foto
+				$sentencia1 = "SELECT * FROM producto WHERE idProducto=".$_POST['idProducto'];
+				$fotoEncontrada = $mysqli->query($sentencia1)->fetch_assoc();
+				$rutaFoto = "css/img/producto/".$fotoEncontrada['imagen'];
+				unlink($rutaFoto);
+				//añade la foto
+				$uploaddir = "css/img/producto/";
+				$uploadfile = $uploaddir . basename (  $_FILES ['foto'] ['name'] );
+				move_uploaded_file ($foto, $uploadfile);
+				
+				$sql = new conexionSQL ();
+				
+				$sentencia = "UPDATE producto SET descripcion='{$descripcion}', imagen='{$photoName}',precio='{$precio}' ,nombre='{$nombre}' WHERE idProducto ='{$idP}'";
 				//echo $sentencia;
 				//$sentencia = "UPDATE  evento  SET nombre='{$nombre}', descripcion='{$descripcion}',fecha='{$fechaEvento}'";
 				//echo $idP;
