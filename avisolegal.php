@@ -61,7 +61,7 @@
 <p><strong>DENOMINACIÓN SOCIAL</strong>: CAFE BAR LOS RANEROS CB.</p>
 <p><strong>CIF</strong>: E04778411 </p>
 <p><strong>DOMICILIO SOCIAL</strong>: ESQUINA LEONARDO ORTEGA 04569 BENTARIQUE (ALMERIA).</p>
-<p><strong>REGISTRO MERCANTIL DE ALMERIA</strong>: --------------------------------------------------------.</p>
+
 <p>A efectos aclaratorios CAFE BAR LOS RANEROS CB quedará identificada en todo el documento como Café-Bar Los Raneros.</p>
 <p>2) CONDICIONES GENERALES DE UTILIZACIÓN DEL PORTAL</p>
 <p>2.1.- Introducción</p>
